@@ -116,8 +116,13 @@ simply applying Cole's weak-coupling rule, which works for any parent. What the
 same-crystal Si:B interface genuinely buys is disorder-free, *controllable* coupling —
 not metallization immunity. Finite-wire check (in-repo generator): E₀ = 0,
 E₂ = 31.3 µeV ≈ bulk (2%), 95% end-localization at 3 µm, gap to W ≈ 300 µeV disorder.
-Open exploitation question: quasiparticle poisoning with a T_c = 0.6 K parent
-(Δ_op/k_BT_eff ≈ 2–4 at realistic 100–200 mK effective QP temperatures).
+Quasiparticle poisoning, now quantified (`qp_poisoning.py`): at the
+operating fields the Si:B parent gap is 29–33 µeV, so x_qp = 10⁻⁶ requires
+T_eff ≤ 25–29 mK — beyond demonstrated QP thermalization (typical T_eff ≳ 100 mK gives
+x_qp ≈ 3–5%, no usable parity lifetime). The Al-film reference (150 µeV at field) needs
+only T_eff ≤ 130 mK. **This makes the all-Si stack, as bounded by measured critical
+fields, a candidate for MZM *detection* experiments but not, without parent-gap
+engineering, for parity-coherent qubits.**
 
 ### F9. Step physics: two channels, and the winding claim retired (Fig. 9)
 Round-3 control test (run in-repo): same-sign steps (vicinal miscut, median E₂ =
@@ -166,7 +171,8 @@ g_z.**
 2. **The all-silicon hole stack survives at ~10–19 µeV** using only measured Si:B
    critical fields, thick-parent geometry, tilted field — equivalent to 115–220 mK,
    demanding but not absurd; 30+ µeV requires demonstrating Pauli-limited thin-film
-   Si:B. **The two decisive measurements:** (i) B_c∥ of <20 nm laser-doped Si:B films;
+   Si:B. QP poisoning caps its role: detection platform yes; parity-coherent qubit
+   only with parent-gap engineering (T_eff ≤ ~30 mK otherwise unreachable). **The two decisive measurements:** (i) B_c∥ of <20 nm laser-doped Si:B films;
    (ii) g-tensor + SOC axis of a gated Si hole wire in the actual geometry.
 3. **Si holes + Al film: 34–55 µeV** if a hard-gap Al/Si-hole interface can be made
    (no demonstration exists; metallization-renormalized numbers quoted).
@@ -198,6 +204,12 @@ In-house: tilted-field criterion bug (B ∥ SOC axis misclassified as topologica
 and fixed before release. Transport upgrade: spectral W_half 410 → 548 µeV (transport),
 abrupt class-D breakdown identified. kwant: not buildable here (documented); RGF
 validated in its place.
+
+*Provenance statement (for the eventual manuscript):* the verification process used
+independent adversarial review rounds — numerical re-derivation of headline numbers,
+controlled counter-experiments, raw-data audits, and literature checks — run by AI
+agents, with all corrections logged above and every quantitative claim regenerable from
+committed code. To be disclosed in the acknowledgments or supplement.
 
 ## 7. Key references
 - Kitaev (2001); Lutchyn–Sau–Das Sarma PRL 105, 077001; Oreg–Refael–von Oppen PRL 105,

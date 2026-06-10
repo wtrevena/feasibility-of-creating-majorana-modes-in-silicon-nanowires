@@ -164,7 +164,39 @@
     "center_SiB_pauli_renormalized": 19.7,
     "center_SiB_meas_renormalized": 9.1,
     "center_Al_renormalized": 34.4,
-    "conservative_SiB_meas_renorm": 7.2
+    "conservative_SiB_meas_renorm": 7.2,
+    "qp_poisoning": {
+      "SiB_measured_B0.33T": {
+        "parent_gap_ueV": 29.1,
+        "x_qp": {
+          "50mK": 0.00114,
+          "100mK": 0.0468,
+          "150mK": 0.176,
+          "200mK": 0.357
+        },
+        "Teff_for_xqp_1e-6_mK": 25.0
+      },
+      "SiB_pauli_hyp_B1.0T": {
+        "parent_gap_ueV": 33.1,
+        "x_qp": {
+          "50mK": 0.000415,
+          "100mK": 0.0274,
+          "150mK": 0.121,
+          "200mK": 0.265
+        },
+        "Teff_for_xqp_1e-6_mK": 29.0
+      },
+      "Al_film_B1.0T": {
+        "parent_gap_ueV": 150.0,
+        "x_qp": {
+          "50mK": 3.23e-16,
+          "100mK": 1.66e-08,
+          "150mK": 6.71e-06,
+          "200mK": 0.000141
+        },
+        "Teff_for_xqp_1e-6_mK": 130.0
+      }
+    }
   },
   "fig9": {
     "median_E2_at_50nm_by_scenario_ueV": {
