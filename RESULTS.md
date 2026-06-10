@@ -144,8 +144,12 @@ The miscut dependence is therefore a *cliff at the first step* plus density-driv
 decay — not a winding threshold. Smooth phase gradients are a real but subdominant
 second channel (in-repo ramp: gap 22.2 → 16.9 → 6.3 → 0.9 µeV at q = 0/4/8/16 ×10⁶ m⁻¹,
 suppression scale set by the SOC velocity and E_v-*protected*, per the round-3
-analysis). Geometry caveats: steps ⊥ wire assumed (cos-factor otherwise); step
-bunching/bi-steps and |λ| suppression at steps unmodeled. Experimental upshot: induced-
+analysis). Extensions (in-repo, `fig9_extensions`): double-height bi-steps
+(Δφ = 1.7π ≡ −0.3π) are ~2× milder (median 1.7 vs 0.8 µeV at 50 nm; single bi-step caps
+at 18.6 vs 4.0 µeV) — step-BUNCHED vicinal surfaces are preferable; |λ| suppression near
+steps (Hosseinkhani–Burkard) worsens things (0.31 µeV), so the phase-only model is an
+upper bound; step density along the wire scales as |cos χ| of the wire–miscut azimuth —
+wires laid along step edges see no steps. Experimental upshot: induced-
 gap hardness in electron devices should degrade with miscut/step *density* from the
 very first step — and Si holes are immune by construction.
 
@@ -158,9 +162,13 @@ collapses (1.1 → 0.5) as the same gate field builds α, while g_z grows to 2.4
 Consequently the *physical operating curve* misses the free box's high-gap corner: along
 it, the accessible gaps are 19.0 µeV (thick measured-Si:B, B ∥ ẑ via g_z), 15.2 µeV
 (hypothetical Pauli Si:B, B ∥ x̂), 25.2 µeV (Al film, B ∥ x̂). Caveats: hard-wall
-rectangle vs real tri-gate; 4-band (no split-off, Δ_SO = 44 meV); no strain; measured
-FinFET g_xx ≈ 1.9–2.3 exceeds our LK g_x, so reality may sit between our curve and the
-empirical box — bracketed in F11.
+rectangle vs real tri-gate; 4-band (no split-off, Δ_SO = 44 meV); no strain. The
+geometry/field bracket (`fig10.g_bracket`, 7 configurations spanning 7–16 nm cross
+sections and 3–30 MV/m): g_x stays in [0.4, 1.1] everywhere — the measured
+g_xx ≈ 1.9–2.3 is NOT reproducible within 4-band hard-wall LK, so the discrepancy is
+formally attributed to tri-gate electrostatics, strain, and 6-band/cubic corrections,
+and every platform number is carried under BOTH tensors (here and F11). Resolving it
+needs device-specific 6-band+Poisson input — flagged as the top theory item.
 
 ### F11. Field orientation decides the platform (Fig. 11)
 Tilted-field gap maps (exact 4×4 dispersion; criterion on the SOC-perpendicular Zeeman

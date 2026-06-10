@@ -363,7 +363,103 @@
         5.0
       ]
     },
-    "runtime_s": 4.4
+    "runtime_s": 4.4,
+    "g_bracket": {
+      "base_10x12_Ez10": {
+        "mstar": 0.44,
+        "alpha_eVA": 0.048,
+        "gx": 1.04,
+        "gy": 1.99,
+        "gz": 3.4,
+        "nso": [
+          0.0,
+          1.0,
+          -0.0
+        ]
+      },
+      "narrow_7x14_Ez10": {
+        "mstar": 0.42,
+        "alpha_eVA": 0.051,
+        "gx": 0.94,
+        "gy": 2.92,
+        "gz": 2.03,
+        "nso": [
+          0.0,
+          1.0,
+          -0.0
+        ]
+      },
+      "wide_16x8_Ez10": {
+        "mstar": 0.44,
+        "alpha_eVA": 0.021,
+        "gx": 0.4,
+        "gy": 0.74,
+        "gz": 4.47,
+        "nso": [
+          0.0,
+          1.0,
+          -0.0
+        ]
+      },
+      "square_9x9_Ez10": {
+        "mstar": 0.44,
+        "alpha_eVA": 0.04,
+        "gx": 1.07,
+        "gy": 2.44,
+        "gz": 3.34,
+        "nso": [
+          0.0,
+          1.0,
+          0.0
+        ]
+      },
+      "base_10x12_Ez3": {
+        "mstar": 0.44,
+        "alpha_eVA": 0.024,
+        "gx": 1.06,
+        "gy": 3.34,
+        "gz": 2.5,
+        "nso": [
+          -0.0,
+          1.0,
+          -0.0
+        ]
+      },
+      "base_10x12_Ez30": {
+        "mstar": 0.44,
+        "alpha_eVA": 0.053,
+        "gx": 0.65,
+        "gy": 0.39,
+        "gz": 4.06,
+        "nso": [
+          -0.0,
+          1.0,
+          0.0
+        ]
+      },
+      "tall_8x16_Ez10": {
+        "mstar": 0.42,
+        "alpha_eVA": 0.052,
+        "gx": 1.05,
+        "gy": 2.22,
+        "gz": 2.49,
+        "nso": [
+          -0.0,
+          1.0,
+          0.0
+        ]
+      },
+      "summary": {
+        "gx_min": 0.4,
+        "gx_max": 1.07,
+        "measured_Geyer_gxx": [
+          1.86,
+          2.31
+        ],
+        "verdict": "4-band LK across plausible rectangles+fields gives gx in [0.4,1.07]; measured 1.9-2.3 NOT reproduced -> discrepancy attributed to tri-gate electrostatics, strain, and 6-band/cubic terms; BRACKETED by running all platform numbers with both LK and empirical tensors (fig10/fig11)",
+        "runtime_s": 2.6
+      }
+    }
   },
   "fig11": {
     "LK tensor \u2014 SiB_meas thick (isotropic B$_{c2}$=0.4 T)": {
