@@ -149,7 +149,15 @@ analysis). Extensions (in-repo, `fig9_extensions`): double-height bi-steps
 at 18.6 vs 4.0 µeV) — step-BUNCHED vicinal surfaces are preferable; |λ| suppression near
 steps (Hosseinkhani–Burkard) worsens things (0.31 µeV), so the phase-only model is an
 upper bound; step density along the wire scales as |cos χ| of the wire–miscut azimuth —
-wires laid along step edges see no steps. Experimental upshot: induced-
+wires laid along step edges see no steps. Transport-level check (`transport_valley.py`,
+8-orbital RGF validated to 10⁻¹⁴ against the closed chain; clean wedge E_T = 22.7 vs
+spectral 22.0 µeV): a single step transmits resonantly through its bound state
+(E_T = 2.7 µeV), and step-dense wires become Anderson insulators whose END-TO-END
+transport gap *grows* with length (medians 0.5 / 5.6 / 23.0 µeV at L = 1.5/3/6 µm at
+50 nm spacing) even as localized subgap states persist (spectral ~1 µeV) — i.e.
+transport spectroscopy can show a hard-looking gap while true local protection is
+degraded. Both metrics are therefore reported; neither alone equals topological
+protection in the step-disordered regime. Experimental upshot: induced-
 gap hardness in electron devices should degrade with miscut/step *density* from the
 very first step — and Si holes are immune by construction.
 

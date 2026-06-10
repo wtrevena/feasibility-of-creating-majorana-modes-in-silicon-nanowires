@@ -261,5 +261,37 @@
       "800": 5.12
     }
   },
-  "runtime_s": 3.1
+  "runtime_s": 3.1,
+  "valley": {
+    "method": "dimension-generic RGF, 8-orbital valley cells, normal leads mu=2000ueV, thr=0.01",
+    "verify_vs_msim_maxerr_ueV": 5.68e-14,
+    "clean_wedge": {
+      "transport_gap_ueV": 22.7,
+      "censored": false,
+      "spectral_E2_ueV": 22.0
+    },
+    "single_step": {
+      "transport_gap_ueV": 2.7,
+      "censored": false,
+      "spectral_E2_ueV": 4.0
+    },
+    "vicinal_50nm_vs_L": {
+      "L1.5um": {
+        "median": 0.5,
+        "q1": 0.5,
+        "q3": 0.5
+      },
+      "L3.0um": {
+        "median": 5.64,
+        "q1": 1.75,
+        "q3": 6.99
+      },
+      "L6.0um": {
+        "median": 23.04,
+        "q1": 18.4,
+        "q3": 29.11
+      }
+    },
+    "runtime_s": 6.2
+  }
 }

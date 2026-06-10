@@ -40,7 +40,12 @@ measurements that decide the platform.
    resolved-or-bracketed via geometry/field scan (see fig10 key numbers `g_bracket`);
    full 6-band LK + Poisson remains future work, with the 4-band+geometry bracket
    documented as the interim position.
-2. [TODO] Transport invariant extended to figs 6/9 (valley cases); L-scaling shown.
+2. [DONE] Transport extended to the valley cases (`transport_valley.py`): clean-wedge
+   validation (22.7 vs 22.0 µeV), single-step resonance (2.7 µeV), and the L-scaling
+   answer — step-dense wires are Anderson insulators (end-to-end mobility gap grows
+   with L while localized subgap states persist); both metrics reported in RESULTS F9.
+   The E=0 reflection invariant for valley cells remains future work (the 4-orbital
+   version exists in transport.py).
 3. [DONE] QP-poisoning estimate for the T_c = 0.6 K parent — see RESULTS F8 and
    key_numbers fig8.qp_poisoning.
 4. [DONE] References hand-verified via web search (2026-06-10): arXiv:2505.06040
