@@ -196,6 +196,64 @@
         },
         "Teff_for_xqp_1e-6_mK": 130.0
       }
+    },
+    "film_design": {
+      "Hc2perp_0.1T": {
+        "xi_nm": 57.4,
+        "d10nm": {
+          "Bc_par_T": 1.99,
+          "gap_ueV": 23.1
+        },
+        "d15nm": {
+          "Bc_par_T": 1.32,
+          "gap_ueV": 20.9
+        },
+        "d20nm": {
+          "Bc_par_T": 0.99,
+          "gap_ueV": 15.9
+        },
+        "d30nm": {
+          "Bc_par_T": 0.66,
+          "gap_ueV": 13.6
+        },
+        "d45nm": {
+          "Bc_par_T": 0.44,
+          "gap_ueV": 10.4
+        },
+        "d60nm": {
+          "Bc_par_T": 0.33,
+          "gap_ueV": 8.0
+        },
+        "d_for_Pauli_limited_nm": 18.0
+      },
+      "Hc2perp_0.4T": {
+        "xi_nm": 28.7,
+        "d10nm": {
+          "Bc_par_T": 3.97,
+          "gap_ueV": 26.6
+        },
+        "d15nm": {
+          "Bc_par_T": 2.65,
+          "gap_ueV": 26.4
+        },
+        "d20nm": {
+          "Bc_par_T": 1.99,
+          "gap_ueV": 23.1
+        },
+        "d30nm": {
+          "Bc_par_T": 1.32,
+          "gap_ueV": 20.9
+        },
+        "d45nm": {
+          "Bc_par_T": 0.88,
+          "gap_ueV": 15.6
+        },
+        "d60nm": {
+          "Bc_par_T": 0.66,
+          "gap_ueV": 13.6
+        },
+        "d_for_Pauli_limited_nm": 36.0
+      }
     }
   },
   "fig9": {

@@ -110,6 +110,14 @@ critical field is 0.1–0.4 T and orbital-limited; our B* ≈ 1 T operating poin
 unmeasured thin-film physics. With measured-class Bc2 = 0.4 T: center point
 **9.9 µeV** (B = 0.33 T, Δ_ind = 11 µeV); with metallization renormalization
 (Z = 1−Δ_ind/Δ_p): 9.1. The hypothetical Pauli film gives 30.6 raw / 19.7 renormalized.
+The thickness analysis (`sib_film_design`, item 5) makes the hypothesis concrete: with
+coherence lengths from *measured* perpendicular critical fields (ξ = 29–57 nm), films of
+d ≤ 18–36 nm have parallel orbital critical fields above the 1.11 T Pauli limit, and
+d = 10–20 nm films support **21–27 µeV** in the film-compatible in-plane configuration
+(empirical g = 2.1). The laser-doped SOI process already produces films in this range —
+so "Pauli-limited Si:B" is a fabrication target, not speculation. Unmodeled risk:
+T_c itself degrades in thin Si:B epilayers (measured thickness dependence exists);
+the d-target must beat both constraints simultaneously.
 Holes + Al film: 50.4 raw / 34.4 renormalized. (b) The "self-tuning below the catch-22
 ceiling" framing was wrong — removing the suppression changes nothing; the optimizer is
 simply applying Cole's weak-coupling rule, which works for any parent. What the
@@ -171,8 +179,11 @@ g_z.**
 2. **The all-silicon hole stack survives at ~10–19 µeV** using only measured Si:B
    critical fields, thick-parent geometry, tilted field — equivalent to 115–220 mK,
    demanding but not absurd; 30+ µeV requires demonstrating Pauli-limited thin-film
-   Si:B. QP poisoning caps its role: detection platform yes; parity-coherent qubit
-   only with parent-gap engineering (T_eff ≤ ~30 mK otherwise unreachable). **The two decisive measurements:** (i) B_c∥ of <20 nm laser-doped Si:B films;
+   Si:B — which the thickness analysis turns into a concrete target: 10–20 nm films
+   are orbitally consistent with Pauli limiting at measured coherence lengths and
+   support 21–27 µeV (modulo T_c(d) suppression, unmodeled). QP poisoning caps the
+   role: detection platform yes; parity-coherent qubit only with parent-gap
+   engineering (T_eff ≤ ~30 mK otherwise unreachable). **The two decisive measurements:** (i) B_c∥ of <20 nm laser-doped Si:B films;
    (ii) g-tensor + SOC axis of a gated Si hole wire in the actual geometry.
 3. **Si holes + Al film: 34–55 µeV** if a hard-gap Al/Si-hole interface can be made
    (no demonstration exists; metallization-renormalized numbers quoted).

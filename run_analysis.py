@@ -911,6 +911,52 @@ def fig8(chunk=None):
         runtime_s=round(time.time() - t0, 1)))
 
 
+PHI0 = 2.067833848e-15      # flux quantum (Wb)
+
+
+def sib_film_design():
+    """Pre-submission item 5: Si:B parent beyond caricature — thin-film
+    orbital + Pauli combination with explicit thickness dependence.
+
+    xi_GL from the measured perpendicular critical field:
+        xi = sqrt(Phi0 / (2 pi Hc2_perp)),  Hc2_perp in {0.1, 0.4} T (lit. range)
+    Thin-film parallel orbital critical field (dirty limit):
+        Bc_par(d) = sqrt(12) Phi0 / (2 pi xi d)
+    Parent spectral gap caricature (documented, GL-orbital x Zeeman-linear):
+        Omega(B, d) = max(0, Delta0 (1 - (B/Bc_par)^2) - muB B)
+    The Pauli limit B_P = Delta0/(sqrt2 muB) = 1.11 T caps everything.
+    Channel: empirical in-plane wire-axis g = 2.1 (Geyer-class), alpha = 0.06,
+    m* = 0.25 — the film-compatible configuration of fig11.
+    Output: max topological gap vs film thickness d; the d below which the
+    film becomes effectively Pauli-limited (Bc_par(d) > B_P)."""
+    out = {}
+    for Hc2p in (0.1, 0.4):
+        xi = np.sqrt(PHI0 / (2 * np.pi * Hc2p))
+        row = {"xi_nm": round(xi * 1e9, 1)}
+        for d_nm in (10, 15, 20, 30, 45, 60):
+            Bc_par = np.sqrt(12) * PHI0 / (2 * np.pi * xi * d_nm * 1e-9)
+            Bmax = min(0.95 * Bc_par, 0.9 * SIB_BP)
+            best = 0.0
+            for B in np.linspace(0.1, Bmax, 10):
+                Dp = max(SIB_DELTA0 * (1 - (B / Bc_par)**2)
+                         - MU_B_EV * 1e6 * B, 0.0)
+                if Dp < 8:
+                    continue
+                for Dind in np.linspace(8, Dp, 6):
+                    mus = np.linspace(0, 140, 12)
+                    g_ = _bulk_gap_grid(mus, np.array([B]), Dind, 0.06,
+                                        0.25, 2.1, nk=2501)[0]
+                    topo = EZ_J(2.1, B)**2 > (Dind*UEV)**2 + (mus*UEV)**2
+                    best = max(best, float(np.where(topo, g_, 0.0).max()))
+            row[f"d{d_nm}nm"] = dict(Bc_par_T=round(Bc_par, 2),
+                                     gap_ueV=round(best, 1))
+        d_pauli = np.sqrt(12) * PHI0 / (2 * np.pi * xi * SIB_BP) * 1e9
+        row["d_for_Pauli_limited_nm"] = round(d_pauli, 0)
+        out[f"Hc2perp_{Hc2p}T"] = row
+    save_numbers("fig8", dict(film_design=out))
+    return out
+
+
 # ----------------------------------------------------------------- Figure 9
 def _make_vo_profile(N, dx, mean_s, kind, phase_mode, rng, lam=75.0,
                      jitter_frac=0.0, dphi=0.85 * np.pi):
