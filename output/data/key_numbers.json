@@ -122,8 +122,8 @@
       "mu_ueV": 0.0
     },
     "favorable_a015_g30": {
-      "gap": 35.7,
-      "B_T": 0.86,
+      "gap": 36.1,
+      "B_T": 0.85,
       "Dind_ueV": 36.0
     },
     "g2_works": {
@@ -132,12 +132,12 @@
     "comparison": {
       "Si e\u207b intrinsic (\u03b1=10\u207b\u00b3)": 1.55,
       "Si e\u207b engineered (\u03b1=0.05, \u0394(B) Al)": 29.76,
-      "Si holes + Al (\u03b1=0.06, g=2.2)": 49.6,
-      "Si holes + Si:B (\u03b1=0.06, g=2.2)": 30.62,
-      "Si holes + Si:B (\u03b1=0.15, g=3)": 35.71
+      "Si holes + Al (\u03b1=0.06, g=2.2)": 50.43,
+      "Si holes + Si:B Pauli hyp. (\u03b1=0.06, g=2.2)": 30.62,
+      "Si holes + Si:B MEASURED B$_{c2}$=0.4T": 9.92
     },
     "BP_T": 1.112,
-    "runtime_s": 5.2,
+    "runtime_s": 5.1,
     "hole_wire_finite_check": {
       "clean": {
         "E0": 0.0,
@@ -154,52 +154,144 @@
       }
     },
     "box_frac_above_20ueV_grid": 1.0,
-    "box_corner_a003_g15_refined_ueV": 19.3
+    "box_corner_a003_g15_refined_ueV": 19.3,
+    "center_SiB_measured_Bc04": 9.9,
+    "center_SiB_measured_args": [
+      0.33,
+      11.3,
+      0.0
+    ],
+    "center_SiB_pauli_renormalized": 19.7,
+    "center_SiB_meas_renormalized": 9.1,
+    "center_Al_renormalized": 34.4,
+    "conservative_SiB_meas_renorm": 7.2
   },
   "fig9": {
-    "gap_at_50nm_by_scenario_ueV": {
-      "Poisson steps, random phase": 2.39,
-      "periodic steps, random phase": 0.66,
-      "periodic steps, fixed \u0394\u03c6=0.85\u03c0": 0.0
+    "median_E2_at_50nm_by_scenario_ueV": {
+      "Poisson steps, random phase (rough, zero winding)": 2.29,
+      "Poisson steps, same-sign \u0394\u03c6 (vicinal miscut)": 0.65,
+      "periodic steps, same-sign \u0394\u03c6 (ideal staircase)": 0.0,
+      "CONTROL: \u00b1\u0394\u03c6 random sign (zero net winding)": 0.73
     },
-    "gap_vs_jitter_ueV": {
-      "0.0": 0.0,
-      "0.1": 0.0,
-      "0.2": 0.0,
-      "0.4": 0.05,
-      "0.7": 0.27,
-      "1.0": 0.6
+    "single_step_E2_vs_dphi_over_pi": {
+      "0.00": 22.22,
+      "0.10": 22.07,
+      "0.25": 19.77,
+      "0.40": 16.08,
+      "0.50": 13.45,
+      "0.65": 9.42,
+      "0.85": 4.03,
+      "0.95": 1.34,
+      "1.00": 0.01
     },
-    "runtime_s": 16.8,
     "linear_winding_check_E0_E2": {
-      "q=0.0e+00": [
+      "0.0e+00": [
         0.0,
         22.22
       ],
-      "q=1.0e+06": [
-        0.0,
-        22.02
-      ],
-      "q=2.0e+06": [
+      "2.0e+06": [
         0.0,
         21.12
       ],
-      "q=4.0e+06": [
+      "4.0e+06": [
         0.0,
         16.88
       ],
-      "q=8.0e+06": [
+      "8.0e+06": [
         0.011,
         6.25
       ],
-      "q=1.6e+07": [
+      "1.6e+07": [
         0.709,
         0.86
       ],
-      "q=5.3e+07": [
+      "5.3e+07": [
         0.0,
         0.0
       ]
-    }
+    },
+    "note": "winding-as-dominant-mechanism claim retired after round-3 control test; see RESULTS F9",
+    "runtime_s": 10.7
+  },
+  "fig10": {
+    "alpha_range_eVA": [
+      0.017,
+      0.054
+    ],
+    "mstar_range": [
+      0.42,
+      0.45
+    ],
+    "gx_range": [
+      0.48,
+      1.09
+    ],
+    "gz_range": [
+      2.39,
+      4.16
+    ],
+    "lso_range_nm": [
+      32.0,
+      101.0
+    ],
+    "nso_at_10MVm": [
+      0.0,
+      1.0,
+      -0.0
+    ],
+    "best_gap_by_scenario": {
+      "Si:B thick, B\u2225\u1e91 (uses g_z)": [
+        19.0,
+        50.0
+      ],
+      "Si:B Pauli hyp., B\u2225x\u0302 (uses g_x)": [
+        15.2,
+        5.0
+      ],
+      "Al film, B\u2225x\u0302 (uses g_x)": [
+        25.2,
+        5.0
+      ]
+    },
+    "runtime_s": 4.4
+  },
+  "fig11": {
+    "LK tensor \u2014 SiB_meas thick (isotropic B$_{c2}$=0.4 T)": {
+      "best": 14.6,
+      "at_theta_phi": [
+        38.57142857142857,
+        90.0
+      ],
+      "inplane_wire": 3.4,
+      "outofplane": 13.7
+    },
+    "LK tensor \u2014 Al film (B$_{c\u2225}$=2 T, B$_{c\u22a5}$=0.1 T)": {
+      "best": 40.7,
+      "at_theta_phi": [
+        0.0,
+        30.0
+      ],
+      "inplane_wire": 23.3,
+      "outofplane": 0.0
+    },
+    "empirical (Geyer-class) \u2014 SiB_meas thick (isotropic B$_{c2}$=0.4 T)": {
+      "best": 13.8,
+      "at_theta_phi": [
+        25.714285714285715,
+        30.0
+      ],
+      "inplane_wire": 8.8,
+      "outofplane": 8.9
+    },
+    "empirical (Geyer-class) \u2014 Al film (B$_{c\u2225}$=2 T, B$_{c\u22a5}$=0.1 T)": {
+      "best": 55.0,
+      "at_theta_phi": [
+        0.0,
+        90.0
+      ],
+      "inplane_wire": 39.1,
+      "outofplane": 0.0
+    },
+    "runtime_s": 1.7
   }
 }

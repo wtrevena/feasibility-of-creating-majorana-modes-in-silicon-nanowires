@@ -3,14 +3,16 @@
 A quantitative feasibility study of Majorana zero modes (MZMs) in proximitized silicon
 nanowires, built on a validated spinful Bogoliubov-de Gennes (Lutchyn-Oreg) model.
 
-**Headline result:** silicon *can* host Majorana zero modes — in the valence band.
-Conduction-band wires fail for quantified reasons (best intrinsic gap ~1.5 µeV; a g=2
-catch-22; and valley-phase *winding* from ≳0.02° substrate miscut acting as
-Fulde–Ferrell-like depairing — a new, falsifiable mechanism). Silicon *holes* evade all
-three blockers: measured FinFET hole parameters give 20–36 µeV topological gaps across
-the entire parameter box, and boron-doped superconducting silicon (Si:B) as the parent
-yields an all-silicon, CMOS-compatible stack whose Pauli-limited gap self-tunes below
-the catch-22 ceiling. See **[RESULTS.md](RESULTS.md)** (nine findings + corrections log)
+**Headline result (post-adversarial-review):** conduction-band silicon cannot host
+usable Majorana modes — quantified across SOC, disorder, and valley channels, including
+a new mechanism: each single-atomic interface step is a near-π Josephson junction that
+caps the topological gap from the very first step. The silicon *valence* band supports a
+conditional design: with Luttinger–Kohn-constrained hole parameters and only *measured*
+Si:B critical fields, a thick boron-doped-Si parent with tilted field reaches
+**10–19 µeV**; Pauli-limited thin-film Si:B (unmeasured) would raise this to 30+ µeV,
+and an Al-film parent to 34–55 µeV. Two measurements decide it: thin-film Si:B B_c∥ and
+the device-geometry hole g-tensor.
+See **[RESULTS.md](RESULTS.md)** (nine findings + corrections log)
 and **[PAPER_OUTLINE.md](PAPER_OUTLINE.md)**.
 
 ## Repository structure
@@ -18,10 +20,12 @@ and **[PAPER_OUTLINE.md](PAPER_OUTLINE.md)**.
 | file | purpose |
 |---|---|
 | `majorana_sim.py` | model library: bulk dispersion/topological gap, sparse finite-wire BdG solver, two-valley extension, disorder |
-| `run_analysis.py` | reproduces every figure and number (`python run_analysis.py --fig 1..9` or `--fig all`) |
+| `run_analysis.py` | reproduces every figure and number (`python run_analysis.py --fig 1..11` or `--fig all`) |
 | `RESULTS.md` | findings, verdict, caveats, references |
 | `output/fig1..fig9*.png` | generated figures |
 | `tests.py` | reproducible checks of the central exact claims (`python tests.py`) |
+| `transport.py` | RGF transmission + scattering invariant (standalone) |
+| `lk_holes.py` | 4-band Luttinger–Kohn fin model for hole parameters (standalone validation) |
 | `PAPER_OUTLINE.md` | the pivoted paper: title, abstract draft, figure plan, pre-submission work list |
 | `output/data/` | scan checkpoints and `key_numbers.json` |
 | `Majorana_Si_Code.ipynb` | **legacy** — the original notebook, kept for the record; its model is not a valid Majorana Hamiltonian (see RESULTS.md §1) and its figures should not be used |

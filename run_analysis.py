@@ -687,32 +687,57 @@ SIB_DELTA0 = 91.0      # ueV  (Tc = 0.6 K, BCS 1.764 kB Tc)
 SIB_BP = SIB_DELTA0 / (np.sqrt(2) * MU_B_EV * 1e6)   # Pauli limit ~1.11 T
 
 
+SIB_BC2_MEAS = 0.4     # T — measured-class critical field of Si:B
+                       # (reports range ~0.1-0.4 T, orbital-limited, dirty;
+                       # Bustarret 2006; PRB 81, 020501(R) 2010). The
+                       # Pauli-limited scenario below is a HYPOTHESIS requiring
+                       # <20 nm films + parallel alignment, never demonstrated.
+
+
 def _parent_gap_ueV(B, parent):
-    """Parent spectral gap vs field. Si:B: light element, negligible SO
-    scattering -> Zeeman pair-breaking caricature Delta0 - muB*B (g_SC=2),
-    usable below ~0.9 B_P. Al: GL orbital caricature Delta0[1-(B/Bc)^2]."""
-    if parent == "SiB":
+    """Parent spectral gap vs field (caricatures; see RESULTS caveats).
+    SiB_pauli: hypothetical thin-film Pauli-limited Si:B, Delta0 - muB*B.
+    SiB_meas:  measured-class orbital-limited Si:B, GL with Bc2 = 0.4 T.
+    Al:        GL orbital caricature, Delta0 = 200 ueV, Bc = 2 T."""
+    if parent in ("SiB", "SiB_pauli"):
         return max(SIB_DELTA0 - MU_B_EV * 1e6 * B, 0.0)
+    if parent == "SiB_meas":
+        return SIB_DELTA0 * max(1 - (B / SIB_BC2_MEAS)**2, 0.0)
     if parent == "Al":
         return 200.0 * max(1 - (B / 2.0)**2, 0.0)
     raise ValueError(parent)
 
 
 def _best_gap_hole(alpha, g, parent, m_rel=M_HOLE, nB=7, nD=7, nmu=14,
-                   nk=2501, mu_max=160.0):
+                   nk=2501, mu_max=160.0, renormalize=False):
     """Max topological gap over (B, Delta_ind <= parent gap, mu).
-    Returns (gap, B*, Dind*, mu*)."""
-    Bmax = 0.9 * SIB_BP if parent == "SiB" else 1.96
+    renormalize=True applies the standard tunneling-model metallization:
+    quasiparticle weight Z = 1 - Dind/Dp, alpha -> Z alpha,
+    g -> Z g + (1-Z) g_parent (g_parent = 2). Returns (gap, B*, Dind*, mu*)."""
+    if parent in ("SiB", "SiB_pauli"):
+        Bmax = 0.9 * SIB_BP
+    elif parent == "SiB_meas":
+        Bmax = 0.95 * SIB_BC2_MEAS
+    else:
+        Bmax = 1.96
     best, arg = 0.0, (np.nan,) * 3
     mus = np.linspace(0, mu_max, nmu)
-    for B in np.linspace(0.15, Bmax, nB):
+    for B in np.linspace(0.1, Bmax, nB):
         Dp = _parent_gap_ueV(B, parent)
         if Dp < 8:
             continue
         for Dind in np.linspace(8, Dp, nD):
-            gaps = _bulk_gap_grid(mus, np.array([B]), Dind, alpha, m_rel, g,
-                                  nk=nk)[0]
-            topo = EZ_J(g, B)**2 > (Dind * UEV)**2 + (mus * UEV)**2
+            if renormalize:
+                Z = 1.0 - Dind / Dp
+                a_eff = Z * alpha
+                g_eff = Z * g + (1 - Z) * 2.0
+                if a_eff < 1e-4:
+                    continue
+            else:
+                a_eff, g_eff = alpha, g
+            gaps = _bulk_gap_grid(mus, np.array([B]), Dind, a_eff, m_rel,
+                                  g_eff, nk=nk)[0]
+            topo = EZ_J(g_eff, B)**2 > (Dind * UEV)**2 + (mus * UEV)**2
             gaps = np.where(topo, gaps, 0.0)
             j = int(np.argmax(gaps))
             if gaps[j] > best:
@@ -793,8 +818,8 @@ def fig8(chunk=None):
         "Si e⁻ engineered\n(α=0.05, Δ(B) Al)": _best_gap_vs_alpha(
             np.array([0.05]), DELTA, 2.0, suppress=True)[0],
         "Si holes + Al\n(α=0.06, g=2.2)": _best_gap_hole(0.06, 2.2, "Al")[0],
-        "Si holes + Si:B\n(α=0.06, g=2.2)": _best_gap_hole(0.06, 2.2, "SiB")[0],
-        "Si holes + Si:B\n(α=0.15, g=3)": _best_gap_hole(0.15, 3.0, "SiB")[0],
+        "Si holes + Si:B\nPauli hyp. (α=0.06, g=2.2)": _best_gap_hole(0.06, 2.2, "SiB_pauli")[0],
+        "Si holes + Si:B\nMEASURED B$_{c2}$=0.4T": _best_gap_hole(0.06, 2.2, "SiB_meas")[0],
     }
 
     fig, ax = plt.subplots(1, 3, figsize=(16, 4.8))
@@ -812,7 +837,7 @@ def fig8(chunk=None):
            fontsize=8, ha="center")
     a.set_xscale("log"); a.set_xlabel("hole SOC α (eV·Å)")
     a.set_ylabel("hole g-factor (field direction dependent)")
-    a.set_title("(a) Si:B parent (Δ₀=91 µeV, Pauli-limited),\n"
+    a.set_title("(a) Si:B parent — HYPOTHETICAL Pauli-limited thin film\n"
                 "optimized over B ≤ 0.9B_P, Δ_ind ≤ Δ_parent(B), µ")
 
     a = ax[1]
@@ -869,6 +894,17 @@ def fig8(chunk=None):
         favorable_a015_g30=dict(gap=round(g_fav, 1), B_T=round(arg_fav[0], 2),
                                 Dind_ueV=round(arg_fav[1], 0)),
         g2_works=dict(gap=round(_best_gap_hole(0.06, 2.0, "SiB")[0], 1)),
+        center_SiB_measured_Bc04=round(_best_gap_hole(0.06, 2.2, "SiB_meas")[0], 1),
+        center_SiB_measured_args=[round(v, 2) for v in
+                                  _best_gap_hole(0.06, 2.2, "SiB_meas")[1]],
+        center_SiB_pauli_renormalized=round(
+            _best_gap_hole(0.06, 2.2, "SiB_pauli", renormalize=True)[0], 1),
+        center_SiB_meas_renormalized=round(
+            _best_gap_hole(0.06, 2.2, "SiB_meas", renormalize=True)[0], 1),
+        center_Al_renormalized=round(
+            _best_gap_hole(0.06, 2.2, "Al", renormalize=True)[0], 1),
+        conservative_SiB_meas_renorm=round(
+            _best_gap_hole(0.03, 1.8, "SiB_meas", renormalize=True)[0], 1),
         comparison={k.replace("\n", " "): round(float(v), 2)
                     for k, v in comp.items()},
         BP_T=round(SIB_BP, 3),
@@ -881,7 +917,9 @@ def _make_vo_profile(N, dx, mean_s, kind, phase_mode, rng, lam=75.0,
     """Valley-orbit profile with controlled step statistics.
     kind: 'poisson' | 'periodic' | 'jitter' (periodic + gaussian jitter).
     phase_mode: 'random' (uniform redraw at each step) | 'fixed'
-    (deterministic increment dphi per step, as for identical atomic steps)."""
+    (deterministic +dphi per step: same-sign staircase = vicinal miscut) |
+    'signrand' (+-dphi, random sign: same jump magnitude, zero net winding —
+    the control discriminating winding from per-step junction physics)."""
     L = N * dx
     if kind == "poisson":
         pos, x = [], 0.0
@@ -902,23 +940,42 @@ def _make_vo_profile(N, dx, mean_s, kind, phase_mode, rng, lam=75.0,
     for n in range(N):
         xn = n * dx
         while pidx < len(pos) and pos[pidx] <= xn:
-            cur = rng.uniform(0, 2 * np.pi) if phase_mode == "random"                 else cur + dphi
+            if phase_mode == "random":
+                cur = rng.uniform(0, 2 * np.pi)
+            elif phase_mode == "fixed":
+                cur = cur + dphi
+            elif phase_mode == "signrand":
+                cur = cur + dphi * (1 if rng.random() < 0.5 else -1)
+            else:
+                raise ValueError(phase_mode)
             pidx += 1
         phi[n] = cur
     return lam * np.exp(1j * phi)
 
 
 def fig9(chunk=None):
-    """Step statistics: does gap damage track step DENSITY or step RANDOMNESS?
-    The falsifiable miscut prediction."""
+    """Step physics, reframed after review round 3: TWO damage channels.
+    (a) scenario comparison incl. the sign-randomization control: per-step
+        junction physics (jump size x density) dominates for staircases;
+        net winding adds little at realistic step densities.
+    (b) the per-step mechanism: a single valley-orbit phase step is a
+        Josephson-like junction binding a subgap state; the Si single-step
+        jump 2*k0*(a/4) = 0.85*pi is accidentally near pi (where a Kitaev
+        domain-wall zero mode forms).
+    Also generates (key numbers): the smooth linear-ramp scan (the second,
+    subdominant channel; suppression set by the SOC-boost term closing the
+    k=0 branch, E_v-protected — NOT naive Fulde-Ferrell 2*Delta/(hbar v_F))."""
     t0 = time.time()
     B, Delta, al, mu = 1.5, DELTA, ALPHA_DEMO, 35.0
     N, dx = 500, DX            # L = 2.5 um
-    nseed = 10
-    spacings = np.array([300, 150, 100, 75, 50, 35, 25]) * 1e-9
-    scenarios = [("poisson", "random", "C3", "Poisson steps, random phase"),
-                 ("periodic", "random", "C1", "periodic steps, random phase"),
-                 ("periodic", "fixed", "C0", "periodic steps, fixed Δφ=0.85π")]
+    nseed = 14
+    spacings = np.array([300, 150, 100, 75, 50, 35]) * 1e-9
+    scenarios = [
+        ("poisson", "random", "C3", "Poisson steps, random phase (rough, zero winding)"),
+        ("poisson", "fixed", "C0", "Poisson steps, same-sign Δφ (vicinal miscut)"),
+        ("periodic", "fixed", "C1", "periodic steps, same-sign Δφ (ideal staircase)"),
+        ("poisson", "signrand", "C2", "CONTROL: ±Δφ random sign (zero net winding)"),
+    ]
 
     def solve(vo):
         H = build_wire_two_valley_iv(N, dx, mu, B, Delta, al, M_SI, G_SI,
@@ -927,60 +984,298 @@ def fig9(chunk=None):
         Ea = np.sort(np.abs(E)) / UEV
         return Ea[0], Ea[2]
 
-    res = {}
-    for kind, pmode, c, lab in scenarios:
-        med0, med2, q1s, q3s = [], [], [], []
-        for s_mean in spacings:
-            v2 = []
+    ckpt = os.path.join(DATA, "fig9_scan.npz")
+    sig = f"N{N},dx{dx},ns{nseed},sc{len(scenarios)},v2"
+    fresh = True
+    if os.path.exists(ckpt):
+        z = np.load(ckpt, allow_pickle=True)
+        if str(z["sig"]) == sig:
+            E2 = z["E2"]; done = int(z["done"]); fresh = False
+    if fresh:
+        E2 = np.full((len(scenarios), len(spacings), nseed), np.nan); done = 0
+    budget = chunk if chunk else len(scenarios)
+    for isc in range(done, min(done + budget, len(scenarios))):
+        kind, pmode, _, _ = scenarios[isc]
+        for js, s_mean in enumerate(spacings):
             for s in range(nseed):
-                rng = np.random.default_rng([71, int(s_mean*1e9), s,
-                                             len(kind) + len(pmode)])
+                rng = np.random.default_rng([71, isc, int(s_mean * 1e9), s])
                 vo = _make_vo_profile(N, dx, s_mean, kind, pmode, rng)
-                v2.append(solve(vo)[1])
-            med2.append(np.median(v2))
-            q1s.append(np.percentile(v2, 25)); q3s.append(np.percentile(v2, 75))
-        res[lab] = (np.array(med2), np.array(q1s), np.array(q3s), c)
+                E2[isc, js, s] = solve(vo)[1]
+        np.savez(ckpt, E2=E2, done=isc + 1, sig=sig)
+        print(f"fig9 scenario {isc+1}/{len(scenarios)}  t={time.time()-t0:.0f}s",
+              flush=True)
+    if int(np.load(ckpt, allow_pickle=True)["done"]) < len(scenarios):
+        print("fig9: partial — rerun to continue"); return
 
-    # (b) variance knob at fixed mean spacing 50 nm, fixed-increment phases
-    jits = np.array([0.0, 0.1, 0.2, 0.4, 0.7, 1.0])
-    medj, q1j, q3j = [], [], []
-    for jf in jits:
-        v2 = []
-        for s in range(nseed):
-            rng = np.random.default_rng([72, int(100 * jf), s])
-            vo = _make_vo_profile(N, dx, 50e-9, "jitter", "fixed", rng,
-                                  jitter_frac=jf)
-            v2.append(solve(vo)[1])
-        medj.append(np.median(v2))
-        q1j.append(np.percentile(v2, 25)); q3j.append(np.percentile(v2, 75))
+    # (b) single-step junction: one phase step at the wire center
+    dphis = np.array([0, 0.1, 0.25, 0.4, 0.5, 0.65, 0.85, 0.95, 1.0]) * np.pi
+    step_E2 = []
+    half = N // 2
+    for dphi in dphis:
+        vo = 75.0 * np.exp(1j * np.where(np.arange(N) < half, 0.0, dphi))
+        step_E2.append(solve(vo)[1])
+
+    # smooth linear-ramp channel (in-code generator; review round 3)
+    x = np.arange(N) * dx
+    ramp = {}
+    for q in [0, 2e6, 4e6, 8e6, 1.6e7, 5.3e7]:
+        e0, e2 = solve(75.0 * np.exp(1j * q * x))
+        ramp[f"{q:.1e}"] = (round(e0, 3), round(e2, 2))
 
     fig, ax = plt.subplots(1, 2, figsize=(12.5, 4.8))
     a = ax[0]
-    for lab, (m2, q1, q3, c) in res.items():
-        a.semilogy(spacings * 1e9, m2, "o-", color=c, label=lab)
-        a.fill_between(spacings * 1e9, q1, q3, color=c, alpha=0.15)
-    a.set_xlabel("mean step spacing (nm)   [miscut angle ∝ 1/spacing]")
-    a.set_ylabel("median protecting gap E$_2$ (µeV)")
-    a.set_title("(a) step density vs step statistics")
-    a.legend(fontsize=8); a.grid(alpha=0.3, which="both")
+    for isc, (kind, pmode, c, lab) in enumerate(scenarios):
+        m2 = np.median(E2[isc], axis=1)
+        q1 = np.percentile(E2[isc], 25, axis=1)
+        q3 = np.percentile(E2[isc], 75, axis=1)
+        a.semilogy(spacings * 1e9, np.clip(m2, 1e-3, None), "o-", color=c,
+                   ms=4, label=lab)
+        a.fill_between(spacings * 1e9, np.clip(q1, 1e-3, None),
+                       np.clip(q3, 1e-3, None), color=c, alpha=0.15)
+    a.set_xlabel("mean step spacing (nm)")
+    a.set_ylabel("median E$_2$ (µeV)  [spectral proxy, L-dependent bound]")
+    a.set_title("(a) control test: same-sign vs random-sign steps are close —\n"
+                "per-step junction physics, not net winding, dominates")
+    a.legend(fontsize=7); a.grid(alpha=0.3, which="both")
     a = ax[1]
-    a.semilogy(jits, medj, "o-", color="C2")
-    a.fill_between(jits, q1j, q3j, color="C2", alpha=0.15)
-    a.set_xlabel("position jitter σ / mean spacing  (mean fixed at 50 nm)")
-    a.set_ylabel("median protecting gap E$_2$ (µeV)")
-    a.set_title("(b) variance knob: same density, increasing randomness")
-    a.grid(alpha=0.3, which="both")
-    fig.suptitle(f"Miscut prediction — wedge point E$_v$=150 µeV, µ={mu:.0f} µeV, "
-                 f"α={al} eV·Å, L={N*DX*1e6:.1f} µm, {nseed} seeds", y=1.02)
+    a.plot(dphis / np.pi, step_E2, "o-", color="C0")
+    a.axvline(0.85, color="r", ls="--", lw=1,
+              label="Si single-atomic step: Δφ = 2k₀(a/4) ≈ 0.85π")
+    a.set_xlabel("phase jump Δφ / π at a single step")
+    a.set_ylabel("lowest excitation above MZMs (µeV)")
+    a.set_title("(b) one step = one junction: bound state deepens toward\n"
+                "Δφ = π (Kitaev domain wall)")
+    a.legend(fontsize=8); a.grid(alpha=0.3)
+    fig.suptitle(f"Step physics, two channels — wedge point E$_v$=150 µeV, "
+                 f"µ={mu:.0f} µeV, α={al} eV·Å, L={N*DX*1e6:.1f} µm, "
+                 f"{nseed} seeds", y=1.02)
     fig.savefig(os.path.join(OUT, "fig9_step_statistics.png"), dpi=150,
                 bbox_inches="tight")
-    p50 = {lab: float(m2[np.argmin(np.abs(spacings - 50e-9))])
-           for lab, (m2, *_ ) in res.items()}
+
+    j50 = int(np.argmin(np.abs(spacings - 50e-9)))
+    med50 = {scenarios[i][3]: round(float(np.median(E2[i, j50])), 2)
+             for i in range(len(scenarios))}
     save_numbers("fig9", dict(
-        gap_at_50nm_by_scenario_ueV={k: round(v, 2) for k, v in p50.items()},
-        gap_vs_jitter_ueV={f"{j:.1f}": round(float(m), 2)
-                           for j, m in zip(jits, medj)},
+        median_E2_at_50nm_by_scenario_ueV=med50,
+        single_step_E2_vs_dphi_over_pi={f"{d/np.pi:.2f}": round(float(v), 2)
+                                        for d, v in zip(dphis, step_E2)},
+        linear_winding_check_E0_E2=ramp,
+        note="winding-as-dominant-mechanism claim retired after round-3 "
+             "control test; see RESULTS F9",
         runtime_s=round(time.time() - t0, 1)))
+
+
+# ----------------------------------------------------------------- Figure 10
+def fig10(chunk=None):
+    """Luttinger-Kohn justification (and erosion) of the hole parameter box:
+    alpha(E), g-tensor(E), m*(E) from the 4-band fin model, and the gap
+    accessible along the PHYSICAL (alpha, g, m*) operating curve."""
+    import lk_holes
+    t0 = time.time()
+    Ezs = np.array([2, 5, 10, 15, 20, 30, 40, 50]) * 1e6
+    ckpt = os.path.join(DATA, "lk_table.npz")
+    sig = "Wy10Wz12_ny11nz13_v1"
+    fresh = True
+    if os.path.exists(ckpt):
+        z = np.load(ckpt, allow_pickle=True)
+        if str(z["sig"]) == sig:
+            tab = z["tab"]; fresh = False
+    if fresh:
+        rows = []
+        for Ez in Ezs:
+            m, al, gx, gy, gz, nso = lk_holes.extract(Ez)
+            rows.append([Ez, m, al, gx, gy, gz] + list(nso))
+            print(f"LK Ez={Ez/1e6:.0f} MV/m done t={time.time()-t0:.0f}s",
+                  flush=True)
+        tab = np.array(rows)
+        np.savez(ckpt, tab=tab, sig=sig)
+    Ez, mst, al, gx, gy, gz = (tab[:, i] for i in range(6))
+
+    # accessible gap along the LK operating curve (mu=0-opt inside helper)
+    curves = {}
+    for label, parent, guse in [
+        ("Si:B thick, B∥ẑ (uses g_z)", "SiB_meas", gz),
+        ("Si:B Pauli hyp., B∥x̂ (uses g_x)", "SiB_pauli", gx),
+        ("Al film, B∥x̂ (uses g_x)", "Al", gx),
+    ]:
+        gaps = []
+        for i in range(len(Ez)):
+            gaps.append(_best_gap_hole(max(al[i], 1e-4), abs(guse[i]), parent,
+                                       m_rel=mst[i])[0])
+        curves[label] = np.array(gaps)
+
+    fig, ax = plt.subplots(1, 3, figsize=(15.5, 4.6))
+    a = ax[0]
+    a.plot(Ez / 1e6, al, "C0-o", ms=4)
+    a.set_xlabel("vertical gate field E$_z$ (MV/m)")
+    a.set_ylabel("direct-Rashba α (eV·Å)", color="C0")
+    a2 = a.twinx()
+    for gv, c, lab in ((gx, "C3", "g$_x$ (wire axis)"),
+                       (gy, "C2", "g$_y$ (∥ SOC axis — unusable)"),
+                       (gz, "C1", "g$_z$ (out-of-plane)")):
+        a2.plot(Ez / 1e6, np.abs(gv), c + "--s", ms=3, label=lab)
+    a2.set_ylabel("|g| components")
+    a2.legend(fontsize=7, loc="center right")
+    a.set_title("(a) the α–g covariation: the field that creates α\n"
+                "suppresses the wire-axis g")
+    a.grid(alpha=0.3)
+
+    a = ax[1]
+    lso = HBAR**2 / (mst * ME * np.clip(al, 1e-4, None) * QE * 1e-10) * 1e9
+    a.plot(Ez / 1e6, lso, "C0-o", ms=4, label="l$_{so}$ (LK)")
+    a.axhspan(20, 60, color="C2", alpha=0.15,
+              label="measured FinFET range\n(Camenzind 2022)")
+    a.set_xlabel("E$_z$ (MV/m)"); a.set_ylabel("spin-orbit length l$_{so}$ (nm)")
+    a.set_ylim(0, 120); a.legend(fontsize=8)
+    a.set_title("(b) validation: LK l$_{so}$ lands in the\nmeasured window")
+    a.grid(alpha=0.3)
+
+    a = ax[2]
+    for (lab, ys), c in zip(curves.items(), ("C2", "C1", "C0")):
+        a.plot(Ez / 1e6, ys, c + "-o", ms=4, label=lab)
+    a.axhline(20, color="k", ls=":", lw=1)
+    a.set_xlabel("E$_z$ (MV/m)")
+    a.set_ylabel("max topological gap (µeV)")
+    a.set_title("(c) gap along the PHYSICAL operating curve\n"
+                "(α, g, m* co-varying), not the free box")
+    a.legend(fontsize=7); a.grid(alpha=0.3)
+    fig.suptitle("Luttinger–Kohn fin model (10×12 nm hard wall, Si γ's, κ=−0.42): "
+                 "the parameter box, constrained", y=1.03)
+    fig.savefig(os.path.join(OUT, "fig10_lk_constraint.png"), dpi=150,
+                bbox_inches="tight")
+
+    best = {lab: (round(float(ys.max()), 1),
+                  round(float(Ez[int(np.argmax(ys))] / 1e6), 0))
+            for lab, ys in curves.items()}
+    i10 = int(np.argmin(np.abs(Ez - 1e7)))
+    save_numbers("fig10", dict(
+        alpha_range_eVA=[round(float(al.min()), 3), round(float(al.max()), 3)],
+        mstar_range=[round(float(mst.min()), 2), round(float(mst.max()), 2)],
+        gx_range=[round(float(np.abs(gx).min()), 2),
+                  round(float(np.abs(gx).max()), 2)],
+        gz_range=[round(float(np.abs(gz).min()), 2),
+                  round(float(np.abs(gz).max()), 2)],
+        lso_range_nm=[round(float(lso.min()), 0), round(float(lso.max()), 0)],
+        nso_at_10MVm=[round(float(v), 2) for v in tab[i10, 6:9]],
+        best_gap_by_scenario=best,
+        runtime_s=round(time.time() - t0, 1)))
+
+
+# ----------------------------------------------------------------- Figure 11
+def _tilted_gap_ueV(alpha_eVA, m_rel, bperp_ueV, bpar_ueV, Dind_ueV, nk=500):
+    """Bulk gap (mu=0) with Zeeman split into components perp/parallel to the
+    SOC axis, via batched 4x4 diagonalization (no closed form with bpar)."""
+    m = m_rel * ME
+    aSI = alpha_eVA * 1e-10 * QE
+    bx, bz = bperp_ueV * UEV, bpar_ueV * UEV
+    D = Dind_ueV * UEV
+    btot = np.hypot(bx, bz)
+    # mu=0 topological criterion uses the component PERPENDICULAR to the SOC
+    # axis only (a parallel-only Zeeman is the trivial shifted-BCS situation);
+    # the parallel component degrades the gap, captured numerically below.
+    if abs(bx) <= D:
+        return 0.0
+    kF = np.sqrt(2 * m * (btot + D)) / HBAR
+    kso = m * aSI / HBAR**2
+    k = np.linspace(0, 4 * (kF + kso) + 2e7, nk)
+    s0_ = np.eye(2); sx_ = np.array([[0, 1], [1, 0]]); sz_ = np.diag([1., -1.])
+    sy_ = np.array([[0, -1j], [1j, 0]])
+    xi = HBAR**2 * k**2 / (2 * m)
+    Hk = np.zeros((nk, 4, 4), dtype=complex)
+    hup = (xi[:, None, None] * s0_ + (aSI * k)[:, None, None] * sz_
+           + bx * sx_ + bz * sz_)
+    hdn = (-xi[:, None, None] * s0_ + (aSI * k)[:, None, None] * sz_
+           - bx * sx_ + bz * sz_)
+    Hk[:, :2, :2] = hup
+    Hk[:, 2:, 2:] = hdn
+    Hk[:, :2, 2:] = D * (1j * sy_)
+    Hk[:, 2:, :2] = (D * (1j * sy_)).conj().T
+    ev = np.linalg.eigvalsh(Hk)
+    return float(np.abs(ev).min() / UEV)
+
+
+def fig11(chunk=None):
+    """Field-orientation maps: the binding device-design constraint.
+    Gap vs field direction for LK-computed and empirical (Geyer-class)
+    g-tensors/SOC axes, for thick measured-Si:B and Al-film parents."""
+    t0 = time.time()
+    z = np.load(os.path.join(DATA, "lk_table.npz"), allow_pickle=True)
+    tab = z["tab"]
+    i10 = int(np.argmin(np.abs(tab[:, 0] - 1e7)))
+    lk = dict(alpha=float(tab[i10, 2]), m=float(tab[i10, 1]),
+              gten=np.abs(tab[i10, 3:6]), nso=np.array([0.0, 1.0, 0.0]))
+    emp = dict(alpha=0.06, m=0.25, gten=np.array([2.1, 2.35, 2.7]),
+               nso=np.array([0.0, 0.41, 0.91]) / np.linalg.norm([0, .41, .91]))
+    parents = [("SiB_meas thick (isotropic B$_{c2}$=0.4 T)", "SiB_meas",
+                dict(iso=True)),
+               ("Al film (B$_{c∥}$=2 T, B$_{c⊥}$=0.1 T)", "Al",
+                dict(iso=False, bcperp=0.1))]
+    thetas = np.linspace(0, 90, 8)         # 0 = in-plane, 90 = out-of-plane
+    phis = np.linspace(0, 180, 13)         # 0 = along wire (x)
+    panels = []
+    for pset_name, p in (("LK tensor", lk), ("empirical (Geyer-class)", emp)):
+        for plab, parent, pc in parents:
+            gapmap = np.zeros((len(thetas), len(phis)))
+            for it, th in enumerate(np.deg2rad(thetas)):
+                for ip, ph in enumerate(np.deg2rad(phis)):
+                    n = np.array([np.cos(th) * np.cos(ph),
+                                  np.cos(th) * np.sin(ph), np.sin(th)])
+                    best = 0.0
+                    Bmax = (0.95 * SIB_BC2_MEAS if parent == "SiB_meas"
+                            else 1.96)
+                    for B in np.linspace(0.1, Bmax, 6):
+                        if parent == "Al" and not pc.get("iso", True):
+                            supp = (1 - (B * abs(n[2]) / pc["bcperp"])**2
+                                    - (B * np.hypot(n[0], n[1]) / 2.0)**2)
+                            Dp = 200.0 * max(supp, 0.0)
+                        else:
+                            Dp = _parent_gap_ueV(B, parent)
+                        if Dp < 8:
+                            continue
+                        bvec = 0.5 * MU_B_EV * 1e6 * B * p["gten"] * n
+                        bpar = float(bvec @ p["nso"])
+                        bperp = float(np.sqrt(max((bvec @ bvec)
+                                                  - bpar**2, 0.0)))
+                        for Dind in np.linspace(8, Dp, 5):
+                            gp = _tilted_gap_ueV(p["alpha"], p["m"], bperp,
+                                                 bpar, Dind)
+                            best = max(best, gp)
+                    gapmap[it, ip] = best
+            panels.append((f"{pset_name} — {plab}", gapmap))
+            print(f"fig11 panel done t={time.time()-t0:.0f}s", flush=True)
+
+    fig, ax = plt.subplots(2, 2, figsize=(13, 8), sharex=True, sharey=True)
+    vmax = max(g.max() for _, g in panels)
+    for a, (lab, gm) in zip(ax.flat, panels):
+        im = a.pcolormesh(phis, thetas, gm, cmap="viridis", vmin=0, vmax=vmax,
+                          shading="auto")
+        a.set_title(lab, fontsize=9)
+        a.plot(0, 0, "r*", ms=12)          # B along wire, in-plane
+        a.plot(90, 90, "w^", ms=9)         # B out-of-plane
+    for a in ax[1]:
+        a.set_xlabel("φ (°)  [0 = along wire, 90 = in-plane ⊥]")
+    for a in ax[:, 0]:
+        a.set_ylabel("θ (°)  [0 = in-plane, 90 = out-of-plane]")
+    fig.colorbar(im, ax=ax, label="max topological gap (µeV)")
+    fig.suptitle("Field-orientation maps (µ=0): star = in-plane along wire; "
+                 "triangle = out-of-plane.\nLK says: out-of-plane B (g_z) with "
+                 "a thick parent; the in-plane/wire direction is g-starved.",
+                 y=1.0)
+    fig.savefig(os.path.join(OUT, "fig11_field_orientation.png"), dpi=150,
+                bbox_inches="tight")
+
+    kn = {}
+    for lab, gm in panels:
+        kn[lab] = dict(best=round(float(gm.max()), 1),
+                       at_theta_phi=[float(thetas[np.unravel_index(
+                           gm.argmax(), gm.shape)[0]]),
+                           float(phis[np.unravel_index(
+                               gm.argmax(), gm.shape)[1]])],
+                       inplane_wire=round(float(gm[0, 0]), 1),
+                       outofplane=round(float(gm[-1, 0]), 1))
+    kn["runtime_s"] = round(time.time() - t0, 1)
+    save_numbers("fig11", kn)
+
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
@@ -990,11 +1285,11 @@ if __name__ == "__main__":
     ap.add_argument("--chunk", type=int, default=None,
                     help="cell budget for fig5 (checkpointed)")
     args = ap.parse_args()
-    todo = [args.fig] if args.fig != "all" else ["1", "2", "3", "4", "5", "6",
-                                                 "7", "8", "9"]
+    todo = [args.fig] if args.fig != "all" else [str(i) for i in range(1, 12)]
     dispatch = {"1": fig1, "2": fig2, "3": fig3,
                 "4": lambda: fig4(args.rows), "5": lambda: fig5(args.chunk),
                 "6": lambda: fig6(args.chunk), "7": lambda: fig7(args.chunk),
-                "8": lambda: fig8(args.chunk), "9": lambda: fig9(args.chunk)}
+                "8": lambda: fig8(args.chunk), "9": lambda: fig9(args.chunk),
+                "10": lambda: fig10(args.chunk), "11": lambda: fig11(args.chunk)}
     for f in todo:
         dispatch[f]()
