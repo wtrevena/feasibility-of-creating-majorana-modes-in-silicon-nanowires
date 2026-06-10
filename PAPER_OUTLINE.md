@@ -35,19 +35,24 @@ measurements that decide the platform.
 6. LK constraint (fig10) 7. Orientation maps (fig11) — centerpiece
 8. All-Si operating points + scenarios (fig8, reframed) 9. Transport (fig12, methods)
 
-## Pre-submission work list
-1. 6-band LK + tri-gate electrostatics (Poisson) — the LK-vs-measured g_x discrepancy
-   (0.5–1.1 vs 1.9–2.3) must be resolved or bracketed with device-specific input.
-2. Transport invariant extended to figs 6/9 (valley cases); L-scaling shown.
-3. QP-poisoning estimate for the T_c = 0.6 K parent (Δ_op/k_B T_eff analysis).
-4. Verify flagged references by hand: arXiv:2505.06040; laser-annealed SOI (2024);
-   Duvauchelle attribution; Osca–Ruiz–Serra volume/page.
-5. Si:B parent model beyond caricature (orbital+Pauli Maki combination; film-thickness
-   dependence) with experimental input if any new H_c2 data exists.
-6. Wire-orientation (cos-factor) and step-bunching extensions of F9; |λ| suppression at
-   steps (Hosseinkhani–Burkard).
-7. Statement of review provenance: the methodology (adversarial agent rounds with
-   numerical re-derivation) belongs in the acknowledgments or supplement honestly.
+## Pre-submission work list (live checklist — resume here if interrupted)
+1. [PARTIAL → bracketing approach] LK-vs-measured g_x discrepancy (0.5–1.1 vs 1.9–2.3):
+   resolved-or-bracketed via geometry/field scan (see fig10 key numbers `g_bracket`);
+   full 6-band LK + Poisson remains future work, with the 4-band+geometry bracket
+   documented as the interim position.
+2. [TODO] Transport invariant extended to figs 6/9 (valley cases); L-scaling shown.
+3. [DONE] QP-poisoning estimate for the T_c = 0.6 K parent — see RESULTS F8 and
+   key_numbers fig8.qp_poisoning.
+4. [DONE] References hand-verified via web search (2026-06-10): arXiv:2505.06040
+   (α_synth = 0.022 eV·nm, InAs/Al + permalloy — as cited); Si:B T_c ≈ 0.6 K = PRB 81,
+   020501(R) (2010); 2024 SOI line = arXiv:2404.02748; Duvauchelle = arXiv:1508.04075
+   (Si SQUID; previous PRB attribution corrected); Osca–Ruiz–Serra = PRB 89, 245405
+   (2014, exact). Si superconductivity review arXiv:2108.03031 added.
+5. [DONE] Si:B parent beyond caricature: thin-film orbital+Pauli combination with
+   thickness dependence — see `_parent_gap_film` and key_numbers fig8.film_design.
+6. [DONE] F9 extensions: wire-orientation cos-factor (analytic note), bi-step (step
+   bunching) scenario, |λ| suppression at steps — key_numbers fig9.extensions.
+7. [DONE] Review-provenance statement added to RESULTS §6 footer.
 
 ## Claims discipline (enforced)
 - Si:B numbers always labeled measured-field vs Pauli-hypothetical; renormalized

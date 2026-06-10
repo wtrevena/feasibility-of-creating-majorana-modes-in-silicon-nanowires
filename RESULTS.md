@@ -206,17 +206,21 @@ validated in its place.
   245423 — measurement standard.
 - Cole–Das Sarma–Stanescu PRB 92, 174511 (2015) — optimal coupling (F3 prior art).
 - Kjaergaard et al. PRB 85, 020503(R); Turcotte et al. PRB 102, 125425; arXiv:2505.06040
-  (unverified) — engineered SOC.
+  (verified: permalloy arrays on InAs/Al, synthetic α = 0.022 eV·nm) — engineered SOC.
 - Losert et al. PRB 108, 125405; Hosseinkhani–Burkard PRB 100, 125309 — valley
   splitting, interface steps (F6/F9 context).
-- Osca–Ruiz–Serra PRB 89, 245405 (2014) — tilted-field criterion (F11 context).
+- Osca, Ruiz & Serra, PRB 89, 245405 (2014) (verified) — tilted-field criterion
+  (F11 context); see also PRB 90, 115429 (critical angle).
 - Bosco–Hetényi–Loss PRX Quantum 2, 010348; Camenzind et al. Nat. Electron. 5, 178;
   Geyer et al. Nat. Phys. (2024); Voisin et al. Nano Lett. 16, 88 — Si hole SOC and
   g-tensors (F8/F10/F11 inputs).
-- Bustarret et al. Nature 444, 465 (2006) (Si:B superconductivity, T_c ≈ 0.35 K);
-  PRB 81, 020501(R) (2010) (measured H_c2 ≈ 0.1 T); Duvauchelle et al. PRB 96, 024503
-  (2017) (all-Si JJs); laser-annealed superconducting SOI (2024, reference to be
-  completed) — the Si:B parent. T_c up to ~0.6 K from the later laser-doping line.
+- Bustarret et al. Nature 444, 465 (2006) (Si:B superconductivity discovery);
+  Grockowiak et al./C2N line, PRB 81, 020501(R) (2010) (GILD (001) films, T_c up to
+  ~0.6 K at ~8 at% B, H_c2 ≈ 0.1 T class); Chiodi et al. line: thickness dependence of
+  T_c (HAL hal-00957153), all-Si SQUID (Duvauchelle et al., arXiv:1508.04075 — corrected
+  attribution), laser-annealed superconducting polycrystalline SOI, T_c 0→0.5 K
+  (arXiv:2404.02748, 2024); review: "Superconductivity in silicon", arXiv:2108.03031 —
+  the Si:B parent. All four previously flagged references now hand-verified.
 - Maier–Klinovaja–Loss PRB 90, 195421 (2014) — Ge-hole MZMs (closest precedent).
 - Reeg–Loss–Klinovaja PRB 97, 165425 — metallization. Nijholt–Akhmerov PRB 93, 235434 —
   orbital effects (unmodeled).
