@@ -1111,6 +1111,66 @@ def fig9(chunk=None):
         runtime_s=round(time.time() - t0, 1)))
 
 
+def fig9_extensions():
+    """Pre-submission item 6: F9 extensions (key numbers only).
+    (1) step bunching: double-height bi-steps carry dphi = 2*0.85pi = 1.7pi
+        == -0.3pi (mod 2pi) — a much milder junction, so bunching HELPS;
+    (2) |lambda| suppression near steps (Hosseinkhani-Burkard PRB 100,
+        125309: up to ~75% per monolayer step): lambda *= 0.25 within 10 nm
+        after each step;
+    (3) wire-orientation: steps at azimuth angle chi to the wire normal give
+        step density along the wire scaled by |cos chi| (analytic note)."""
+    t0 = time.time()
+    B, Delta, al, mu = 1.5, DELTA, ALPHA_DEMO, 35.0
+    N, dx, nseed, s_mean = 500, DX, 12, 50e-9
+
+    def solve(vo):
+        H = build_wire_two_valley_iv(N, dx, mu, B, Delta, al, M_SI, G_SI,
+                                     vo_profile_ueV=vo)
+        E, _ = solve_lowest(H, k=6)
+        return float(np.sort(np.abs(E))[2] / UEV)
+
+    def poisson_profile(rng, dphi, suppress=False):
+        phi = np.zeros(N); amp = np.full(N, 75.0)
+        cur, x = 0.0, 0.0
+        pos = []
+        while True:
+            x += rng.exponential(s_mean)
+            if x >= N * dx:
+                break
+            pos.append(x)
+        pidx, cur = 0, 0.0
+        for n in range(N):
+            xn = n * dx
+            while pidx < len(pos) and pos[pidx] <= xn:
+                cur += dphi
+                pidx += 1
+            phi[n] = cur
+            if suppress and pidx > 0 and (xn - pos[pidx - 1]) < 10e-9:
+                amp[n] = 75.0 * 0.25
+        return amp * np.exp(1j * phi)
+
+    res = {}
+    for tag, dphi, sup in [("vicinal_single_steps_0.85pi", 0.85 * np.pi, False),
+                           ("bunched_bisteps_1.7pi", 1.7 * np.pi, False),
+                           ("vicinal_with_lambda_suppression", 0.85 * np.pi, True)]:
+        v = [solve(poisson_profile(np.random.default_rng([95, i, len(tag)]),
+                                   dphi, sup)) for i in range(nseed)]
+        res[tag] = dict(median=round(float(np.median(v)), 2),
+                        q1=round(float(np.percentile(v, 25)), 2),
+                        q3=round(float(np.percentile(v, 75)), 2))
+    # single bi-step junction reference
+    half = N // 2
+    vo = 75.0 * np.exp(1j * np.where(np.arange(N) < half, 0.0, 1.7 * np.pi))
+    res["single_bistep_E2_ueV"] = round(solve(vo), 2)
+    res["orientation_note"] = ("step density along wire scales as |cos(chi)|, "
+                               "chi = azimuth between wire and miscut gradient; "
+                               "wires along step edges (chi=90deg) see no steps")
+    res["runtime_s"] = round(time.time() - t0, 1)
+    save_numbers("fig9", dict(extensions=res))
+    return res
+
+
 # ----------------------------------------------------------------- Figure 10
 def fig10(chunk=None):
     """Luttinger-Kohn justification (and erosion) of the hole parameter box:

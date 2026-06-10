@@ -301,7 +301,27 @@
       ]
     },
     "note": "winding-as-dominant-mechanism claim retired after round-3 control test; see RESULTS F9",
-    "runtime_s": 10.7
+    "runtime_s": 10.7,
+    "extensions": {
+      "vicinal_single_steps_0.85pi": {
+        "median": 0.79,
+        "q1": 0.45,
+        "q3": 1.75
+      },
+      "bunched_bisteps_1.7pi": {
+        "median": 1.69,
+        "q1": 1.28,
+        "q3": 2.43
+      },
+      "vicinal_with_lambda_suppression": {
+        "median": 0.31,
+        "q1": 0.15,
+        "q3": 0.59
+      },
+      "single_bistep_E2_ueV": 18.6,
+      "orientation_note": "step density along wire scales as |cos(chi)|, chi = azimuth between wire and miscut gradient; wires along step edges (chi=90deg) see no steps",
+      "runtime_s": 2.0
+    }
   },
   "fig10": {
     "alpha_range_eVA": [
