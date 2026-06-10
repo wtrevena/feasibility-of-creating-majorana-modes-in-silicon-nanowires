@@ -1,71 +1,57 @@
-# Majorana States in Silicon Nanowire Simulation
+# Feasibility of Majorana Zero Modes in Silicon Nanowires
 
-This repository contains code to simulate and analyze Majorana states in proximitized silicon nanowires. The simulation implements a Bogoliubov-de Gennes (BdG) Hamiltonian to study the energy spectrum and wavefunctions of Majorana modes.
+A quantitative feasibility study of Majorana zero modes (MZMs) in proximitized silicon
+nanowires, built on a validated spinful Bogoliubov-de Gennes (Lutchyn-Oreg) model.
 
-## Prerequisites
+**Headline result:** silicon *can* host Majorana zero modes — in the valence band.
+Conduction-band wires fail for quantified reasons (best intrinsic gap ~1.5 µeV; a g=2
+catch-22; and valley-phase *winding* from ≳0.02° substrate miscut acting as
+Fulde–Ferrell-like depairing — a new, falsifiable mechanism). Silicon *holes* evade all
+three blockers: measured FinFET hole parameters give 20–36 µeV topological gaps across
+the entire parameter box, and boron-doped superconducting silicon (Si:B) as the parent
+yields an all-silicon, CMOS-compatible stack whose Pauli-limited gap self-tunes below
+the catch-22 ceiling. See **[RESULTS.md](RESULTS.md)** (nine findings + corrections log)
+and **[PAPER_OUTLINE.md](PAPER_OUTLINE.md)**.
 
-- Python 3.12 or higher
-- Virtual environment management
+## Repository structure
 
-## Installation
+| file | purpose |
+|---|---|
+| `majorana_sim.py` | model library: bulk dispersion/topological gap, sparse finite-wire BdG solver, two-valley extension, disorder |
+| `run_analysis.py` | reproduces every figure and number (`python run_analysis.py --fig 1..9` or `--fig all`) |
+| `RESULTS.md` | findings, verdict, caveats, references |
+| `output/fig1..fig9*.png` | generated figures |
+| `tests.py` | reproducible checks of the central exact claims (`python tests.py`) |
+| `PAPER_OUTLINE.md` | the pivoted paper: title, abstract draft, figure plan, pre-submission work list |
+| `output/data/` | scan checkpoints and `key_numbers.json` |
+| `Majorana_Si_Code.ipynb` | **legacy** — the original notebook, kept for the record; its model is not a valid Majorana Hamiltonian (see RESULTS.md §1) and its figures should not be used |
 
-1. Create and activate a virtual environment:
+## Quickstart
 
-On Linux / MacOS:
-```bash
-python3.12 -m venv venv
-source venv/bin/activate
-``` 
-
-On Windows:
 ```bash
 python -m venv venv
-.\venv\Scripts\activate
-```
-
-2. Install dependencies:
-
-```bash
+source venv/bin/activate        # Windows: .\venv\Scripts\activate
 pip install -r requirements.txt
+python run_analysis.py --fig all
 ```
 
-## Running the Simulation
+Figures land in `output/`. Long scans (figs 4-5) checkpoint to `output/data/` (with parameter
+signatures) and resume if interrupted; everything runs in well under a minute per figure.
 
-The simulation is contained in a Jupyter notebook `Majorana_Si_Code.ipynb`. To run it:
+## Model
 
-1. Ensure your virtual environment is activated
-2. Launch Jupyter:
+Single-band semiconductor nanowire with Rashba SOC, Zeeman field, and proximity-induced
+s-wave pairing:
 
-3. Open `Majorana_Si_Code.ipynb`
-4. Run the cells in sequence
+```
+h(k)  = (hbar^2 k^2 / 2m* - mu) sigma_0 + alpha k sigma_z + E_Z sigma_x
+H_BdG = [[h, Delta i sigma_y], [h.c., -h*]]
+```
 
-## Simulation Details
-
-The notebook simulates:
-- Energy spectrum of a proximitized silicon nanowire
-- Majorana mode wavefunctions
-- Electron and hole component probability densities
-- Electron-hole overlap calculations
-- Localization length estimation
-
-Key physical parameters can be modified in the notebook:
-- Wire length
-- Magnetic field strength
-- Superconducting gap
-- Spin-orbit coupling strength
-- Number of discretization points
-
-## Output
-
-The simulation generates several plots:
-1. Energy spectrum of the nanowire
-2. Spatial distribution of Majorana modes
-3. Probability density distributions for electron and hole components
+Particle-hole symmetry is exact by construction; the topological phase obeys
+E_Z > sqrt(Delta^2 + mu^2). Validation against four known results (gap closing point,
+end localization, exponential length-splitting, bulk-gap agreement) is Figure 1.
 
 ## License
 
-[Add your license information here]
-
-
-
-
+No license specified yet — add one before sharing or publishing.

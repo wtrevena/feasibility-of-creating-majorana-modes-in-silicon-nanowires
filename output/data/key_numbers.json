@@ -1,0 +1,205 @@
+{
+  "fig1": {
+    "Bstar_T": 0.864,
+    "xi_fit_nm": 166.0,
+    "E0_at_2um_ueV": 0.000344,
+    "end_weight_at_2um": 0.934,
+    "old_model_E0_ueV": -21.06,
+    "runtime_s": 2.0
+  },
+  "fig2": {
+    "max_gap_Si_alpha_ueV": 1.56,
+    "max_gap_InSb_alpha_ueV": 50.08,
+    "ratio": 32.1,
+    "runtime_s": 7.6
+  },
+  "fig3": {
+    "gap_at_intrinsic_Si_opt_1e3_ueV": 1.5506,
+    "gap_at_intrinsic_Si_typ_1e4_ueV": 0.15565,
+    "gap_at_engineered_005_ueV": 42.61,
+    "alpha_needed_for_20ueV": 0.0153,
+    "alpha_needed_for_20ueV_with_DeltaB": 0.0205,
+    "gap_at_1e3_with_DeltaB": 1.365,
+    "shortfall_vs_optimistic_intrinsic": 15.0,
+    "shortfall_vs_typical_intrinsic": 153.0,
+    "max_Delta_allowing_topology_at_2T_ueV": 115.8,
+    "optimal_Delta_at_alpha005_ueV": 98.0,
+    "optimal_Delta_gap_ueV": 39.045,
+    "runtime_s": 16.8
+  },
+  "fig4": {
+    "single_valley_window_ueV": 71.0,
+    "Ev_threshold_at_mu_cut_ueV": 82.0,
+    "median_split_both_valleys_ueV": 0.76,
+    "median_split_single_valley_ueV": 0.068,
+    "runtime_s": 0.7
+  },
+  "fig5": {
+    "case0": {
+      "tag": "intrinsic Si: \u03b1=0.001 eV\u00b7\u00c5",
+      "clean_E0_ueV": 0.0242,
+      "clean_E2_ueV": 1.4,
+      "bulk_gap_ueV": 1.08,
+      "W_half_ueV": 301.9,
+      "dx_nm": 5.0,
+      "L_um": 20.0
+    },
+    "case1": {
+      "tag": "engineered Si: \u03b1=0.05 eV\u00b7\u00c5",
+      "clean_E0_ueV": 0.0003,
+      "clean_E2_ueV": 37.67,
+      "bulk_gap_ueV": 36.83,
+      "W_half_ueV": 410.6,
+      "dx_nm": 2.5,
+      "L_um": 2.0
+    },
+    "case2": {
+      "tag": "strong SOC: \u03b1=0.15 eV\u00b7\u00c5",
+      "clean_E0_ueV": 0.0,
+      "clean_E2_ueV": 37.7,
+      "bulk_gap_ueV": 36.83,
+      "W_half_ueV": 516.8,
+      "dx_nm": 2.5,
+      "L_um": 6.0
+    },
+    "runtime_s": 23.5
+  },
+  "fig6": {
+    "median_split_bothvalleys_steps100_ueV": 0.006,
+    "median_split_singlevalley_steps100_ueV": 0.093,
+    "median_split_singlevalley_steps30_ueV": 0.04,
+    "wedge_E0_at_steps50_ueV": 0.254,
+    "wedge_E2_at_steps50_ueV": 1.9,
+    "wedge_E2_at_steps50_dresselhaus_ueV": 2.78,
+    "wedge_E2_clean_ueV": 14.04,
+    "wedge_E2_Lconvergence_median_q1_q3": {
+      "L1.5um": [
+        2.58,
+        1.13,
+        3.67
+      ],
+      "L3.0um": [
+        2.08,
+        1.61,
+        3.95
+      ],
+      "L6.0um": [
+        0.99,
+        0.45,
+        1.65
+      ]
+    },
+    "runtime_s": 32.3
+  },
+  "fig7": {
+    "subband1_max_E2_inwindow_ueV": 38.05,
+    "subband1_median_E0_inwindow_ueV": 0.0121,
+    "subband2_max_E2_inwindow_ueV": 37.88,
+    "subband2_median_E0_inwindow_ueV": 0.0176,
+    "bottoms_ueV": [
+      537.0,
+      2005.0,
+      4011.0
+    ],
+    "window_halfwidth_ueV": 71.0,
+    "gap_1D_same_params_ueV": 36.83,
+    "runtime_s": 12.8
+  },
+  "fig8": {
+    "box_median_gap_ueV": 30.75,
+    "box_frac_above_20ueV": 1.0,
+    "box_frac_above_10ueV": 1.0,
+    "conservative_a003_g18": {
+      "gap": 23.2,
+      "B_T": 1.0,
+      "Dind_ueV": 29.0,
+      "mu_ueV": 0.0
+    },
+    "center_a006_g22": {
+      "gap": 30.6,
+      "B_T": 1.0,
+      "Dind_ueV": 33.0,
+      "mu_ueV": 0.0
+    },
+    "favorable_a015_g30": {
+      "gap": 35.7,
+      "B_T": 0.86,
+      "Dind_ueV": 36.0
+    },
+    "g2_works": {
+      "gap": 28.1
+    },
+    "comparison": {
+      "Si e\u207b intrinsic (\u03b1=10\u207b\u00b3)": 1.55,
+      "Si e\u207b engineered (\u03b1=0.05, \u0394(B) Al)": 29.76,
+      "Si holes + Al (\u03b1=0.06, g=2.2)": 49.6,
+      "Si holes + Si:B (\u03b1=0.06, g=2.2)": 30.62,
+      "Si holes + Si:B (\u03b1=0.15, g=3)": 35.71
+    },
+    "BP_T": 1.112,
+    "runtime_s": 5.2,
+    "hole_wire_finite_check": {
+      "clean": {
+        "E0": 0.0,
+        "E2": 31.31,
+        "end_weight": 0.95,
+        "bulk": 30.67
+      },
+      "disorder_W_medE2": {
+        "50": 30.35,
+        "100": 27.59,
+        "200": 22.19,
+        "400": 7.79,
+        "800": 2.97
+      }
+    },
+    "box_frac_above_20ueV_grid": 1.0,
+    "box_corner_a003_g15_refined_ueV": 19.3
+  },
+  "fig9": {
+    "gap_at_50nm_by_scenario_ueV": {
+      "Poisson steps, random phase": 2.39,
+      "periodic steps, random phase": 0.66,
+      "periodic steps, fixed \u0394\u03c6=0.85\u03c0": 0.0
+    },
+    "gap_vs_jitter_ueV": {
+      "0.0": 0.0,
+      "0.1": 0.0,
+      "0.2": 0.0,
+      "0.4": 0.05,
+      "0.7": 0.27,
+      "1.0": 0.6
+    },
+    "runtime_s": 16.8,
+    "linear_winding_check_E0_E2": {
+      "q=0.0e+00": [
+        0.0,
+        22.22
+      ],
+      "q=1.0e+06": [
+        0.0,
+        22.02
+      ],
+      "q=2.0e+06": [
+        0.0,
+        21.12
+      ],
+      "q=4.0e+06": [
+        0.0,
+        16.88
+      ],
+      "q=8.0e+06": [
+        0.011,
+        6.25
+      ],
+      "q=1.6e+07": [
+        0.709,
+        0.86
+      ],
+      "q=5.3e+07": [
+        0.0,
+        0.0
+      ]
+    }
+  }
+}

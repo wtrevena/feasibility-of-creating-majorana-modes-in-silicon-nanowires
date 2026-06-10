@@ -1,0 +1,265 @@
+{
+  "method": {
+    "kwant_available": false,
+    "approach": "recursive Green's function (Caroli) + Ando wave matching for lead self-energies; see module docstring",
+    "geometry": "normal lead | BdG wire | normal lead (NSN); invariant from single-lead NS reflection at E=0",
+    "mu_lead_ueV": 2000.0,
+    "eta_ueV": 1e-08,
+    "threshold_T": 0.01,
+    "E_grid_ueV": "0..60 step 1.0 (ensemble) / 0.5 (clean)",
+    "seeds": "np.random.default_rng([91, 1, iw, r]), identical disorder realizations to run_analysis fig5 case1"
+  },
+  "verification": {
+    "max_abs_H_diff_clean_ueV": 1.1368683772161603e-13,
+    "max_eigval_diff_clean_ueV": 2.764863893389702e-10,
+    "max_abs_H_diff_disordered_ueV": 7.275957614183426e-12,
+    "max_eigval_diff_disordered_ueV": 3.2014213502407074e-10,
+    "gL_modes_vs_sancho": 6.292181758511999e-09,
+    "gR_modes_vs_sancho": 6.292193881740903e-09,
+    "ballistic_T_minus_4": 2.4991120284312274e-10
+  },
+  "clean": {
+    "transport_gap_ueV": 37.34,
+    "bulk_gap_ueV": 36.83,
+    "spectral_E2_ueV": 37.67,
+    "T_at_E0": 8.213191858209154e-08,
+    "invariant_topological_B1p5T": {
+      "Q": -1,
+      "det_r": -1.0000000878811808,
+      "unitarity_err": 7.014129788096568e-08,
+      "reality_err": 8.526206849805046e-08,
+      "basis_err": 3.7797994187494594e-14
+    },
+    "invariant_trivial_B0p3T": {
+      "Q": 1,
+      "det_r": 0.9999999999986118,
+      "unitarity_err": 9.675660907650362e-11,
+      "reality_err": 3.362685824237488e-11,
+      "basis_err": 6.082334662368193e-11
+    },
+    "invariant_reference": {
+      "region": "B=0 (EZ=0 < Delta: trivial), same lead",
+      "Q": 1,
+      "det_r": 0.999999999747181,
+      "unitarity_err": 2.42618369838965e-10,
+      "reality_err": 1.3666064479822185e-14,
+      "basis_err": 3.7797994187494594e-14
+    },
+    "invariant_region_B_sweep_Q": {
+      "B_0.3": 1,
+      "B_0.6": 1,
+      "B_0.8": 1,
+      "B_0.95": -1,
+      "B_1.2": -1,
+      "B_1.5": -1
+    }
+  },
+  "disorder": {
+    "W_100": {
+      "E_T_seeds_ueV": [
+        36.366,
+        37.319,
+        35.612,
+        35.74,
+        35.57,
+        36.732,
+        35.599,
+        37.545,
+        34.847,
+        35.6
+      ],
+      "n_censored": 0,
+      "median_ueV": 35.675664552971064,
+      "q1_ueV": 35.59904085417508,
+      "q3_ueV": 36.64075154313976,
+      "Q_seeds": [
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "frac_topological": 1.0,
+      "det_r_seeds": [
+        -1.0,
+        -1.0,
+        -1.0,
+        -1.0,
+        -1.0,
+        -1.0,
+        -1.0,
+        -1.0,
+        -1.0,
+        -1.0
+      ]
+    },
+    "W_200": {
+      "E_T_seeds_ueV": [
+        38.383,
+        30.717,
+        33.757,
+        32.739,
+        38.575,
+        34.463,
+        32.414,
+        28.54,
+        34.586,
+        33.553
+      ],
+      "n_censored": 0,
+      "median_ueV": 33.65544258268531,
+      "q1_ueV": 32.49527232588991,
+      "q3_ueV": 34.555356920926684,
+      "Q_seeds": [
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "frac_topological": 1.0,
+      "det_r_seeds": [
+        -1.0,
+        -1.0,
+        -1.0,
+        -1.0,
+        -1.0,
+        -1.0,
+        -1.0,
+        -1.0,
+        -1.0,
+        -1.0
+      ]
+    },
+    "W_400": {
+      "E_T_seeds_ueV": [
+        45.079,
+        27.898,
+        13.895,
+        27.895,
+        30.407,
+        30.424,
+        36.018,
+        28.929,
+        26.56,
+        48.939
+      ],
+      "n_censored": 0,
+      "median_ueV": 29.66797005765009,
+      "q1_ueV": 27.895529811300445,
+      "q3_ueV": 34.619307034131594,
+      "Q_seeds": [
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "frac_topological": 1.0,
+      "det_r_seeds": [
+        -1.0,
+        -1.0,
+        -1.0,
+        -1.0,
+        -1.0,
+        -1.0,
+        -1.0,
+        -1.0,
+        -1.0,
+        -1.0
+      ]
+    },
+    "W_800": {
+      "E_T_seeds_ueV": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        14.38,
+        0.0,
+        35.987,
+        60.0
+      ],
+      "n_censored": 1,
+      "median_ueV": 0.0,
+      "q1_ueV": 0.0,
+      "q3_ueV": 10.784727351009161,
+      "Q_seeds": [
+        -1,
+        1,
+        -1,
+        1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        1
+      ],
+      "frac_topological": 0.7,
+      "det_r_seeds": [
+        -0.7442,
+        0.717,
+        -0.9614,
+        0.9832,
+        -0.9945,
+        -0.9839,
+        -0.9998,
+        -0.9751,
+        -0.9995,
+        0.9997
+      ]
+    }
+  },
+  "spectral_proxy": {
+    "note": "E2 = 3rd-smallest |E| of the closed wire, fig5 case1 of run_analysis.py",
+    "clean_E2_ueV": 37.67,
+    "median16_ueV": {
+      "100": 35.74,
+      "200": 29.45,
+      "400": 19.21,
+      "800": 5.12
+    },
+    "median_same10seeds_ueV": {
+      "100": 36.04,
+      "200": 29.23,
+      "400": 18.04,
+      "800": 5.69
+    }
+  },
+  "comparison": {
+    "W_half_transport_ueV": 548.3,
+    "W_half_spectral_fig5_ueV": 410.5,
+    "W_half_spectral_key_numbers_ueV": 410.6,
+    "median_transport_gap_ueV": {
+      "100": 35.7,
+      "200": 33.7,
+      "400": 29.7,
+      "800": 0.0
+    },
+    "median_spectral_E2_ueV": {
+      "100": 35.74,
+      "200": 29.45,
+      "400": 19.21,
+      "800": 5.12
+    }
+  },
+  "runtime_s": 3.1
+}
