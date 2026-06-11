@@ -6,34 +6,40 @@
 \newcommand{\ueV}{\,\mu\mathrm{eV}}
 \title{Majorana zero modes in silicon: quantified failure of the conduction band\\
 and a conditional hole-based route}
-\author{W.~T.~Trevena\thanks{Analysis, verification, and manuscript preparation were
-assisted by AI agents (Claude, Anthropic), including three adversarial numerical-review
-rounds documented in the repository's corrections log. All quantitative claims
-regenerate from committed code.}}
-\date{June 2026 --- draft v1}
+\author{W.~T.~Trevena}
+\date{June 2026 --- draft v2 (revised after external review)}
 \begin{document}
 \maketitle
 
 \begin{abstract}
-We assess the feasibility of Majorana zero modes (MZMs) in silicon within a validated
-Bogoliubov--de Gennes framework subjected to three adversarial review rounds.
+We assess the feasibility of Majorana zero modes (MZMs) in silicon within a
+Bogoliubov--de Gennes framework whose validation chain, derivations, parameter
+tables, and convergence studies are given in the Supplementary Material.
 Conduction-band wires fail independently on three axes: spin--orbit coupling (best
 intrinsic topological gap $\sim$1.5$\ueV$; engineered SOC of $\alpha \gtrsim 0.02$\,eV\,\AA{}
 required), a $g\!=\!2$ ceiling forbidding induced gaps above $116\ueV$ at attainable
 fields (quantifying the optimal-coupling rule of Cole \emph{et al.}), and valley
-physics---where we prove an exact two-band equivalence for smooth interfaces and show
-that each single-atomic interface step acts as a near-$\pi$ Josephson junction
-($\Delta\varphi = 2k_0 a/4 \approx 0.85\pi$) whose bound state caps the topological gap
-at $\sim$18\% from the very first step. For the valence band we derive the gate-field
+physics---where we prove an exact two-band equivalence for smooth interfaces
+(Supplement S2) and derive that each single-atomic interface step acts as a
+near-$\pi$ Josephson junction in the band-projected pairing
+($\Delta\varphi = 2k_0 a/4 \approx 0.85\pi$, Supplement S3), with a numerically
+determined bound state that caps the topological gap at $\sim$18\% from the very
+first step. For the valence band we derive the gate-field
 covariation of $(\alpha, \hat g, m^*)$ from a four-band Luttinger--Kohn fin model: the
 field that builds direct-Rashba SOC ($\alpha$ up to 0.054\,eV\,\AA, spin--orbit lengths
 32--101\,nm, matching FinFET measurements) suppresses the wire-axis $g$ below 1.1 while
-raising $g_z$ to 2.4--4.2. Field-orientation maps then select the viable designs: a
-thick boron-doped superconducting-silicon (Si:B) parent with tilted field supports
-10--19$\ueV$ using only measured Si:B critical fields, and a 10--20\,nm Si:B film is
-orbitally consistent with Pauli limiting, supporting 21--27$\ueV$; an Al-film parent
-would support 34--55$\ueV$ (metallization-renormalized) if a hard-gap Al/Si-hole
-interface existed. Transport calculations show our spectral disorder thresholds are
+raising $g_z$ to 2.4--4.2. Field-orientation maps then select the candidate designs. We label each input
+by its evidentiary status. \emph{Measured}: Si:B critical fields
+($B_{c2} \approx 0.1$--0.4\,T), FinFET hole $l_{so}$ and $g$-tensors.
+\emph{Derived}: the LK operating curve and all topological-gap numbers.
+\emph{Hypothetical}: Pauli-limited thin-film Si:B and a hard-gap Al/Si-hole
+interface. On measured inputs only, a thick Si:B parent with tilted field
+supports 10--19$\ueV$. If 10--20\,nm Si:B films reach their Pauli limit (a
+fabrication target consistent with measured coherence lengths, but not yet
+demonstrated), 21--27$\ueV$; if a hard-gap Al/Si-hole interface existed (none
+does), 34--55$\ueV$ metallization-renormalized. The hole route is therefore a
+\emph{conditional} feasibility result, decided by two standard measurements,
+not an established platform. Transport calculations show our spectral disorder thresholds are
 conservative, identify an abrupt class-D breakdown mode, and warn that step-disordered
 wires become Anderson insulators whose hard-looking transport gaps mask degraded local
 protection. Quasiparticle poisoning restricts the measured-field all-silicon stack to
@@ -87,9 +93,15 @@ fin cross-section (validated against exact [100] bulk masses) with vertical fiel
 bare ($\kappa$) and orbital Zeeman terms. Transport uses a dimension-generic RGF with
 Ando wave-matched normal leads and an $E=0$ reflection invariant $\mathrm{sign}\det r$
 (kwant-equivalent; validated against closed-chain spectra to $10^{-13}$). A test suite
-pins every exact claim. All caricature choices (GL/Zeeman-linear parent gaps, iid
-onsite disorder with correlation length $dx$, hard-wall LK geometry) are stated where
-used.
+pins every exact claim. $\Delta$ is a \emph{static} induced gap (the
+$\omega = 0$ limit of the standard tunneling self-energy); parent-gap field
+suppression enters via $\Delta_{ind} \le \Delta_p(B)$ and metallization via the
+quasiparticle weight $Z$ (Supplement S6) --- we do not solve the dynamical
+self-energy problem, and the renormalized numbers bound the direction of the
+omitted physics. All caricature choices (GL/Zeeman-linear parent gaps, iid
+onsite disorder with correlation length $dx$, hard-wall LK geometry) are stated
+where used; complete per-figure parameter tables, seed families, and
+discretization/length/seed/grid convergence studies are in Supplement S4--S5.
 
 \section{Conduction band: three independent failures}
 \subsection{Spin--orbit shortfall}\label{sec:soc}
@@ -120,14 +132,22 @@ $g=2$, the weak-coupling optimum identified by Cole, Das Sarma and Stanescu
 \subsection{Valley physics: an exact equivalence and step junctions}\label{sec:valley}
 \textbf{Equivalence theorem.} With inter-valley pairing and \emph{any} uniform VO
 phase, the wire maps unitarily onto two decoupled bands at $\mu \mp |\lambda|$ with
-pairing $\pm\Delta$ (verified to $3\times10^{-10}\ueV$ for valley-scalar and
+pairing $\pm\Delta$ (proof in Supplement S2; the key step is the exact invariance
+of the inter-valley pairing under the valley rotation, $U_\phi D U_\phi^T = D$;
+verified numerically to $3\times10^{-10}\ueV$ for valley-scalar and
 phase-locked Dresselhaus SOC alike): smooth interfaces are benign, and valley
 splitting $\gtrsim$100$\ueV$ buys single-valley topology, as the simple wedge picture
 suggests.
 
-\textbf{Step junctions.} Real interfaces are stepped, and each single-atomic step
-shifts the VO phase by $\Delta\varphi = 2k_0(a/4) \approx 0.85\pi$---accidentally close
-to $\pi$ in silicon. A controlled comparison (same-sign staircase vs sign-randomized
+\textbf{Step junctions.} Real interfaces are stepped. That steps shift the VO
+phase by $2k_0\delta z$ is established quantum-dot physics
+\cite{hosseinkhani,losert}; the new statement here is its consequence under
+inter-valley \emph{pairing}: projecting the pairing onto the local valley bands
+gives each band an order parameter of phase $-\phi(x)$ (Supplement S3, exact),
+so each single-atomic step, $\Delta\varphi = 2k_0(a/4) \approx 0.85\pi$, is a
+Josephson junction accidentally close to $\pi$ in silicon. The bound-state
+depth is determined numerically; the transparent short-junction formula
+$\Delta_t|\cos(\Delta\varphi/2)|$ tracks it to 10--25\% (Supplement Table 1). A controlled comparison (same-sign staircase vs sign-randomized
 steps of equal magnitude) shows net phase \emph{winding} is irrelevant at realistic
 densities; the damage is per-step junction physics: a single step binds a subgap state
 at 4.0$\ueV$ (18\% of the 22$\ueV$ clean gap), deepening to a Kitaev domain-wall zero
@@ -187,7 +207,10 @@ strong---34--55$\ueV$ metallization-renormalized---\emph{if} a hard-gap Al/Si-ho
 interface can be fabricated (none exists); (ii)~a \textbf{thick Si:B} parent
 \cite{bustarret,prb2010,duvauchelle,chiodi2024} is orientation-tolerant and, using only
 measured critical fields ($B_{c2} \approx 0.1$--0.4\,T, orbital-limited), supports
-10--19$\ueV$ at fields tilted toward out-of-plane (riding $g_z$); the in-plane
+10--19$\ueV$ at fields tilted toward out-of-plane (riding $g_z$; the center
+point is 11.0$\ueV$ bare / 10.1 renormalized on the finest optimizer grids,
+Supplement S5, and moves over 8--11$\ueV$ under $\pm$20\% parent-model
+variations); the in-plane
 wire-axis direction is $g$-starved (3--9$\ueV$). (iii)~The \textbf{thin-film Si:B}
 route turns the ``Pauli-limited'' hypothesis into a fabrication target: with coherence
 lengths from measured perpendicular critical fields ($\xi = 29$--57\,nm), films of
@@ -247,14 +270,26 @@ standard characterization, neither requires a working topological device, and th
 electron-side miscut prediction offers a third, independent test of the framework. We
 caution that the step-junction mechanism, the orientation maps, and all platform
 numbers inherit the stated caricatures (single channel, hard-wall LK, parent-gap
-models, iid disorder), and that this work's verification relied on documented
-adversarial AI review rounds; the corrections log accompanies the code.
+models, iid disorder); their domains of validity and the sensitivity of every
+headline number to them are quantified in Supplement S5--S6.
 
-\section*{Repository}
-All results regenerate from the committed code (\texttt{run\_analysis.py},
-\texttt{transport.py}, \texttt{transport\_valley.py}, \texttt{lk\_holes.py},
-\texttt{qp\_poisoning.py}, \texttt{tests.py}); figures and the numerical ledger are
-under \texttt{output/}.
+\section*{Data and code availability}
+All figures and quoted numbers regenerate from the committed code
+(\texttt{run\_analysis.py}, \texttt{transport.py}, \texttt{transport\_valley.py},
+\texttt{lk\_holes.py}, \texttt{qp\_poisoning.py}, \texttt{convergence.py},
+\texttt{tests.py}); the numerical ledger is \texttt{output/data/key\_numbers.json},
+and per-figure regeneration commands, the environment specification, and seed
+families are documented in \texttt{README.md} and Supplement S4/S8. An archival
+snapshot (repository URL, commit hash, and DOI) will be deposited on Zenodo at
+submission. [Zenodo DOI: to be inserted at submission.]
+
+\section*{Acknowledgments and provenance}
+Analysis, numerical implementation, verification, and manuscript preparation
+were assisted by AI agents (Claude, Anthropic) under the author's direction.
+Three internal numerical-review rounds and one round of revisions in response
+to external review are documented, with their corrections, in the repository
+log. AI-assisted review supplements but does not substitute for the
+reproducibility materials above; all claims trace to committed, seeded code.
 
 \begin{thebibliography}{99}\small
 \bibitem{kitaev} A. Kitaev, Phys.-Usp. \textbf{44}, 131 (2001).
@@ -288,4 +323,8 @@ under \texttt{output/}.
 \bibitem{chiodi2024} arXiv:2404.02748 (2024).
 \bibitem{reviewSiSC} arXiv:2108.03031 (review).
 \bibitem{maier} F. Maier, J. Klinovaja, D. Loss, Phys. Rev. B \textbf{90}, 195421
-(2
+(2014).
+\bibitem{reeg} C. Reeg, D. Loss, J. Klinovaja, Phys. Rev. B \textbf{97}, 165425 (2018).
+\bibitem{nijholt} B. Nijholt, A. R. Akhmerov, Phys. Rev. B \textbf{93}, 235434 (2016).
+\end{thebibliography}
+\end{document}
