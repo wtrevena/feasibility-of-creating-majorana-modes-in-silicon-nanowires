@@ -104,6 +104,5 @@ sections; provenance conventional.
 - 6-band k·p + electrostatics for g_x (top theory item, acknowledged in text).
 - Dynamical parent self-energy; orbital magnetic effects; correlated disorder.
 - Zenodo deposit + license (author action at submission).
-- fig13 convergence figure rendering (data complete in
-  output/data/convergence.json; this sandbox lacks matplotlib — regenerate
-  with `python convergence.py` once available).
+- (fig13 now rendered: vector PDF from the committed JSON via
+  tools/fig13_pgf.py and embedded in Supplement S5.)

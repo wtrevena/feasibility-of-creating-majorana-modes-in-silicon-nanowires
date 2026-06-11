@@ -296,7 +296,8 @@ Osca--Ruiz--Serra criterion.\\
 
 \section{Convergence and sensitivity}\label{s:conv}
 All entries regenerate from \texttt{convergence.py}
-(\texttt{output/data/convergence.json}). The observables are the clean
+(\texttt{output/data/convergence.json}); Fig.~\ref{f:conv} summarizes.
+The observables are the clean
 two-valley wedge gap and the single-step ($0.85\pi$) bound state at the
 Fig.~9 baseline ($\mu = 35\ueV$, $B = 1.5$\,T, $E_v = 150\ueV$), plus the
 hole-platform optimizer outputs.
@@ -376,6 +377,16 @@ Si:B center point: $9.9 \to 11.0\ueV$ bare ($9.1 \to 9.8$--$10.1$
 renormalized) at finer optimizer grids --- the production grid was
 $\sim$10\% \emph{conservative}. The Pauli-scenario and Al numbers are
 grid-exact. Main-text ranges are quoted accordingly.
+
+\begin{figure}[tb]\centering
+\includegraphics[width=\textwidth]{output/fig13_convergence.pdf}
+\caption{Convergence summary (data: \texttt{convergence.json}; rendered by
+\texttt{tools/fig13\_pgf.py}, equivalently \texttt{convergence.py} with
+matplotlib). $^{\dagger}$The $L$-dependence of the step-ensemble median in
+panel (b) is physical (Anderson localization), not a discretization artifact;
+see Table~\ref{t:conv1}, note $a$.}
+\label{f:conv}
+\end{figure}
 
 \section{Parent superconductor models and the $g=2$ optimum}\label{s:parent}
 \subsection{What $\Delta$ is}

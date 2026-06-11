@@ -76,4 +76,4 @@ S5, parent models S6, QP S7, reproducibility S8). Independent vet round 5
 passed (two mislabels fixed: Al 34/55 renorm-vs-bare; QP Al inputs).
 Remaining for the author before submission: license choice, Zenodo deposit +
 DOI insertion, journal selection, 6-band k·p g_x item (acknowledged in text),
-regenerate fig13 with matplotlib (`python convergence.py`; data committed).
+(fig13 done — rendered via tools/fig13_pgf.py, embedded in Supplement S5).

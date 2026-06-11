@@ -271,7 +271,9 @@ committed code. To be disclosed in the acknowledgments or supplement.
 ## 7. Convergence and sensitivity (reviewer round 4, convergence.py)
 
 All headline numbers were re-derived under systematic refinement
-(output/data/convergence.json; fig13 pending matplotlib availability):
+(output/data/convergence.json; fig13_convergence.pdf/.png rendered from the
+same JSON by tools/fig13_pgf.py — pgfplots, network/matplotlib-free; the
+matplotlib version regenerates via `python convergence.py`):
 
 - **dx**: clean wedge gap 22.165 / 22.221 / 22.234 µeV at dx = 10/5/2.5 nm;
   single-step (0.85π) 4.037/4.034/4.033. Production dx = 5 nm is converged to

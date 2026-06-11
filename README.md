@@ -38,6 +38,8 @@ and **[PAPER_OUTLINE.md](PAPER_OUTLINE.md)**.
 
 ## Quickstart
 
+`./setup_env.sh` does all of the below (Windows commands in its header), or manually:
+
 ```bash
 python -m venv venv
 source venv/bin/activate        # Windows: .\venv\Scripts\activate
@@ -59,7 +61,7 @@ signatures) and resume if interrupted.
 | fig 12 (transport, invariant, W-scan) | `python transport.py` |
 | valley transport / L-scaling | `python transport_valley.py` |
 | QP-poisoning bounds | `python qp_poisoning.py` |
-| fig 13 + convergence tables | `python convergence.py` (sections checkpoint to `output/data/convergence.json`) |
+| fig 13 + convergence tables | `python convergence.py` (sections checkpoint to `output/data/convergence.json`); matplotlib-free render: `python tools/fig13_pgf.py` |
 | assertion suite | `python tests.py` |
 
 Every quoted number in the paper lives in `output/data/key_numbers.json`, written only
