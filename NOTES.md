@@ -66,6 +66,14 @@ New modules (all validated, all results in output/data/<name>.json + key_numbers
 5. [ ] Strain (Bir-Pikus b,d) — flagged optional future work in benchmarks.
 6. [ ] Zenodo DOI — author action.
 
+## NEXT STEP (queued, NOT yet started — user instruction 2026-06-10 ~10:35pm PST)
+
+- [ ] Process new reviewer feedback:
+      20260610_10.35pmPST_revision_comments.txt (repo root, not yet read).
+      Plan when picked up: read fully -> triage demands vs already-done work
+      (rounds 4-5 + six-band program) -> AskUserQuestion on scope ->
+      parallel agents for computational items -> integrate, vet, push.
+
 ## REMAINING OPEN ITEMS (post six-band program)
 
 - [ ] Zenodo DOI mint from tag (author action; placeholder in paper).
