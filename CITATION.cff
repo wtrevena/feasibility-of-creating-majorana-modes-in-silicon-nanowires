@@ -16,4 +16,4 @@ abstract: >
   valley pi-junctions; conditional hole-platform designs with Si:B and Al
   parents). All manuscript figures and numbers regenerate from this repository.
 keywords: [Majorana, silicon, valleytronics, superconductivity, BdG, Luttinger-Kohn]
-license: NOASSERTION
+license: MIT

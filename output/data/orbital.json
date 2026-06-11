@@ -1,0 +1,419 @@
+{
+ "A": {
+  "Nx": 300,
+  "Ny": 4,
+  "dx_nm": 5.0,
+  "dy_nm": 5.0,
+  "mu_edge_ueV": 2280.7922,
+  "mu_edge_noSOC_ueV": 2328.4539,
+  "EZ_ueV": 63.6722,
+  "max_matrix_diff_ueV": 0.0,
+  "max_spectrum_diff_ueV": 3.3474417625458185e-13,
+  "spectrum_match_1e-8": true,
+  "max_nonhermiticity_ueV": 0.0,
+  "max_PHS_asymmetry_ueV": 3.072309562884518e-13,
+  "plaquette_phase_rad_at_1T_5x5nm": 0.03798168622023776,
+  "complete": true
+ },
+ "B": {
+  "params": {
+   "B_T": 1.0,
+   "EZ_ueV": 63.672,
+   "Delta_ind_ueV": 33.0,
+   "alpha_eVA": 0.06,
+   "m_rel": 0.25,
+   "g": 2.2,
+   "Nx": 300,
+   "dx_nm": 5.0,
+   "dy_nm": 5.0,
+   "note": "E_Z fixed from |B| (g=2.2, along sigma_x) for ALL theta in both columns; theta enters only through B_perp = |B| sin(theta) in the Peierls phases, so with-vs-without differences are purely orbital. The no-orbital value is theta-independent by construction (identical Hamiltonian)."
+  },
+  "W10nm": {
+   "no_orbital": {
+    "E0_ueV": 0.0041,
+    "gap_ueV": 33.0202,
+    "end_weight": 0.781,
+    "mu_edge_ueV": 6066.51,
+    "B_perp_T": 0.0
+   },
+   "theta0": {
+    "E0_ueV": 0.0041,
+    "gap_ueV": 33.0202,
+    "end_weight": 0.781,
+    "mu_edge_ueV": 6066.51,
+    "B_perp_T": 0.0
+   },
+   "theta15": {
+    "E0_ueV": 0.0034,
+    "gap_ueV": 33.0171,
+    "end_weight": 0.781,
+    "mu_edge_ueV": 6066.51,
+    "B_perp_T": 0.2588
+   },
+   "theta30": {
+    "E0_ueV": 0.0014,
+    "gap_ueV": 33.006,
+    "end_weight": 0.782,
+    "mu_edge_ueV": 6066.51,
+    "B_perp_T": 0.5
+   },
+   "theta45": {
+    "E0_ueV": 0.0014,
+    "gap_ueV": 32.9849,
+    "end_weight": 0.784,
+    "mu_edge_ueV": 6066.51,
+    "B_perp_T": 0.7071
+   },
+   "theta60": {
+    "E0_ueV": 0.0043,
+    "gap_ueV": 32.9568,
+    "end_weight": 0.785,
+    "mu_edge_ueV": 6066.51,
+    "B_perp_T": 0.866
+   },
+   "theta75": {
+    "E0_ueV": 0.0065,
+    "gap_ueV": 32.9318,
+    "end_weight": 0.786,
+    "mu_edge_ueV": 6066.51,
+    "B_perp_T": 0.9659
+   },
+   "theta90": {
+    "E0_ueV": 0.0072,
+    "gap_ueV": 32.9217,
+    "end_weight": 0.787,
+    "mu_edge_ueV": 6066.51,
+    "B_perp_T": 1.0
+   }
+  },
+  "W20nm": {
+   "no_orbital": {
+    "E0_ueV": 0.0063,
+    "gap_ueV": 32.9494,
+    "end_weight": 0.786,
+    "mu_edge_ueV": 2280.79,
+    "B_perp_T": 0.0
+   },
+   "theta0": {
+    "E0_ueV": 0.0063,
+    "gap_ueV": 32.9494,
+    "end_weight": 0.786,
+    "mu_edge_ueV": 2280.79,
+    "B_perp_T": 0.0
+   },
+   "theta15": {
+    "E0_ueV": 0.0087,
+    "gap_ueV": 32.9547,
+    "end_weight": 0.787,
+    "mu_edge_ueV": 2280.79,
+    "B_perp_T": 0.2588
+   },
+   "theta30": {
+    "E0_ueV": 0.015,
+    "gap_ueV": 32.9433,
+    "end_weight": 0.791,
+    "mu_edge_ueV": 2280.79,
+    "B_perp_T": 0.5
+   },
+   "theta45": {
+    "E0_ueV": 0.0219,
+    "gap_ueV": 32.8673,
+    "end_weight": 0.796,
+    "mu_edge_ueV": 2280.79,
+    "B_perp_T": 0.7071
+   },
+   "theta60": {
+    "E0_ueV": 0.0263,
+    "gap_ueV": 32.7212,
+    "end_weight": 0.801,
+    "mu_edge_ueV": 2280.79,
+    "B_perp_T": 0.866
+   },
+   "theta75": {
+    "E0_ueV": 0.0276,
+    "gap_ueV": 32.5691,
+    "end_weight": 0.804,
+    "mu_edge_ueV": 2280.79,
+    "B_perp_T": 0.9659
+   },
+   "theta90": {
+    "E0_ueV": 0.0277,
+    "gap_ueV": 32.5036,
+    "end_weight": 0.805,
+    "mu_edge_ueV": 2280.79,
+    "B_perp_T": 1.0
+   }
+  },
+  "W40nm": {
+   "no_orbital": {
+    "E0_ueV": 0.0293,
+    "gap_ueV": 32.7955,
+    "end_weight": 0.802,
+    "mu_edge_ueV": 679.9,
+    "B_perp_T": 0.0
+   },
+   "theta0": {
+    "E0_ueV": 0.0293,
+    "gap_ueV": 32.7955,
+    "end_weight": 0.802,
+    "mu_edge_ueV": 679.9,
+    "B_perp_T": 0.0
+   },
+   "theta15": {
+    "E0_ueV": 0.0288,
+    "gap_ueV": 32.9576,
+    "end_weight": 0.807,
+    "mu_edge_ueV": 679.9,
+    "B_perp_T": 0.2588
+   },
+   "theta30": {
+    "E0_ueV": 0.0191,
+    "gap_ueV": 33.1319,
+    "end_weight": 0.821,
+    "mu_edge_ueV": 679.9,
+    "B_perp_T": 0.5
+   },
+   "theta45": {
+    "E0_ueV": 0.0013,
+    "gap_ueV": 32.797,
+    "end_weight": 0.838,
+    "mu_edge_ueV": 679.9,
+    "B_perp_T": 0.7071
+   },
+   "theta60": {
+    "E0_ueV": 0.0036,
+    "gap_ueV": 31.6162,
+    "end_weight": 0.853,
+    "mu_edge_ueV": 679.9,
+    "B_perp_T": 0.866
+   },
+   "theta75": {
+    "E0_ueV": 0.0008,
+    "gap_ueV": 30.3845,
+    "end_weight": 0.863,
+    "mu_edge_ueV": 679.9,
+    "B_perp_T": 0.9659
+   },
+   "theta90": {
+    "E0_ueV": 0.0028,
+    "gap_ueV": 29.8648,
+    "end_weight": 0.866,
+    "mu_edge_ueV": 679.9,
+    "B_perp_T": 1.0
+   }
+  },
+  "complete": true
+ },
+ "C": {
+  "params": {
+   "B_T": 0.333,
+   "theta_deg": 38.57,
+   "B_perp_T": 0.2076,
+   "EZ_ueV": 21.203,
+   "Delta_ind_ueV": 11.3,
+   "alpha_eVA": 0.06,
+   "m_rel": 0.25,
+   "g": 2.2,
+   "Nx": 300,
+   "dx_nm": 5.0,
+   "note": "Preferred tilted SiB_meas operating point: B=0.333 T, Delta_ind=11.3 ueV (key_numbers fig8 center_SiB_measured_args), tilt theta=38.57 deg (fig11 LK-tensor optimum). Suppression = 1 - gap(orbital)/gap(no orbital) at fixed E_Z from |B|."
+  },
+  "W10nm_dy5nm": {
+   "no_orbital": {
+    "E0_ueV": 1.5199,
+    "gap_ueV": 14.2724,
+    "end_weight": 0.444,
+    "mu_edge_ueV": 6066.51,
+    "B_perp_T": 0.0
+   },
+   "orbital": {
+    "E0_ueV": 1.5109,
+    "gap_ueV": 14.2679,
+    "end_weight": 0.444,
+    "mu_edge_ueV": 6066.51,
+    "B_perp_T": 0.2076
+   },
+   "W_nm": 10.0,
+   "suppression_pct": 0.032
+  },
+  "W15nm_dy5nm": {
+   "no_orbital": {
+    "E0_ueV": 1.4233,
+    "gap_ueV": 14.2478,
+    "end_weight": 0.446,
+    "mu_edge_ueV": 3529.28,
+    "B_perp_T": 0.0
+   },
+   "orbital": {
+    "E0_ueV": 1.396,
+    "gap_ueV": 14.2406,
+    "end_weight": 0.446,
+    "mu_edge_ueV": 3529.28,
+    "B_perp_T": 0.2076
+   },
+   "W_nm": 15.0,
+   "suppression_pct": 0.051
+  },
+  "W20nm_dy5nm": {
+   "no_orbital": {
+    "E0_ueV": 1.269,
+    "gap_ueV": 14.2176,
+    "end_weight": 0.448,
+    "mu_edge_ueV": 2280.79,
+    "B_perp_T": 0.0
+   },
+   "orbital": {
+    "E0_ueV": 1.2121,
+    "gap_ueV": 14.2087,
+    "end_weight": 0.449,
+    "mu_edge_ueV": 2280.79,
+    "B_perp_T": 0.2076
+   },
+   "W_nm": 20.0,
+   "suppression_pct": 0.063
+  },
+  "W25nm_dy5nm": {
+   "no_orbital": {
+    "E0_ueV": 1.0553,
+    "gap_ueV": 14.1813,
+    "end_weight": 0.449,
+    "mu_edge_ueV": 1582.39,
+    "B_perp_T": 0.0
+   },
+   "orbital": {
+    "E0_ueV": 0.9601,
+    "gap_ueV": 14.1706,
+    "end_weight": 0.452,
+    "mu_edge_ueV": 1582.39,
+    "B_perp_T": 0.2076
+   },
+   "W_nm": 25.0,
+   "suppression_pct": 0.075
+  },
+  "W30nm_dy5nm": {
+   "no_orbital": {
+    "E0_ueV": 0.8005,
+    "gap_ueV": 14.1397,
+    "end_weight": 0.452,
+    "mu_edge_ueV": 1154.3,
+    "B_perp_T": 0.0
+   },
+   "orbital": {
+    "E0_ueV": 0.6665,
+    "gap_ueV": 14.1232,
+    "end_weight": 0.456,
+    "mu_edge_ueV": 1154.3,
+    "B_perp_T": 0.2076
+   },
+   "W_nm": 30.0,
+   "suppression_pct": 0.117
+  },
+  "W40nm_dy5nm": {
+   "no_orbital": {
+    "E0_ueV": 0.3248,
+    "gap_ueV": 14.0451,
+    "end_weight": 0.459,
+    "mu_edge_ueV": 679.9,
+    "B_perp_T": 0.0
+   },
+   "orbital": {
+    "E0_ueV": 0.1625,
+    "gap_ueV": 14.0016,
+    "end_weight": 0.47,
+    "mu_edge_ueV": 679.9,
+    "B_perp_T": 0.2076
+   },
+   "W_nm": 40.0,
+   "suppression_pct": 0.31
+  },
+  "W7.5nm_dy2.5nm": {
+   "no_orbital": {
+    "E0_ueV": 1.5533,
+    "gap_ueV": 14.2844,
+    "end_weight": 0.443,
+    "mu_edge_ueV": 14242.02,
+    "B_perp_T": 0.0
+   },
+   "orbital": {
+    "E0_ueV": 1.5502,
+    "gap_ueV": 14.2819,
+    "end_weight": 0.443,
+    "mu_edge_ueV": 14242.02,
+    "B_perp_T": 0.2076
+   },
+   "W_nm": 7.5,
+   "suppression_pct": 0.018
+  },
+  "W10nm_dy2.5nm": {
+   "no_orbital": {
+    "E0_ueV": 1.5337,
+    "gap_ueV": 14.2771,
+    "end_weight": 0.444,
+    "mu_edge_ueV": 9266.07,
+    "B_perp_T": 0.0
+   },
+   "orbital": {
+    "E0_ueV": 1.5272,
+    "gap_ueV": 14.2734,
+    "end_weight": 0.444,
+    "mu_edge_ueV": 9266.07,
+    "B_perp_T": 0.2076
+   },
+   "W_nm": 10.0,
+   "suppression_pct": 0.026
+  },
+  "W12.5nm_dy2.5nm": {
+   "no_orbital": {
+    "E0_ueV": 1.5048,
+    "gap_ueV": 14.2682,
+    "end_weight": 0.445,
+    "mu_edge_ueV": 6482.53,
+    "B_perp_T": 0.0
+   },
+   "orbital": {
+    "E0_ueV": 1.4932,
+    "gap_ueV": 14.2632,
+    "end_weight": 0.445,
+    "mu_edge_ueV": 6482.53,
+    "B_perp_T": 0.2076
+   },
+   "W_nm": 12.5,
+   "suppression_pct": 0.035
+  },
+  "W15nm_dy2.5nm": {
+   "no_orbital": {
+    "E0_ueV": 1.4643,
+    "gap_ueV": 14.2577,
+    "end_weight": 0.445,
+    "mu_edge_ueV": 4776.35,
+    "B_perp_T": 0.0
+   },
+   "orbital": {
+    "E0_ueV": 1.4451,
+    "gap_ueV": 14.2514,
+    "end_weight": 0.446,
+    "mu_edge_ueV": 4776.35,
+    "B_perp_T": 0.2076
+   },
+   "W_nm": 15.0,
+   "suppression_pct": 0.044
+  },
+  "suppression_vs_W": {
+   "7.5nm": 0.018,
+   "10nm": 0.026,
+   "12.5nm": 0.035,
+   "15nm": 0.044,
+   "20nm": 0.063,
+   "25nm": 0.075,
+   "30nm": 0.117,
+   "40nm": 0.31
+  },
+  "W_10pct_interp_nm": null,
+  "powerlaw_fit": {
+   "power": 1.54,
+   "W10pct_nm": 495.8,
+   "note": "no 10% crossing inside the sampled 7.5-40 nm range; W10pct_nm is a power-law extrapolation far outside it (single-subband model)"
+  },
+  "complete": true
+ }
+}

@@ -761,5 +761,787 @@
         0.81
       ]
     }
+  },
+  "realism": {
+    "SE_selfenergy": {
+      "SiB_meas": {
+        "Dp_ueV": 29.1,
+        "gap_vs_Gamma": {
+          "3": 2.735,
+          "6": 5.016,
+          "10": 7.609,
+          "15": 3.865,
+          "20": 0.597,
+          "30": 0.0,
+          "45": 0.0,
+          "70": 0.0,
+          "100": 0.0,
+          "150": 0.0,
+          "250": 0.0,
+          "400": 0.0
+        },
+        "best_gap": 7.61,
+        "best_Gamma": 10,
+        "static_at_matched_Dind": 7.41,
+        "static_bare_quoted": 11.0,
+        "static_renorm_quoted": 10.1
+      },
+      "SiB_pauli": {
+        "Dp_ueV": 33.1,
+        "gap_vs_Gamma": {
+          "3": 2.74,
+          "6": 4.985,
+          "10": 7.597,
+          "15": 10.355,
+          "20": 12.666,
+          "30": 14.923,
+          "45": 7.324,
+          "70": 0.0,
+          "100": 0.0,
+          "150": 0.0,
+          "250": 0.0,
+          "400": 0.0
+        },
+        "best_gap": 14.92,
+        "best_Gamma": 30,
+        "static_at_matched_Dind": 15.23,
+        "static_bare_quoted": 30.6,
+        "static_renorm_quoted": 19.7
+      },
+      "Al": {
+        "Dp_ueV": 55.5,
+        "gap_vs_Gamma": {
+          "3": 2.685,
+          "6": 5.014,
+          "10": 7.897,
+          "15": 11.057,
+          "20": 13.867,
+          "30": 18.646,
+          "45": 24.224,
+          "70": 15.316,
+          "100": 2.891,
+          "150": 0.0,
+          "250": 0.0,
+          "400": 0.0
+        },
+        "best_gap": 24.22,
+        "best_Gamma": 45,
+        "static_at_matched_Dind": 22.89,
+        "static_bare_quoted": 50.4,
+        "static_renorm_quoted": 34.4
+      }
+    },
+    "DY_dynes": {
+      "SiB_meas_op": {
+        "gammaD/Dp=0.0001": {
+          "subgap_DOS_frac": 0.0001,
+          "T_below_which_Dynes_dominates_mK": 37.4
+        },
+        "gammaD/Dp=0.001": {
+          "subgap_DOS_frac": 0.001,
+          "T_below_which_Dynes_dominates_mK": 49.2
+        },
+        "gammaD/Dp=0.01": {
+          "subgap_DOS_frac": 0.01,
+          "T_below_which_Dynes_dominates_mK": 71.2
+        }
+      },
+      "SiB_pauli_op": {
+        "gammaD/Dp=0.0001": {
+          "subgap_DOS_frac": 0.0001,
+          "T_below_which_Dynes_dominates_mK": 42.5
+        },
+        "gammaD/Dp=0.001": {
+          "subgap_DOS_frac": 0.001,
+          "T_below_which_Dynes_dominates_mK": 56.0
+        },
+        "gammaD/Dp=0.01": {
+          "subgap_DOS_frac": 0.01,
+          "T_below_which_Dynes_dominates_mK": 80.9
+        }
+      },
+      "Al_op": {
+        "gammaD/Dp=0.0001": {
+          "subgap_DOS_frac": 0.0001,
+          "T_below_which_Dynes_dominates_mK": 71.3
+        },
+        "gammaD/Dp=0.001": {
+          "subgap_DOS_frac": 0.001,
+          "T_below_which_Dynes_dominates_mK": 93.8
+        },
+        "gammaD/Dp=0.01": {
+          "subgap_DOS_frac": 0.01,
+          "T_below_which_Dynes_dominates_mK": 135.7
+        }
+      }
+    },
+    "DP_parent_disorder": {
+      "validation_uniform": {
+        "sitewise": 31.313,
+        "build_wire": 31.313
+      },
+      "Delta_disorder_10pct_lc50nm": {
+        "p5": 29.45,
+        "p50": 30.51,
+        "p95": 31.3
+      },
+      "Delta_disorder_25pct_lc50nm": {
+        "p5": 25.05,
+        "p50": 27.55,
+        "p95": 29.36
+      },
+      "Delta_disorder_50pct_lc50nm": {
+        "p5": 14.28,
+        "p50": 21.64,
+        "p95": 24.75
+      },
+      "clean_E2": 31.31
+    },
+    "CD_correlated_disorder": {
+      "mu_grf_lc10nm_rms25": {
+        "p5": 23.23,
+        "p50": 24.49,
+        "p95": 26.1
+      },
+      "mu_grf_lc10nm_rms50": {
+        "p5": 9.22,
+        "p50": 13.66,
+        "p95": 17.63
+      },
+      "mu_grf_lc10nm_rms100": {
+        "p5": 1.03,
+        "p50": 3.68,
+        "p95": 6.51
+      },
+      "mu_grf_lc25nm_rms25": {
+        "p5": 20.0,
+        "p50": 22.16,
+        "p95": 24.31
+      },
+      "mu_grf_lc25nm_rms50": {
+        "p5": 2.66,
+        "p50": 6.81,
+        "p95": 10.26
+      },
+      "mu_grf_lc25nm_rms100": {
+        "p5": 2.98,
+        "p50": 7.07,
+        "p95": 10.27
+      },
+      "mu_grf_lc50nm_rms25": {
+        "p5": 11.5,
+        "p50": 19.62,
+        "p95": 23.95
+      },
+      "mu_grf_lc50nm_rms50": {
+        "p5": 1.76,
+        "p50": 4.78,
+        "p95": 7.3
+      },
+      "mu_grf_lc50nm_rms100": {
+        "p5": 3.92,
+        "p50": 5.8,
+        "p95": 9.34
+      },
+      "mu_grf_lc100nm_rms25": {
+        "p5": 6.64,
+        "p50": 16.01,
+        "p95": 21.9
+      },
+      "mu_grf_lc100nm_rms50": {
+        "p5": 0.43,
+        "p50": 3.52,
+        "p95": 5.69
+      },
+      "mu_grf_lc100nm_rms100": {
+        "p5": 4.17,
+        "p50": 7.23,
+        "p95": 10.4
+      },
+      "mu_iid_rms25": {
+        "p50": 30.41
+      },
+      "mu_iid_rms50": {
+        "p50": 28.94
+      },
+      "mu_iid_rms100": {
+        "p50": 23.1
+      },
+      "alpha_20pct_lc50nm": {
+        "p5": 27.33,
+        "p50": 29.59,
+        "p95": 30.62
+      },
+      "g_20pct_lc50nm": {
+        "p5": 23.66,
+        "p50": 27.46,
+        "p95": 30.71
+      }
+    }
+  },
+  "pairing_mix": {
+    "A_validation": {
+      "clean": {
+        "max_matrix_diff_J": 0.0,
+        "lowest6_ref_ueV": [
+          8e-06,
+          8e-06,
+          22.221323,
+          22.221323,
+          22.263789,
+          22.263789
+        ],
+        "lowest6_mix_eta0_ueV": [
+          8e-06,
+          8e-06,
+          22.221323,
+          22.221323,
+          22.263789,
+          22.263789
+        ],
+        "max_abs_dE_ueV": 1.5631940186722204e-13,
+        "passes_tol_1em9_ueV": true
+      },
+      "step085pi": {
+        "max_matrix_diff_J": 0.0,
+        "lowest6_ref_ueV": [
+          4.3e-05,
+          4.3e-05,
+          4.034045,
+          4.034045,
+          22.338782,
+          22.338782
+        ],
+        "lowest6_mix_eta0_ueV": [
+          4.3e-05,
+          4.3e-05,
+          4.034045,
+          4.034045,
+          22.338782,
+          22.338782
+        ],
+        "max_abs_dE_ueV": 9.592326932761353e-14,
+        "passes_tol_1em9_ueV": true
+      },
+      "runtime_s": 0.5
+    },
+    "B_clean_vs_eta": {
+      "rows": {
+        "0.00": {
+          "E0_ueV": 0.0,
+          "E2_ueV": 22.221,
+          "end_weight": 0.968
+        },
+        "0.05": {
+          "E0_ueV": 0.0,
+          "E2_ueV": 20.866,
+          "end_weight": 0.955
+        },
+        "0.10": {
+          "E0_ueV": 0.0001,
+          "E2_ueV": 19.473,
+          "end_weight": 0.936
+        },
+        "0.20": {
+          "E0_ueV": 0.0015,
+          "E2_ueV": 16.423,
+          "end_weight": 0.883
+        },
+        "0.30": {
+          "E0_ueV": 0.0103,
+          "E2_ueV": 13.573,
+          "end_weight": 0.809
+        },
+        "0.50": {
+          "E0_ueV": 0.1506,
+          "E2_ueV": 7.407,
+          "end_weight": 0.621
+        },
+        "0.70": {
+          "E0_ueV": 0.4079,
+          "E2_ueV": 3.258,
+          "end_weight": 0.506
+        },
+        "1.00": {
+          "E0_ueV": 0.0,
+          "E2_ueV": 22.221,
+          "end_weight": 0.968
+        }
+      },
+      "runtime_s": 0.8,
+      "params": {
+        "mu_ueV": 35.0,
+        "B_T": 1.5,
+        "Delta_ueV": 50.0,
+        "alpha_eVA": 0.05,
+        "lam_ueV": 75.0,
+        "N": 500,
+        "dx_m": 5e-09
+      }
+    },
+    "C_step085pi_vs_eta": {
+      "rows": {
+        "0.00": {
+          "E0_ueV": 0.0,
+          "E2_ueV": 4.034,
+          "end_weight": 0.968
+        },
+        "0.05": {
+          "E0_ueV": 0.0,
+          "E2_ueV": 3.569,
+          "end_weight": 0.965
+        },
+        "0.10": {
+          "E0_ueV": 0.0001,
+          "E2_ueV": 3.121,
+          "end_weight": 0.958
+        },
+        "0.20": {
+          "E0_ueV": 0.0002,
+          "E2_ueV": 2.308,
+          "end_weight": 0.929
+        },
+        "0.30": {
+          "E0_ueV": 0.0018,
+          "E2_ueV": 1.675,
+          "end_weight": 0.86
+        },
+        "0.50": {
+          "E0_ueV": 0.067,
+          "E2_ueV": 1.591,
+          "end_weight": 0.515
+        },
+        "0.70": {
+          "E0_ueV": 1.0255,
+          "E2_ueV": 2.299,
+          "end_weight": 0.289
+        },
+        "1.00": {
+          "E0_ueV": 0.0099,
+          "E2_ueV": 0.392,
+          "end_weight": 0.486
+        }
+      },
+      "runtime_s": 0.6,
+      "params": {
+        "mu_ueV": 35.0,
+        "B_T": 1.5,
+        "Delta_ueV": 50.0,
+        "alpha_eVA": 0.05,
+        "lam_ueV": 75.0,
+        "N": 500,
+        "dx_m": 5e-09
+      }
+    },
+    "E_threshold_refine": {
+      "step_fine_grid": {
+        "0.15": {
+          "E0_ueV": 0.0001,
+          "E2_ueV": 2.698,
+          "end_weight": 0.946
+        },
+        "0.22": {
+          "E0_ueV": 0.0003,
+          "E2_ueV": 2.164,
+          "end_weight": 0.919
+        },
+        "0.25": {
+          "E0_ueV": 0.0005,
+          "E2_ueV": 1.962,
+          "end_weight": 0.902
+        },
+        "0.28": {
+          "E0_ueV": 0.0011,
+          "E2_ueV": 1.781,
+          "end_weight": 0.88
+        },
+        "0.35": {
+          "E0_ueV": 0.0056,
+          "E2_ueV": 1.474,
+          "end_weight": 0.79
+        },
+        "0.40": {
+          "E0_ueV": 0.0148,
+          "E2_ueV": 1.39,
+          "end_weight": 0.69
+        }
+      },
+      "ensemble_eta0_same8seeds_E2_ueV": [
+        0.724,
+        0.786,
+        0.403,
+        1.502,
+        0.236,
+        1.001,
+        0.208,
+        0.422
+      ],
+      "ensemble_eta0_median_E2_ueV": 0.573,
+      "eta_star_2x_deepening": 0.242,
+      "runtime_s": 1.0
+    },
+    "D_ensemble_eta0.1": {
+      "eta": 0.1,
+      "seeds": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "E0_ueV": [
+        0.0002,
+        0.0001,
+        0.0018,
+        0.0001,
+        0.0001,
+        0.0013,
+        0.0005,
+        0.0001
+      ],
+      "E2_ueV": [
+        1.481,
+        0.921,
+        1.846,
+        2.419,
+        0.66,
+        1.792,
+        1.773,
+        2.229
+      ],
+      "median_E2_ueV": 1.782,
+      "runtime_s": 0.6
+    },
+    "D_ensemble_eta0.3": {
+      "eta": 0.3,
+      "seeds": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "E0_ueV": [
+        0.0001,
+        0.0008,
+        0.0006,
+        0.0007,
+        0.0014,
+        0.0007,
+        0.0007,
+        0.0009
+      ],
+      "E2_ueV": [
+        4.316,
+        3.619,
+        5.431,
+        4.592,
+        3.136,
+        3.707,
+        5.571,
+        5.938
+      ],
+      "median_E2_ueV": 4.454,
+      "runtime_s": 0.7
+    }
+  },
+  "morphology": {
+    "secA": {
+      "gamma_kgam1_s50nm": {
+        "p5": 0.188,
+        "p50": 0.648,
+        "p95": 1.7,
+        "frac_E2_below_1ueV": 0.786,
+        "E0_med": 0.0021,
+        "E0_max": 0.0248,
+        "n": 14
+      },
+      "exact_fig9_poisson_fixed": {
+        "p5": 0.188,
+        "p50": 0.648,
+        "p95": 1.7,
+        "frac_E2_below_1ueV": 0.786,
+        "E0_med": 0.0021,
+        "E0_max": 0.0248,
+        "n": 14
+      },
+      "_exact_check_max_abs_diff_ueV": 4.665421977079198e-07,
+      "_exact_check_pass": true,
+      "_fig9_ref_median_ueV": 0.648,
+      "_target_median_ueV": 0.65,
+      "_gamma_vs_exact_median_ratio": 1.0
+    },
+    "secB": {
+      "theta0.05deg_s156nm": {
+        "p5": 0.523,
+        "p50": 1.962,
+        "p95": 3.065,
+        "frac_E2_below_1ueV": 0.25,
+        "E0_med": 0.1525,
+        "E0_max": 0.4923,
+        "n": 12
+      },
+      "theta0.1deg_s78nm": {
+        "p5": 0.264,
+        "p50": 1.124,
+        "p95": 2.77,
+        "frac_E2_below_1ueV": 0.333,
+        "E0_med": 0.0117,
+        "E0_max": 0.254,
+        "n": 12
+      },
+      "theta0.2deg_s39nm": {
+        "p5": 0.002,
+        "p50": 0.005,
+        "p95": 0.022,
+        "frac_E2_below_1ueV": 1.0,
+        "E0_med": 0.0002,
+        "E0_max": 0.0022,
+        "n": 12
+      },
+      "theta0.5deg_s16nm": {
+        "p5": 0.0,
+        "p50": 0.0,
+        "p95": 0.001,
+        "frac_E2_below_1ueV": 1.0,
+        "E0_med": 0.0001,
+        "E0_max": 0.0002,
+        "n": 12
+      }
+    },
+    "secC": {
+      "chi90deg_seff78nm": {
+        "p5": 0.388,
+        "p50": 1.524,
+        "p95": 3.642,
+        "frac_E2_below_1ueV": 0.333,
+        "E0_med": 0.0459,
+        "E0_max": 0.3912,
+        "n": 12
+      },
+      "chi45deg_seff110nm": {
+        "p5": 0.664,
+        "p50": 1.743,
+        "p95": 3.448,
+        "frac_E2_below_1ueV": 0.333,
+        "E0_med": 0.1566,
+        "E0_max": 0.3663,
+        "n": 12
+      },
+      "chi20deg_seff227nm": {
+        "p5": 0.947,
+        "p50": 2.229,
+        "p95": 3.61,
+        "frac_E2_below_1ueV": 0.083,
+        "E0_med": 0.042,
+        "E0_max": 0.4194,
+        "n": 12
+      },
+      "chi10deg_seff448nm": {
+        "p5": 1.181,
+        "p50": 3.168,
+        "p95": 3.733,
+        "frac_E2_below_1ueV": 0.0,
+        "E0_med": 0.0046,
+        "E0_max": 0.0363,
+        "n": 12
+      },
+      "chi5deg_seff893nm": {
+        "p5": 3.212,
+        "p50": 3.786,
+        "p95": 4.06,
+        "frac_E2_below_1ueV": 0.0,
+        "E0_med": 0.0002,
+        "E0_max": 0.0025,
+        "n": 12
+      }
+    },
+    "secD": {
+      "ramp_w0nm": {
+        "p5": 0.13,
+        "p50": 0.539,
+        "p95": 1.831,
+        "frac_E2_below_1ueV": 0.667,
+        "E0_med": 0.0348,
+        "E0_max": 0.8586,
+        "n": 12
+      },
+      "ramp_w2nm": {
+        "p5": 0.132,
+        "p50": 0.515,
+        "p95": 2.007,
+        "frac_E2_below_1ueV": 0.583,
+        "E0_med": 0.04,
+        "E0_max": 0.9362,
+        "n": 12
+      },
+      "ramp_w5nm": {
+        "p5": 0.145,
+        "p50": 0.552,
+        "p95": 2.169,
+        "frac_E2_below_1ueV": 0.583,
+        "E0_med": 0.0411,
+        "E0_max": 1.0805,
+        "n": 12
+      },
+      "ramp_w10nm": {
+        "p5": 0.183,
+        "p50": 0.635,
+        "p95": 2.569,
+        "frac_E2_below_1ueV": 0.583,
+        "E0_med": 0.051,
+        "E0_max": 1.4315,
+        "n": 12
+      },
+      "_grid": "N=1000, dx=2.5nm (ramps resolved)",
+      "_paired": "same terrace seeds for all w"
+    },
+    "secE": {
+      "fsup1.0": {
+        "p5": 0.135,
+        "p50": 0.498,
+        "p95": 1.436,
+        "frac_E2_below_1ueV": 0.833,
+        "E0_med": 0.0078,
+        "E0_max": 0.2727,
+        "n": 12
+      },
+      "fsup0.7": {
+        "p5": 0.132,
+        "p50": 0.468,
+        "p95": 1.423,
+        "frac_E2_below_1ueV": 0.833,
+        "E0_med": 0.0071,
+        "E0_max": 0.2724,
+        "n": 12
+      },
+      "fsup0.5": {
+        "p5": 0.13,
+        "p50": 0.449,
+        "p95": 1.415,
+        "frac_E2_below_1ueV": 0.833,
+        "E0_med": 0.0066,
+        "E0_max": 0.2723,
+        "n": 12
+      },
+      "fsup0.3": {
+        "p5": 0.129,
+        "p50": 0.43,
+        "p95": 1.407,
+        "frac_E2_below_1ueV": 0.833,
+        "E0_med": 0.0062,
+        "E0_max": 0.2723,
+        "n": 12
+      },
+      "_grid": "N=1000, dx=2.5nm (3nm dips resolved)",
+      "_paired": "same terrace seeds for all fsup"
+    },
+    "secF": {
+      "bunch2_theta0.1deg": {
+        "p5": 2.659,
+        "p50": 5.866,
+        "p95": 10.193,
+        "frac_E2_below_1ueV": 0.0,
+        "E0_med": 0.0005,
+        "E0_max": 0.0089,
+        "n": 12
+      },
+      "_note": "each bunch = one 1.7pi (== -0.3pi) jump; compare secB theta0.1deg"
+    },
+    "clean_reference": {
+      "coarse_N500_dx5nm": {
+        "E0": 0.0,
+        "E2": 22.221
+      },
+      "fine_N1000_dx2p5nm": {
+        "E0": 0.0,
+        "E2": 22.234
+      }
+    }
+  },
+  "orbital": {
+    "model": "2D strip + Peierls phases of B_perp on x-hoppings (Landau gauge, y from centre); E_Z from full |B|, g=2.2; orbital effect isolated as with-vs-without Peierls at fixed E_Z",
+    "validation": {
+      "spectrum_match_B0_ueV": 3.3474417625458185e-13,
+      "nonhermiticity_ueV": 0.0,
+      "PHS_asymmetry_ueV": 3.072309562884518e-13,
+      "plaquette_phase_rad_1T": 0.03798
+    },
+    "tilt_scan_B1T_D33": {
+      "W10nm": {
+        "no_orbital_gap_ueV": 33.0202,
+        "with_orbital_gap_ueV": {
+          "theta0": 33.0202,
+          "theta15": 33.0171,
+          "theta30": 33.006,
+          "theta45": 32.9849,
+          "theta60": 32.9568,
+          "theta75": 32.9318,
+          "theta90": 32.9217
+        },
+        "suppression_pct_at_theta90": 0.3
+      },
+      "W20nm": {
+        "no_orbital_gap_ueV": 32.9494,
+        "with_orbital_gap_ueV": {
+          "theta0": 32.9494,
+          "theta15": 32.9547,
+          "theta30": 32.9433,
+          "theta45": 32.8673,
+          "theta60": 32.7212,
+          "theta75": 32.5691,
+          "theta90": 32.5036
+        },
+        "suppression_pct_at_theta90": 1.4
+      },
+      "W40nm": {
+        "no_orbital_gap_ueV": 32.7955,
+        "with_orbital_gap_ueV": {
+          "theta0": 32.7955,
+          "theta15": 32.9576,
+          "theta30": 33.1319,
+          "theta45": 32.797,
+          "theta60": 31.6162,
+          "theta75": 30.3845,
+          "theta90": 29.8648
+        },
+        "suppression_pct_at_theta90": 8.9
+      }
+    },
+    "design_point": {
+      "B_T": 0.333,
+      "theta_deg": 38.57,
+      "B_perp_T": 0.2076,
+      "EZ_ueV": 21.203,
+      "Delta_ind_ueV": 11.3,
+      "alpha_eVA": 0.06,
+      "m_rel": 0.25,
+      "g": 2.2,
+      "Nx": 300,
+      "dx_nm": 5.0,
+      "note": "Preferred tilted SiB_meas operating point: B=0.333 T, Delta_ind=11.3 ueV (key_numbers fig8 center_SiB_measured_args), tilt theta=38.57 deg (fig11 LK-tensor optimum). Suppression = 1 - gap(orbital)/gap(no orbital) at fixed E_Z from |B|.",
+      "suppression_pct_vs_W": {
+        "7.5nm": 0.018,
+        "10nm": 0.026,
+        "12.5nm": 0.035,
+        "15nm": 0.044,
+        "20nm": 0.063,
+        "25nm": 0.075,
+        "30nm": 0.117,
+        "40nm": 0.31
+      }
+    },
+    "W_orbital_10pct_nm": null,
+    "powerlaw": {
+      "power": 1.54,
+      "W10pct_nm": 495.8,
+      "note": "no 10% crossing inside the sampled 7.5-40 nm range; W10pct_nm is a power-law extrapolation far outside it (single-subband model)"
+    }
   }
 }

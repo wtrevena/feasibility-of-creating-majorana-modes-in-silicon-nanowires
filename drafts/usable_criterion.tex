@@ -1,0 +1,178 @@
+% ============================================================================
+% drafts/usable_criterion.tex  (R5-5, drafting only -- to be integrated)
+% Operational definition of "usable" demanded by referee round 5, plus a
+% decision table evaluating the seven master-table rows against the tiers.
+% Requires booktabs and the \ueV macro. All numbers traced to
+% output/data/key_numbers.json tags (in comments) or committed text.
+% ============================================================================
+\subsection{Operational criteria}\label{sec:usable}
+``Usable'' is not a single threshold; we therefore evaluate every platform
+scenario of Table~\ref{t:master} against three named, quantitative tiers.
+
+\paragraph{Tier S (spectroscopy/detection).} Topological gap
+$\Delta_{\mathrm{top}} \ge 2 k_B T_{\mathrm{eff}}$ at
+$T_{\mathrm{eff}} = 50$\,mK, i.e.\ $\Delta_{\mathrm{top}} \ge 8.6\ueV$
+($k_B \times 50\,\mathrm{mK} = 4.3\ueV$), \emph{and} Majorana splitting
+$E_0 \le 0.1\ueV$ at $L \le 3\,\mu$m. The gap threshold ensures the
+subgap feature is resolvable against thermal smearing in tunneling
+spectroscopy at a routinely achieved electron temperature; the splitting
+threshold keeps the zero-bias peak unsplit at spectroscopic resolution and
+is met by our clean finite-wire checks ($E_0 = 3\times10^{-4}\ueV$ at
+$2\,\mu$m, repository Fig.~1; hole-wire check $E_0 \approx 0$ at $3\,\mu$m,
+\texttt{fig8.hole\_wire\_finite\_check}).
+
+\paragraph{Tier N (nonlocality/fusion).} Additionally
+$\Delta_{\mathrm{top}} \ge 20\ueV$ and disorder half-gap threshold
+$W_{1/2} \ge 200\ueV$. The $20\ueV$ value is the protection scale used
+throughout this paper (e.g.\ the $\alpha$ requirement of
+Sec.~\ref{sec:soc}, \texttt{fig3.alpha\_needed\_for\_20ueV}), giving
+$\gtrsim 4\,k_BT$ headroom for braiding/fusion protocols at 50\,mK; the
+disorder threshold demands a finite margin against realistic potential
+fluctuations, against which the transport-level
+$W_{1/2} \approx 548\ueV$ of the engineered-electron case
+(Sec.~\ref{sec:transport}) and the hole-wire gap persisting to
+$W \approx 300\ueV$ (\texttt{fig8.hole\_wire\_finite\_check}) are measured.
+
+\paragraph{Tier Q (parity-coherent qubit).} Additionally a sustainable
+parent quasiparticle fraction $x_{qp} \le 10^{-6}$ at
+$T_{\mathrm{eff}} \ge 50$\,mK given the parent gap \emph{at the operating
+field}: $10^{-6}$ is the standard parity-lifetime requirement, and 50\,mK
+is the coldest electron temperature routinely demonstrated for
+quasiparticle thermalization. From \texttt{qp\_poisoning.py}
+(Supplement S7): the Si:B operating points ($\Delta_p(B^*) = 29$--$33\ueV$)
+require $T_{\mathrm{eff}} \le 25$--29\,mK and therefore fail; the Al
+reference ($\Delta_p = 150\ueV$ at 1\,T) requires only
+$T_{\mathrm{eff}} \le 130$\,mK and passes.
+
+\begin{table}[tb]\centering\small
+\caption{Decision table: each platform scenario of Table~\ref{t:master}
+against the operational tiers. COND = passes the numerical thresholds only
+under the stated condition; $^{\dagger}$ = scenario rests on an
+undemonstrated parent/interface (Table~\ref{t:master}), so any PASS is
+contingent on its realization.}
+\label{t:tiers}
+\begin{tabular}{l c c c l}
+\toprule
+Platform (Table~\ref{t:master} row) & Tier S & Tier N & Tier Q & limiting condition\\
+\midrule
+% gap 1.55 < 8.6 (fig3.gap_at_intrinsic_Si_opt_1e3_ueV)
+(1) Si $e^-$ intrinsic & FAIL & FAIL & FAIL & gap $1.55\ueV \ll 8.6\ueV$\\
+% clean 29.8 passes S/N (fig8.comparison; fig5.case1 W_half=410.6 spectral,
+% 548 transport) BUT step ensembles retain 0.7-2.3 ueV (fig6/fig9, L-dep.)
+(2) Si $e^-$ engineered$^{\dagger}$ & COND & COND & COND &
+clean wire passes; interface steps reduce ensembles to 0.7--2.3$\ueV$\\
+% best tilt 14.6 >= 8.6 (fig11 LK SiB_meas); center renorm 9.8-10.1 but
+% parent-model variation 7.6-10.0 r (convergence.H_parent) -> S pass at tilt;
+% N fails (<20); Q fails (Teff <= 25 mK, fig8.qp_poisoning)
+(3) Si:B thick, LK tensor & PASS$^{a}$ & FAIL & FAIL &
+$T_{\mathrm{eff}} \le 25$\,mK for $x_{qp}\!=\!10^{-6}$; gap $< 20\ueV$\\
+% best tilt 13.8; center 11.0/9.8-10.1 (convergence.G_grid.SiB_meas[_renorm])
+(4) Si:B thick, empirical tensor & PASS$^{a}$ & FAIL & FAIL &
+$T_{\mathrm{eff}} \le 25$\,mK for $x_{qp}\!=\!10^{-6}$; gap $< 20\ueV$\\
+% 30.6 bare / 19.7-20.2 renorm (convergence); renorm straddles the 20 ueV
+% line; W_half ~300 ueV OK; Q fails (Teff <= 29 mK, fig8.qp_poisoning)
+(5) Si:B thin film, Pauli$^{\dagger}$ & PASS$^{\dagger}$ & COND$^{b}$ & FAIL &
+parent hypothetical; renormalized gap 19.7--20.2$\ueV$ straddles $20\ueV$\\
+% 55.0 bare (fig11 empirical Al); not renormalized; W_half for Al-parameter
+% hole wire not separately computed; Q would pass (130 mK) but inherits N
+(6) Al film, orientation max$^{\dagger}$ & PASS$^{\dagger}$ & COND$^{c}$ &
+COND$^{c}$ & interface nonexistent; orientation-map values bare\\
+% 50.4 bare / 34.4 renorm (convergence.F_nk.Al, fig8.center_Al_renormalized);
+% Q passes via Al parent 150 ueV -> Teff <= 130 mK (fig8.qp_poisoning)
+(7) Al film, renorm.\ center$^{\dagger}$ & PASS$^{\dagger}$ &
+PASS$^{\dagger,d}$ & PASS$^{\dagger}$ & interface nonexistent\\
+\bottomrule
+\end{tabular}\\[2pt]
+{\footnotesize $^{a}$At tilted field. The center-point renormalized value
+(9.8--10.1$\ueV$) clears $8.6\ueV$ with $< 2\ueV$ margin and dips to
+7.6$\ueV$ under $\pm20\%$ parent-model variation (Supplement S5): the Tier-S
+pass is orientation- and parent-model-contingent.
+$^{b}$Bare value 30.6$\ueV$ passes; the metallization-renormalized value
+19.7--20.2$\ueV$ sits at the $20\ueV$ line.
+$^{c}$Disorder threshold not separately computed at Al-parameter operating
+points; gap criterion met on bare values only.
+$^{d}$$W_{1/2}$ taken from the Si:B-class hole-wire check at comparable
+$\Delta_{ind}$; an Al-specific disorder run is future work.}
+\end{table}
+
+% ============================================================================
+%% R5-5 LANGUAGE-SOFTENING LIST (for the lead session to apply to paper.tex)
+%% Every sentence in paper.tex found using absolute language, with line
+%% context and a suggested softened replacement. Line numbers refer to the
+%% committed paper.tex at review round 5.
+%%
+%% 1. Line 7 (title): "Majorana zero modes in silicon: quantified failure of
+%%    the conduction band and a conditional hole-based route"
+%%    -> "Majorana zero modes in silicon: quantified constraints on the
+%%    conduction band and a conditional hole-based route"
+%%
+%% 2. Line 18 (abstract): "Conduction-band wires fail independently on three
+%%    axes: ..."
+%%    -> "Conduction-band wires face three independent, quantified
+%%    obstructions: ..."
+%%
+%% 3. Lines 20-21 (abstract): "a $g\!=\!2$ ceiling forbidding induced gaps
+%%    above $116\ueV$ at attainable fields"
+%%    -> "a $g\!=\!2$ ceiling that, within our single-channel model, prevents
+%%    induced gaps above $116\ueV$ from reaching the topological phase at
+%%    attainable fields"
+%%
+%% 4. Lines 41-43 (abstract): "The hole route is therefore a \emph{conditional}
+%%    feasibility result, decided by two standard measurements, not an
+%%    established platform."
+%%    -> "The hole route is therefore a \emph{conditional} feasibility result
+%%    whose status two standard measurements would largely settle; it is not
+%%    an established platform."
+%%
+%% 5. Lines 47-49 (abstract): "Two measurements decide the platform: the
+%%    parallel critical field of thin Si:B films, and the wire-axis hole
+%%    $g$-tensor in device geometry."
+%%    -> "Two measurements would most sharply constrain the platform: the
+%%    parallel critical field of thin Si:B films, and the wire-axis hole
+%%    $g$-tensor in device geometry."
+%%
+%% 6. Lines 62-63 (intro): "This paper makes those reasons quantitative, finds
+%%    that one of them hides a qualitatively new failure mechanism, ..."
+%%    -> "... hides a qualitatively new obstruction ..."
+%%
+%% 7. Lines 66-68 (intro): "...the identification of single-atomic interface
+%%    steps as near-$\pi$ Josephson junctions that destroy protection from
+%%    the first step"
+%%    -> "...as near-$\pi$ Josephson junctions that sharply degrade
+%%    protection from the very first step (single-step cap: 18\% of the
+%%    clean gap in our model)"
+%%
+%% 8. Line 107 (section title): "\section{Conduction band: three independent
+%%    failures}"
+%%    -> "\section{Conduction band: three independent obstructions}"
+%%
+%% 9. Lines 110-112: "below dilution-fridge protection scales and destroyed
+%%    by any realistic disorder."
+%%    -> "below dilution-fridge protection scales and removed by onsite
+%%    disorder well below the modeled thresholds (Sec.~5)."
+%%
+%% 10. Lines 124-125: "any induced gap $\Delta \ge 116\ueV$ can never reach
+%%     the topological phase at attainable fields"
+%%     -> "any induced gap $\Delta \ge 116\ueV$ cannot reach the topological
+%%     phase for $B \le 2$\,T within the single-channel $g=2$ model"
+%%
+%% 11. Line 168: "holes are immune by construction."
+%%     -> "holes, which have no conduction-band valleys, are not subject to
+%%     this mechanism within our model."
+%%
+%% 12. Line 266 (discussion): "Two measurements now decide the silicon
+%%     question."
+%%     -> "Two measurements would now do the most to settle the silicon
+%%     question."
+%%
+%% Notes for the lead session:
+%%  - The phrases "cannot host usable" and "dead" do NOT occur in paper.tex
+%%    (RESULTS.md line 4 says "conduction-band silicon is dead" -- out of
+%%    scope here, but consider softening to "infeasible within every modeled
+%%    channel" if RESULTS.md is also being revised).
+%%  - Line 22 "we prove an exact two-band equivalence": recommend RETAINING
+%%    "prove" -- it is backed by Supplement S2's theorem and the 1e-6 ueV
+%%    test-suite verification, so it is not overreach.
+%%  - README.md line 13 "Two measurements decide it" mirrors items 5/12 if
+%%    the README is swept in the same pass.
+% ============================================================================

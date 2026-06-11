@@ -453,12 +453,135 @@ versus measured $g_{xx} \approx 1.9$--$2.3$; all platform numbers are
 therefore carried under both tensors, and the 6-band+Poisson resolution
 is the top open theory item.
 
+\section{Parent and disorder realism controls}\label{s:controls}
+Four controls (review round 5) test the headline numbers against the
+caricatures they rest on. All regenerate from \texttt{realism.py},
+\texttt{orbital.py}, \texttt{pairing\_mix.py}, \texttt{morphology.py}
+(ledgers \texttt{realism/orbital/pairing\_mix/morphology} in
+\texttt{key\_numbers.json}).
+
+\subsection{Dynamic tunneling self-energy}\label{s:dynse}
+The static $\Delta$ is replaced by the full frequency-dependent BCS
+self-energy $\Sigma(\omega) = -\Gamma(\omega + \Delta_p\tau_x)/
+\sqrt{\Delta_p^2-\omega^2}$; quasiparticle energies solve
+$\det[H(k)+\Sigma(\omega)-\omega]=0$ (batched eigenvalue crossing scan;
+$\alpha$, $g$, $m^*$ renormalization is automatic through the
+$\omega$-linear term). Validation: static limit ($\Delta_p \to \infty$,
+$\Sigma \to -\Gamma\tau_x$) matches \texttt{bulk\_gap\_ueV} to 0.07\%;
+$(n_k, n_\omega)$ doubling changes results by 0.001\%. The topological
+criterion is exact at $\omega = 0$: $E_Z^2 > \Gamma^2 + \mu^2$.
+
+\begin{table}[h]\centering\small
+\caption{Dynamic topological gap ($\ueV$) vs tunnel coupling $\Gamma$ at the
+three parent operating points ($\mu = 0$, empirical-center hole tensor).}
+\label{t:dynse}
+\begin{tabular}{lccccccccc|ccc}
+\toprule
+$\Gamma$ ($\ueV$) & 3 & 6 & 10 & 15 & 20 & 30 & 45 & 70 & 100 &
+best ($\Gamma^*$) & static@$\Delta_{ind}(\Gamma^*)$ & static bare\\
+\midrule
+Si:B meas.\ (0.33\,T) & 2.7 & 5.0 & \textbf{7.6} & 3.9 & 0.6 & 0 & 0 & 0 & 0
+ & 7.6 (10) & 7.4 & 11.0\\
+Si:B Pauli (1\,T) & 2.7 & 5.0 & 7.6 & 10.4 & 12.7 & \textbf{14.9} & 7.3 & 0 & 0
+ & 14.9 (30) & 15.2 & 30.6\\
+Al (1.7\,T) & 2.7 & 5.0 & 7.9 & 11.1 & 13.9 & 18.7 & \textbf{24.2} & 15.3 & 2.9
+ & 24.2 (45) & 22.9 & 50.4\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The dynamic optimum is $1.4$--$2.1\times$ below the static \emph{bare}
+numbers, sits $24$--$30\%$ below the static-$Z$ \emph{renormalized}
+caricature (10.1 / 19.7 / 34.4), and agrees with the static model evaluated
+at the matched effective induced gap
+$\Gamma^*\Delta_p/(\Gamma^*+\Delta_p)$ to $\lesssim 7\%$ --- the static-$Z$
+treatment is directionally validated, and all main-text gap ranges now carry
+the dynamic correction as the better central estimate. Dynes broadening
+adds a temperature floor rather than a gap penalty: subgap DOS fraction
+$\gamma_D/\Delta_p$ dominates the thermal quasiparticle budget below
+37--71\,mK (Si:B, $\gamma_D/\Delta_p = 10^{-4}$--$10^{-2}$) and
+71--136\,mK (Al), so 50\,mK operation requires
+$\gamma_D/\Delta_p \lesssim 10^{-3}$ for Si:B parents. Correlated
+parent-gap inhomogeneity ($\Delta(x)$, 50\,nm correlation) is benign at the
+10--25\% level (median gap 88--97\% of clean) and halves the gap at 50\%.
+
+\subsection{Orbital magnetic coupling}\label{s:orbital}
+Peierls phases of the perpendicular field component on a 2D strip
+(validated against \texttt{build\_wire\_2d} to $3\times10^{-13}\ueV$ at
+$B_\perp = 0$; exact Hermiticity and PHS). At the preferred tilted Si:B
+operating point ($B = 0.33$\,T, $\theta \approx 39^\circ$,
+$\Delta_{ind} = 11.3\ueV$) the orbital gap suppression is
+\textbf{0.02--0.04\%} for fin widths 7--16\,nm and 0.3\% at 40\,nm
+(scaling $\propto W^{1.5}B_\perp^2$; the 10\% level extrapolates to
+$W \sim$ several hundred nm). Even a full 1\,T out-of-plane field costs
+only 0.3 / 1.4 / 8.9\% at $W = 10/20/40$\,nm, with the zero mode and end
+localization intact. With $\mu$ at the lowest subband edge the transverse
+subband spacing (0.7--6\,meV) dwarfs the orbital matrix elements; omitting
+orbital effects does not alter any orientation-map conclusion at the
+$\ueV$ scale.
+
+\subsection{Pairing-channel mixing}\label{s:mix}
+$D(\eta) = \Delta[\sqrt{1-\eta^2}\,(\nx\otimes i\sigma_y) +
+\eta\,(\nu_0\otimes i\sigma_y)]$ interpolates from the physical
+inter-valley channel to pure intra-valley pairing at preserved total
+weight ($\eta = 0$ reproduces the production builder to
+$2\times10^{-13}\ueV$). The dilution intuition is \emph{wrong} in the
+direction favorable to our claims: the valley rotation that removes a VO
+phase step maps $\nu_0\otimes i\sigma_y \to e^{-i\phi\nz}\otimes
+i\sigma_y$, so the intra channel inherits the step as a pairing-phase
+junction --- the single-step bound state deepens monotonically
+(4.03 $\to$ 3.12 $\to$ 1.68$\ueV$ at $\eta = 0, 0.1, 0.3$; $2\times$ by
+$\eta^* \approx 0.24$; near-zero junction modes at $\eta = 1$). Staircase
+\emph{ensembles} conversely heal with admixture (median $E_2$:
+0.57/1.8/4.5$\ueV$ at $\eta = 0/0.1/0.3$; the phase-blind intra channel
+supplies a pairing floor), so the $\eta = 0$ ensemble gaps quoted in the
+main text are conservative. Physically $\eta \ll \eta^*$: an intra-valley
+pair carries momentum $2k_0$, which a momentum-conserving uniform parent
+cannot supply; intra-valley pairing requires interface-roughness Fourier
+weight at $2k_0$ --- the same small parameter that generates the VO
+coupling itself.
+
+\subsection{Step morphology and correlated electrostatic disorder}
+\label{s:morph}
+\textbf{Morphology} (gamma-distributed terraces, shape $k = 4$; miscut
+$\theta_m$ sets the mean terrace $s = (a/4)/\tan\theta_m$; wire at angle
+$\chi$ to step edges; generator validated against the fig.~9 pipeline to
+$5\times10^{-7}\ueV$ per seed). Reported as $p_5/p_{50}/p_{95}$ of $E_2$
+($\ueV$) and the failure fraction $f_{<1} = P(E_2 < 1\ueV)$:
+miscut scan ($\chi = 90^\circ$): $0.05^\circ$: 0.5/2.0/3.1, $f_{<1}=0.25$;
+$0.1^\circ$: 0.3/1.1/2.8, 0.33; $0.2^\circ$: $\sim$0/0.005/0.02, 1.00;
+$0.5^\circ$: 0/0/0.001, 1.00. Orientation ($\theta_m = 0.1^\circ$):
+$\chi = 90/45/20/10/5^\circ$ medians 1.5/1.7/2.2/3.2/3.8 with $f_{<1}$
+falling $0.33 \to 0$. Finite ramp widths $\le 10$\,nm and VO-amplitude
+dips (to 30\% over 3\,nm) shift medians by only 10--15\% (the latter
+strictly worsening); double-step bunches ($\Delta\varphi \equiv -0.3\pi$)
+give 2.7/5.9/10.2 with $f_{<1} = 0$ at the same height budget. Rare-event
+tails, not medians, are binding: at realistic 0.05--$0.1^\circ$ miscuts
+25--33\% of realizations fail even where the median looks viable ---
+yield is the constraint. Design rule: wires along step edges
+($\chi \lesssim 10^\circ$) on $\le 0.05^\circ$ substrates, or
+deliberately step-bunched templates.
+
+\textbf{Correlated disorder} (Gaussian random field $\mu(x)$, correlation
+length $\lambda_c$, vs iid at matched RMS; hole operating point, clean
+$E_2 = 31.3\ueV$): at 50$\ueV$ RMS the median collapses to
+6.8/4.8/3.5$\ueV$ for $\lambda_c = 25/50/100$\,nm while the iid baseline
+retains 28.9$\ueV$ --- \emph{the iid model overstates robustness by
+$4$--$8\times$ in gap at fixed RMS}, making gate-potential smoothness at
+the few-tens-of-$\ueV$ level the binding fabrication requirement.
+$\alpha$ fluctuations (20\%, $\lambda_c = 50$\,nm) are negligible
+(median 29.6); $g$ fluctuations (20\%) cost $\sim$12\% (median 27.5).
+(Caveat: at RMS $= 100\ueV > E_Z = 64\ueV$ the wire fragments and $E_2$
+no longer measures a topological gap; 10 seeds per cell.)
+
 \section{Reproducibility}\label{s:repro}
 Every figure and quoted number regenerates from the committed code:
 \texttt{run\_analysis.py} (figures 1--11), \texttt{transport.py} /
 \texttt{transport\_valley.py} (RGF, invariant, valley transport),
 \texttt{lk\_holes.py}, \texttt{qp\_poisoning.py},
-\texttt{convergence.py} (this supplement's Sec.~\ref{s:conv}),
+\texttt{convergence.py} (Sec.~\ref{s:conv}), \texttt{realism.py},
+\texttt{orbital.py}, \texttt{pairing\_mix.py}, \texttt{morphology.py}
+(Sec.~\ref{s:controls}),
 \texttt{tests.py} (assertion suite covering the equivalence theorem,
 gauge covariance, analytic dispersions, RGF agreement with closed-chain
 spectra to $10^{-13}$, and regression tests for every bug found in

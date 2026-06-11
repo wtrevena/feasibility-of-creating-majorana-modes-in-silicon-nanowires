@@ -306,3 +306,33 @@ pure-numpy block-tridiagonal shift-invert Lanczos (compat/test_shim.py:
 matches dense eigh to ~1e-12 relative; H-space residual validation guards
 against spurious Ritz values; shift offset 1e-7·scale bounds the solve
 condition number). Production runs with scipy are unaffected.
+
+## 8. Round-5 realism controls (realism.py, orbital.py, pairing_mix.py, morphology.py)
+
+- **Dynamic self-energy** (validated: static limit 0.07%, grid 0.001%): optimal
+  dynamic gaps 7.6 / 14.9 / 24.2 µeV (measured-Si:B Γ*=10, Pauli-Si:B Γ*=30,
+  Al Γ*=45) vs static bare 11.0 / 30.6 / 50.4 — static bare DEMOTED to upper
+  bound; static-renormalized caricature directionally validated (dynamic sits
+  24–30% below it; matched-Δind agreement ≲7%). Dynes: 50 mK operation needs
+  γ_D/Δp ≲ 1e-3 (Si:B). Parent Δ(x) inhomogeneity benign ≤25%.
+- **Orbital coupling**: <0.05% gap suppression at 7–16 nm fin widths at the
+  tilted design point (∝ W^1.5 B_perp²); even 1 T full out-of-plane costs
+  0.3/1.4/8.9% at W=10/20/40 nm. Orientation maps survive.
+- **Pairing mixing**: step mechanism never weakens with intra-valley fraction η
+  (gauge argument: the step reappears as a pairing-phase junction); single-step
+  state 2× deeper by η*≈0.24, near-zero at η=1. Ensembles HEAL with η
+  (0.57→4.5 µeV at η=0→0.3): our η=0 ensembles are conservative. η≪η*
+  expected (2k0 momentum transfer suppression).
+- **Morphology**: yield, not median, is binding — failure fraction P(E2<1µeV)
+  = 25–33% at 0.05–0.1° miscut even where medians look viable; χ≲10° wires
+  along step edges or step-bunched templates empty the tail; ramps ≤10 nm and
+  VO dips shift medians only 10–15%.
+- **Correlated disorder**: smooth µ(x) at 50 µeV RMS collapses hole median gap
+  to 3.5–6.8 µeV (λc=25–100 nm) where iid retains 28.9 — iid overstates
+  robustness 4–8×; gate smoothness is the binding fabrication constraint.
+  α fluctuations negligible; g fluctuations ~12%.
+
+Manuscript: title softened ("quantified constraints"), master assumption table
+(Table 1) + operational tiers S/N/Q (Table 2) added; abstract carries the
+dynamic-corrected numbers. F8 clarification: the 21–27 µeV film range is over
+Pauli-limited thicknesses only (d below the per-branch Pauli thickness).

@@ -1,0 +1,217 @@
+{
+  "SE_selfenergy": {
+    "SiB_meas": {
+      "Dp_ueV": 29.1,
+      "gap_vs_Gamma": {
+        "3": 2.735,
+        "6": 5.016,
+        "10": 7.609,
+        "15": 3.865,
+        "20": 0.597,
+        "30": 0.0,
+        "45": 0.0,
+        "70": 0.0,
+        "100": 0.0,
+        "150": 0.0,
+        "250": 0.0,
+        "400": 0.0
+      },
+      "best_gap": 7.61,
+      "best_Gamma": 10,
+      "static_at_matched_Dind": 7.41,
+      "static_bare_quoted": 11.0,
+      "static_renorm_quoted": 10.1
+    },
+    "SiB_pauli": {
+      "Dp_ueV": 33.1,
+      "gap_vs_Gamma": {
+        "3": 2.74,
+        "6": 4.985,
+        "10": 7.597,
+        "15": 10.355,
+        "20": 12.666,
+        "30": 14.923,
+        "45": 7.324,
+        "70": 0.0,
+        "100": 0.0,
+        "150": 0.0,
+        "250": 0.0,
+        "400": 0.0
+      },
+      "best_gap": 14.92,
+      "best_Gamma": 30,
+      "static_at_matched_Dind": 15.23,
+      "static_bare_quoted": 30.6,
+      "static_renorm_quoted": 19.7
+    },
+    "Al": {
+      "Dp_ueV": 55.5,
+      "gap_vs_Gamma": {
+        "3": 2.685,
+        "6": 5.014,
+        "10": 7.897,
+        "15": 11.057,
+        "20": 13.867,
+        "30": 18.646,
+        "45": 24.224,
+        "70": 15.316,
+        "100": 2.891,
+        "150": 0.0,
+        "250": 0.0,
+        "400": 0.0
+      },
+      "best_gap": 24.22,
+      "best_Gamma": 45,
+      "static_at_matched_Dind": 22.89,
+      "static_bare_quoted": 50.4,
+      "static_renorm_quoted": 34.4
+    }
+  },
+  "DY_dynes": {
+    "SiB_meas_op": {
+      "gammaD/Dp=0.0001": {
+        "subgap_DOS_frac": 0.0001,
+        "T_below_which_Dynes_dominates_mK": 37.4
+      },
+      "gammaD/Dp=0.001": {
+        "subgap_DOS_frac": 0.001,
+        "T_below_which_Dynes_dominates_mK": 49.2
+      },
+      "gammaD/Dp=0.01": {
+        "subgap_DOS_frac": 0.01,
+        "T_below_which_Dynes_dominates_mK": 71.2
+      }
+    },
+    "SiB_pauli_op": {
+      "gammaD/Dp=0.0001": {
+        "subgap_DOS_frac": 0.0001,
+        "T_below_which_Dynes_dominates_mK": 42.5
+      },
+      "gammaD/Dp=0.001": {
+        "subgap_DOS_frac": 0.001,
+        "T_below_which_Dynes_dominates_mK": 56.0
+      },
+      "gammaD/Dp=0.01": {
+        "subgap_DOS_frac": 0.01,
+        "T_below_which_Dynes_dominates_mK": 80.9
+      }
+    },
+    "Al_op": {
+      "gammaD/Dp=0.0001": {
+        "subgap_DOS_frac": 0.0001,
+        "T_below_which_Dynes_dominates_mK": 71.3
+      },
+      "gammaD/Dp=0.001": {
+        "subgap_DOS_frac": 0.001,
+        "T_below_which_Dynes_dominates_mK": 93.8
+      },
+      "gammaD/Dp=0.01": {
+        "subgap_DOS_frac": 0.01,
+        "T_below_which_Dynes_dominates_mK": 135.7
+      }
+    }
+  },
+  "DP_parent_disorder": {
+    "validation_uniform": {
+      "sitewise": 31.313,
+      "build_wire": 31.313
+    },
+    "Delta_disorder_10pct_lc50nm": {
+      "p5": 29.45,
+      "p50": 30.51,
+      "p95": 31.3
+    },
+    "Delta_disorder_25pct_lc50nm": {
+      "p5": 25.05,
+      "p50": 27.55,
+      "p95": 29.36
+    },
+    "Delta_disorder_50pct_lc50nm": {
+      "p5": 14.28,
+      "p50": 21.64,
+      "p95": 24.75
+    },
+    "clean_E2": 31.31
+  },
+  "CD_correlated_disorder": {
+    "mu_grf_lc10nm_rms25": {
+      "p5": 23.23,
+      "p50": 24.49,
+      "p95": 26.1
+    },
+    "mu_grf_lc10nm_rms50": {
+      "p5": 9.22,
+      "p50": 13.66,
+      "p95": 17.63
+    },
+    "mu_grf_lc10nm_rms100": {
+      "p5": 1.03,
+      "p50": 3.68,
+      "p95": 6.51
+    },
+    "mu_grf_lc25nm_rms25": {
+      "p5": 20.0,
+      "p50": 22.16,
+      "p95": 24.31
+    },
+    "mu_grf_lc25nm_rms50": {
+      "p5": 2.66,
+      "p50": 6.81,
+      "p95": 10.26
+    },
+    "mu_grf_lc25nm_rms100": {
+      "p5": 2.98,
+      "p50": 7.07,
+      "p95": 10.27
+    },
+    "mu_grf_lc50nm_rms25": {
+      "p5": 11.5,
+      "p50": 19.62,
+      "p95": 23.95
+    },
+    "mu_grf_lc50nm_rms50": {
+      "p5": 1.76,
+      "p50": 4.78,
+      "p95": 7.3
+    },
+    "mu_grf_lc50nm_rms100": {
+      "p5": 3.92,
+      "p50": 5.8,
+      "p95": 9.34
+    },
+    "mu_grf_lc100nm_rms25": {
+      "p5": 6.64,
+      "p50": 16.01,
+      "p95": 21.9
+    },
+    "mu_grf_lc100nm_rms50": {
+      "p5": 0.43,
+      "p50": 3.52,
+      "p95": 5.69
+    },
+    "mu_grf_lc100nm_rms100": {
+      "p5": 4.17,
+      "p50": 7.23,
+      "p95": 10.4
+    },
+    "mu_iid_rms25": {
+      "p50": 30.41
+    },
+    "mu_iid_rms50": {
+      "p50": 28.94
+    },
+    "mu_iid_rms100": {
+      "p50": 23.1
+    },
+    "alpha_20pct_lc50nm": {
+      "p5": 27.33,
+      "p50": 29.59,
+      "p95": 30.62
+    },
+    "g_20pct_lc50nm": {
+      "p5": 23.66,
+      "p50": 27.46,
+      "p95": 30.71
+    }
+  }
+}

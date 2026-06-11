@@ -9,8 +9,10 @@ a new mechanism: each single-atomic interface step is a near-π Josephson juncti
 caps the topological gap from the very first step. The silicon *valence* band supports a
 conditional design: with Luttinger–Kohn-constrained hole parameters and only *measured*
 Si:B critical fields, a thick boron-doped-Si parent with tilted field reaches
-**10–19 µeV**; Pauli-limited thin-film Si:B (unmeasured) would raise this to 30+ µeV,
-and an Al-film parent to 34–55 µeV. Two measurements decide it: thin-film Si:B B_c∥ and
+**10–19 µeV** static (7.6 µeV under the dynamic self-energy control); Pauli-limited
+thin-film Si:B (unmeasured) raises this to ~15 µeV dynamic / 30 µeV static-bare, and an
+Al-film parent to 24 µeV dynamic / 34 µeV renormalized-center / up to 55 µeV bare over
+orientations. Two measurements would do the most to settle it: thin-film Si:B B_c∥ and
 the device-geometry hole g-tensor.
 See **[RESULTS.md](RESULTS.md)** (nine findings + corrections log)
 and **[PAPER_OUTLINE.md](PAPER_OUTLINE.md)**.
@@ -29,6 +31,10 @@ and **[PAPER_OUTLINE.md](PAPER_OUTLINE.md)**.
 | `transport_valley.py` | dimension-generic RGF for the 8-orbital valley cells (Anderson-insulator analysis) |
 | `qp_poisoning.py` | quasiparticle-poisoning temperature bounds |
 | `convergence.py` | discretization/length/seed/grid/parent-model convergence studies (Supplement S5) |
+| `realism.py` | round-5 controls: dynamic self-energy, Dynes, parent-gap + correlated disorder (Supplement S9) |
+| `orbital.py` | round-5 control: Peierls orbital coupling in the 2D strip (Supplement S9) |
+| `pairing_mix.py` | round-5 control: inter/intra-valley pairing interpolation (Supplement S9) |
+| `morphology.py` | round-5 control: miscut/terrace/bunching/ramp ensembles (Supplement S9) |
 | `paper.tex` / `paper.pdf` | manuscript draft v2 |
 | `supplement.tex` / `supplement.pdf` | Supplementary Material: proofs, parameter tables, convergence |
 | `compat/` | pure-numpy scipy/matplotlib fallback (validated; see compat/scipy docstring) |
@@ -62,6 +68,7 @@ signatures) and resume if interrupted.
 | valley transport / L-scaling | `python transport_valley.py` |
 | QP-poisoning bounds | `python qp_poisoning.py` |
 | fig 13 + convergence tables | `python convergence.py` (sections checkpoint to `output/data/convergence.json`); matplotlib-free render: `python tools/fig13_pgf.py` |
+| round-5 controls | `python realism.py` / `python orbital.py` / `python pairing_mix.py` / `python morphology.py` (each checkpoints to `output/data/<name>.json`) |
 | assertion suite | `python tests.py` |
 
 Every quoted number in the paper lives in `output/data/key_numbers.json`, written only

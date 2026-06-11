@@ -2,12 +2,13 @@
 \usepackage[margin=1in]{geometry}
 \usepackage{amsmath,amssymb}
 \usepackage{graphicx}
+\usepackage{booktabs}
 \usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
 \newcommand{\ueV}{\,\mu\mathrm{eV}}
-\title{Majorana zero modes in silicon: quantified failure of the conduction band\\
+\title{Majorana zero modes in silicon: quantified constraints on the conduction band\\
 and a conditional hole-based route}
 \author{W.~T.~Trevena}
-\date{June 2026 --- draft v2}
+\date{June 2026 --- draft v3}
 \begin{document}
 \maketitle
 
@@ -15,10 +16,10 @@ and a conditional hole-based route}
 We assess the feasibility of Majorana zero modes (MZMs) in silicon within a
 Bogoliubov--de Gennes framework whose validation chain, derivations, parameter
 tables, and convergence studies are given in the Supplementary Material.
-Conduction-band wires fail independently on three axes: spin--orbit coupling (best
+Conduction-band wires face three independent, quantified obstructions: spin--orbit coupling (best
 intrinsic topological gap $\sim$1.5$\ueV$; engineered SOC of $\alpha \gtrsim 0.02$\,eV\,\AA{}
-required), a $g\!=\!2$ ceiling forbidding induced gaps above $116\ueV$ at attainable
-fields (quantifying the optimal-coupling rule of Cole \emph{et al.}), and valley
+required), a $g\!=\!2$ ceiling that, within our single-channel model, prevents induced
+gaps above $116\ueV$ from reaching the topological phase at attainable fields (quantifying the optimal-coupling rule of Cole \emph{et al.}), and valley
 physics---where we prove an exact two-band equivalence for smooth interfaces
 (Supplement S2) and derive that each single-atomic interface step acts as a
 near-$\pi$ Josephson junction in the band-projected pairing
@@ -39,14 +40,23 @@ fabrication target consistent with measured coherence lengths, but not yet
 demonstrated), 21--27$\ueV$; if a hard-gap Al/Si-hole interface existed (none
 does), 34$\ueV$ at the metallization-renormalized center point and up to
 55$\ueV$ \emph{bare} over field orientations. The hole route is therefore a
-\emph{conditional} feasibility result, decided by two standard measurements,
-not an established platform. Transport calculations show our spectral disorder thresholds are
-conservative, identify an abrupt class-D breakdown mode, and warn that step-disordered
-wires become Anderson insulators whose hard-looking transport gaps mask degraded local
+\emph{conditional} feasibility result --- a hypothesis-generating design study
+whose status two standard measurements would largely settle --- not an
+established platform. Four realism controls sharpen these numbers: a dynamic tunneling self-energy
+lowers the center-point gaps to 7.6 / 14.9 / 24.2$\ueV$ (measured-Si:B /
+Pauli-Si:B$^\dagger$ / Al$^\dagger$), validating the static-renormalized
+caricature directionally; orbital magnetic coupling is negligible at fin
+widths ($<0.05\%$); the step-junction mechanism survives pairing-channel
+mixing in the conservative direction; and correlated electrostatic disorder
+is $4$--$8\times$ harsher than the iid baseline at matched RMS, making gate
+smoothness the binding fabrication constraint. Transport calculations show
+our spectral disorder thresholds are conservative, identify an abrupt
+class-D breakdown mode, and warn that step-disordered wires become Anderson
+insulators whose hard-looking transport gaps mask degraded local
 protection. Quasiparticle poisoning restricts the measured-field all-silicon stack to
-detection (not parity-coherent) experiments unless the parent gap is engineered. Two
-measurements decide the platform: the parallel critical field of thin Si:B films, and
-the wire-axis hole $g$-tensor in device geometry.
+detection (not parity-coherent) experiments unless the parent gap is engineered. Two measurements would do the most to settle the platform: the parallel
+critical field of thin Si:B films, and the wire-axis hole $g$-tensor in device
+geometry.
 \end{abstract}
 
 \section{Introduction}
@@ -64,8 +74,8 @@ qualitatively new failure mechanism, and shows that none of them applies to sili
 \emph{holes}. Our contributions: (i) a quantified electron verdict (Secs.~\ref{sec:soc},
 \ref{sec:catch}); (ii) an exact unitary equivalence making smooth-interface valley
 splitting benign under the physical inter-valley pairing channel, and the identification
-of single-atomic interface steps as near-$\pi$ Josephson junctions that destroy
-protection from the first step (Sec.~\ref{sec:valley}); (iii) a Luttinger--Kohn (LK)
+of single-atomic interface steps as near-$\pi$ Josephson junctions that
+sharply degrade protection from the first step (single-step cap $\sim$18\%) (Sec.~\ref{sec:valley}); (iii) a Luttinger--Kohn (LK)
 derivation of the gate-field covariation of hole parameters, which erodes free-parameter
 optimism but preserves a viable design (Sec.~\ref{sec:holes}); and (iv) orientation-
 resolved feasibility maps for two silicon-compatible parents---laser-doped
@@ -97,19 +107,20 @@ Ando wave-matched normal leads and an $E=0$ reflection invariant $\mathrm{sign}\
 pins every exact claim. $\Delta$ is a \emph{static} induced gap (the
 $\omega = 0$ limit of the standard tunneling self-energy); parent-gap field
 suppression enters via $\Delta_{ind} \le \Delta_p(B)$ and metallization via the
-quasiparticle weight $Z$ \cite{cole2015,maier,reeg} (Supplement S6) --- we do
-not solve the dynamical self-energy problem, and the renormalized numbers bound
-the direction of the omitted physics. All caricature choices (GL/Zeeman-linear parent gaps, iid
+quasiparticle weight $Z$ \cite{cole2015,maier,reeg} (Supplement S6); the full
+dynamical self-energy is solved as a control in Sec.~\ref{sec:controls} and
+validates the static-$Z$ treatment directionally while lowering its numbers
+by 24--30\%. All caricature choices (GL/Zeeman-linear parent gaps, iid
 onsite disorder with correlation length $dx$, hard-wall LK geometry) are stated
 where used; complete per-figure parameter tables, seed families, and
 discretization/length/seed/grid convergence studies are in Supplement S4--S5.
 
-\section{Conduction band: three independent failures}
+\section{Conduction band: three independent obstructions}
 \subsection{Spin--orbit shortfall}\label{sec:soc}
 Maximizing the topological gap over $(\mu, B \le 2\,\mathrm{T})$ at measured intrinsic
 Rashba strengths gives 0.16$\ueV$ (typical, $\alpha = 10^{-4}$\,eV\,\AA) to 1.5$\ueV$
-(optimistic, $10^{-3}$): below dilution-fridge protection scales and destroyed by any
-realistic disorder. Reaching a robust 20$\ueV$ requires $\alpha \approx 0.015$
+(optimistic, $10^{-3}$): below dilution-fridge protection scales and removed
+by onsite disorder far weaker than realistic interface fluctuations. Reaching a robust 20$\ueV$ requires $\alpha \approx 0.015$
 (idealized) to $0.021$\,eV\,\AA{} (with parent-gap suppression $\Delta(B)$)---an
 optimistic lower bound given unmodeled orbital and metallization corrections.
 Micromagnet arrays \cite{kjaergaard,turcotte} reach this scale in principle; a 2025
@@ -121,8 +132,9 @@ therefore marginal rather than absurd---but the valley physics below stacks on t
 it.
 
 \subsection{The $g=2$ catch-22}\label{sec:catch}
-Since $E_Z(2\,\mathrm{T}) = 116\ueV$ for $g=2$, any induced gap
-$\Delta \ge 116\ueV$ can never reach the topological phase at attainable fields; in the
+Since $E_Z(2\,\mathrm{T}) = 116\ueV$ for $g=2$, an induced gap
+$\Delta \ge 116\ueV$ cannot reach the topological phase for $B \le 2$\,T within
+the single-channel $g=2$ model; in the
 SOC-limited regime relevant to engineered devices, increasing interface transparency
 \emph{reduces} the achievable gap, with an optimal parent gap
 $\Delta_0 \approx 98\ueV$ once $\Delta(B)$ suppression is included. This sharpens, for
@@ -165,7 +177,9 @@ gap \emph{grows} with length (0.5/5.6/23$\ueV$ at $L = 1.5/3/6\,\mu$m) while loc
 subgap states persist---a hard-looking transport gap does not certify protection. The
 falsifiable consequence: induced-gap hardness in proximitized Si \emph{electron}
 devices should degrade with miscut/step density from the very first step, testable by
-gap spectroscopy on standard miscut wafer series; holes are immune by construction.
+gap spectroscopy on standard miscut wafer series; holes, having no
+conduction-band valleys, are not subject to this particular mechanism
+(they remain subject to every other interface imperfection).
 
 \begin{figure}[tb]\centering
 \includegraphics[width=0.95\textwidth]{output/fig9_step_statistics.png}
@@ -214,8 +228,9 @@ interface can be fabricated (none exists); (ii)~a \textbf{thick Si:B} parent
 measured critical fields ($B_{c2} \approx 0.1$--0.4\,T, orbital-limited), supports
 10--19$\ueV$ at fields tilted toward out-of-plane (riding $g_z$; the center
 point is 11.0$\ueV$ bare / 9.8--10.1 renormalized on finer optimizer grids,
-Supplement S5, and moves over 8.0--10.6$\ueV$ under $\pm$20\% parent-model
-variations); the in-plane
+Supplement S5, moves over 8.0--10.6$\ueV$ under $\pm$20\% parent-model
+variations, and falls to 7.6$\ueV$ under the dynamic self-energy control of
+Sec.~\ref{sec:controls}); the in-plane
 wire-axis direction is $g$-starved (3--9$\ueV$). (iii)~The \textbf{thin-film Si:B}
 route turns the ``Pauli-limited'' hypothesis into a fabrication target: with coherence
 lengths from measured perpendicular critical fields ($\xi = 29$--57\,nm), films of
@@ -262,8 +277,40 @@ proxy overlaid.}
 \label{fig:transport}
 \end{figure}
 
+\section{Realism controls, master assumption table, and operational
+criteria}\label{sec:controls}
+Review round 5 added four controls (Supplement S9; \texttt{realism.py},
+\texttt{orbital.py}, \texttt{pairing\_mix.py}, \texttt{morphology.py}).
+(i)~\emph{Dynamic self-energy}: replacing the static $\Delta$ with the full
+$\Sigma(\omega)$ and re-optimizing over tunnel coupling $\Gamma$ gives
+center-point gaps of 7.6$\ueV$ (measured Si:B, $\Gamma^* = 10\ueV$),
+14.9$\ueV$ (Pauli Si:B, $\Gamma^* = 30$), and 24.2$\ueV$ (Al,
+$\Gamma^* = 45$) --- $1.4$--$2.1\times$ below the static bare values and
+24--30\% below the static-renormalized ones, which are hereby demoted to
+upper bounds; Dynes broadening adds a $\gamma_D/\Delta_p \lesssim 10^{-3}$
+requirement for 50\,mK operation. (ii)~\emph{Orbital coupling}: Peierls-phase
+controls show $<0.05\%$ gap suppression at fin widths for the tilted Si:B
+design --- the orientation maps survive. (iii)~\emph{Pairing-channel mixing}:
+intra-valley admixture $\eta$ never weakens the step-junction mechanism
+(the step reappears as a pairing-phase junction; $2\times$ deeper bound
+state by $\eta^* \approx 0.24$) while healing staircase ensembles --- our
+$\eta = 0$ ensembles are conservative, and $\eta \ll \eta^*$ is expected
+since intra-valley pairing requires $2k_0$ momentum transfer.
+(iv)~\emph{Morphology and correlated disorder}: with miscut-derived terrace
+ensembles, device \emph{yield} (25--33\% failure fraction at
+0.05--$0.1^\circ$ miscut), not the median gap, is binding; wires along step
+edges or step-bunched templates empty the failure tail. Correlated $\mu(x)$
+disorder at 50$\ueV$ RMS collapses the hole-platform median gap to
+3.5--6.8$\ueV$ where the iid baseline retains 29$\ueV$: smooth
+electrostatics is the binding fabrication requirement, and our earlier
+iid thresholds overstate robustness by $4$--$8\times$ at fixed RMS.
+
+\input{drafts/master_table}
+
+\input{drafts/usable_criterion}
+
 \section{Discussion}
-Two measurements now decide the silicon question. First, the \textbf{parallel critical
+Two measurements would do the most to settle the silicon question. First, the \textbf{parallel critical
 field of thin ($\le$20\,nm) laser-doped Si:B films}: if it approaches the Pauli limit,
 as measured coherence lengths permit, the all-silicon hole stack supports
 $\gtrsim$20$\ueV$ gaps in a CMOS-compatible, same-crystal materials system; if films
@@ -285,7 +332,7 @@ All figures and quoted numbers regenerate from the committed code
 \texttt{lk\_holes.py}, \texttt{qp\_poisoning.py}, \texttt{convergence.py},
 \texttt{tests.py}); the numerical ledger is \texttt{output/data/key\_numbers.json},
 and per-figure regeneration commands, the environment specification, and seed
-families are documented in \texttt{README.md} and Supplement S4/S8. The full
+families are documented in \texttt{README.md} and Supplement S4/S10. The full
 repository --- code, figures, numerical ledger, scan checkpoints, test suite,
 review-round corrections log, and this manuscript's source --- is public at
 \begin{center}

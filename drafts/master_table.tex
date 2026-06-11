@@ -1,0 +1,126 @@
+% ============================================================================
+% drafts/master_table.tex  (R5-5, drafting only -- to be integrated by lead)
+% Master assumption table demanded by referee round 5.
+% Requirements when integrating:
+%   - \usepackage{booktabs} (already loaded in supplement.tex; ADD to paper.tex
+%     if the table goes in the main text)
+%   - \usepackage{graphicx} (already loaded in both) for \resizebox
+%   - the \ueV macro (defined in both paper.tex and supplement.tex)
+% Every number below is traced to output/data/key_numbers.json (tag in the
+% per-row comment) or to committed text (paper.tex / supplement.tex line refs).
+% "opt." = quantity optimized over internally by the gap maximizer and not
+% recorded in the ledger at the optimum.
+% ============================================================================
+\begin{table}[tb]\centering
+\caption{Master assumption table. One row per platform scenario: parent
+superconductor and its demonstration status, $g$-tensor source, field
+orientation, operating field $B^*$, assumed critical field, parent gap at the
+operating field $\Delta_p(B^*)$, induced gap $\Delta_{ind}$, spin--orbit
+strength $\alpha$, $g$ used, chemical potential $\mu$, and the bare and
+metallization-renormalized topological gaps. Grid-converged values are used
+where they exist (Supplement S5). $^{\dagger}$\,=\,not experimentally
+demonstrated.}
+\label{t:master}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{l l l l c c c c c l c c c}
+\toprule
+Platform & Parent (demonstrated?) & $\hat g$ source & $B$ orientation &
+$B^*$ (T) & assumed $B_c$ (T) & $\Delta_p(B^*)$ ($\ueV$) &
+$\Delta_{ind}$ ($\ueV$) & $\alpha$ (eV\,\AA) & $g$ used & $\mu$ ($\ueV$) &
+bare gap ($\ueV$) & renorm.\ gap ($\ueV$)\\
+\midrule
+% --- Row 1: Si electrons, intrinsic SOC -----------------------------------
+% sources: fig3.gap_at_intrinsic_Si_opt_1e3_ueV = 1.5506 (B<=2T);
+% fig2.max_gap_Si_alpha_ueV = 1.56 (B<=3T); baseline Delta=50ueV, g=2,
+% m*=0.19 from supplement S4 (Table t:par-e preamble). No hard-gap
+% superconductor/Si-electron interface demonstrated -> partial.
+(1) Si $e^-$, intrinsic SOC &
+Al-class film$^{\dagger}$ (partial: interface) & n.a.\ (scalar $g$) &
+along wire & $\le 2$ (opt.) & --- & --- (static $\Delta$) & 50 (assumed) &
+$10^{-3}$ (opt.\ intrinsic) & 2.0 & opt. & 1.55 & n.a.\\
+% --- Row 2: Si electrons, engineered SOC ----------------------------------
+% sources: fig8.comparison["Si e- engineered (alpha=0.05, Delta(B) Al)"]
+% = 29.76 (with GL parent suppression); fig3.gap_at_engineered_005_ueV
+% = 42.61 (no Delta(B)); fig5.case1 bulk_gap 36.83 at B=1.5T;
+% alpha=0.05 eV*A is the engineered demonstration value (supplement S4),
+% itself undemonstrated in Si (micromagnet route, paper Sec. 3.1).
+(2) Si $e^-$, engineered SOC$^{\dagger}$ &
+Al-class film$^{\dagger}$ (partial: interface) & n.a.\ (scalar $g$) &
+along wire & $\le 2$ (opt.) & GL $\Delta(B)$$^{\dagger}$ & --- (GL) &
+$\le \Delta_p(B)$; 50 base & 0.05$^{\dagger}$ & 2.0 & opt. &
+29.8 (42.6 w/o $\Delta(B)$) & n.a.\\
+\midrule
+% --- Row 3: holes + thick Si:B, measured field, tilted, LK tensor ---------
+% sources: fig11["LK tensor - SiB_meas thick (isotropic Bc2=0.4T)"].best
+% = 14.6 at (theta,phi)=(38.6deg,90deg); in-plane-along-wire 3.4;
+% convergence.G_grid.SiB_meas: B*=0.333-0.38 across grids;
+% fig8.qp_poisoning.SiB_measured_B0.33T.parent_gap_ueV = 29.1;
+% fig8.center_SiB_measured_args: Dind = 11.3; G_grid Dind = 11.06, mu = 0;
+% alpha(LK) = 0.054 eV*A, g_z = 2.4-4.2 (fig10.alpha_range/gz_range);
+% Si:B Bc2 = 0.1-0.4 T measured (paper abstract; Bustarret/Marcenat refs).
+(3) Si holes + thick Si:B, LK tensor &
+Si:B, laser-doped (yes: measured) & LK (4-band) &
+tilted $\theta\!\approx\!39^\circ$, $\phi_B\!=\!90^\circ$ & 0.33--0.38 &
+0.4 (measured, isotropic) & 29 & 11 & 0.054 (LK) & $g_z$ 2.4--4.2 & 0 &
+14.6 (best tilt) & n.a.$^{m}$\\
+% --- Row 4: holes + thick Si:B, measured field, empirical tensor ----------
+% sources: fig11["empirical (Geyer-class) - SiB_meas thick"].best = 13.8
+% at (25.7deg,30deg); center point (alpha,g)=(0.06,2.2):
+% convergence.G_grid.SiB_meas 10x10x20/14x14x28 gap = 11.0 bare;
+% convergence.G_grid.SiB_meas_renorm = 9.8-10.1 at finest grids;
+% Dind = 11.06-11.81, mu = 0, B* = 0.337-0.358;
+% parent-model sensitivity 8.0-10.6 bare (convergence.H_parent / paper l.217).
+(4) Si holes + thick Si:B, empirical tensor &
+Si:B, laser-doped (yes: measured) & measured (Geyer-class) &
+tilted $\theta\!\approx\!26^\circ$, $\phi_B\!=\!30^\circ$ & 0.33--0.38 &
+0.4 (measured, isotropic) & 29 & 11 & 0.06 (empirical) &
+$(2.1, 2.35, 2.7)$; 2.2 center & 0 & 13.8 (best tilt) / 11.0 (center) &
+9.8--10.1 (center)\\
+% --- Row 5: holes + thin-film Si:B, Pauli-limited (hypothetical) ----------
+% sources: fig8.center_a006_g22: gap 30.6, B=1.0T, Dind=33, mu=0;
+% convergence: SiB_pauli 30.6 grid-exact; renorm 19.7-20.2
+% (supplement Table conv3; JSON G_grid.SiB_pauli_renorm truncated, see note);
+% fig8.BP_T = 1.112 (Pauli limit); qp tag SiB_pauli_hyp_B1.0T
+% parent_gap = 33.1; all measured Si:B films are orbital-limited -> dagger.
+% Film design target: d=10-20nm supports 21-27 ueV (fig8.film_design).
+(5) Si holes + thin-film Si:B, Pauli$^{\dagger}$ &
+Si:B film, Pauli-limited (no: orbital-limited to date) &
+measured (Geyer-class) & in-plane, $B \parallel \hat x$ & 1.0 &
+1.11$^{\dagger}$ (Pauli, $B_P$) & 33 & 33 & 0.06 (empirical) & 2.2 & 0 &
+30.6 & 19.7--20.2\\
+\midrule
+% --- Row 6: holes + Al film, empirical tensor, bare orientation max -------
+% sources: fig11["empirical (Geyer-class) - Al film (Bc_par=2T,
+% Bc_perp=0.1T)"].best = 55.0 at (theta,phi)=(0deg,90deg);
+% LK-tensor best 40.7 -> 41-55 range over tensors (RESULTS F11);
+% fig8.qp_poisoning.Al_film_B1.0T.parent_gap = 150 at B=1T;
+% B* at the orientation max not recorded in ledger (optimized, <= 2T);
+% no hard-gap Al/Si-hole interface exists (paper Sec. 4.2) -> dagger.
+(6) Si holes + Al film, orientation max$^{\dagger}$ &
+Al film (partial: film yes, Si-hole interface no$^{\dagger}$) &
+measured (Geyer-class) & in-plane, $\phi_B\!=\!90^\circ$ & $\le 2$ (opt.) &
+2 ($\parallel$) / 0.1 ($\perp$) & 150 (at 1\,T) & opt. & 0.06 (empirical) &
+$(2.1, 2.35, 2.7)$ & opt. & 55.0 (41--55 over tensors) & n.a.$^{m}$\\
+% --- Row 7: holes + Al film, renormalized center point --------------------
+% sources: convergence.F_nk.Al = 50.43-50.44 (grid-converged bare);
+% fig8.comparison["Si holes + Al (alpha=0.06, g=2.2)"] = 50.43;
+% fig8.center_Al_renormalized = 34.4; qp tag Al_film_B1.0T: B=1.0T,
+% parent gap 150; Dind at optimum not recorded in ledger (<= Delta_p(B)).
+(7) Si holes + Al film, center$^{\dagger}$ &
+Al film (partial: film yes, Si-hole interface no$^{\dagger}$) &
+measured (Geyer-class) & in-plane, along wire & 1.0 &
+2 ($\parallel$) / 0.1 ($\perp$) & 150 & opt.\ ($\le 150$) &
+0.06 (empirical) & 2.2 & opt. & 50.4 & 34.4\\
+\bottomrule
+\end{tabular}}\\[2pt]
+{\footnotesize $^{\dagger}$Not experimentally demonstrated (hypothetical
+parent regime, undemonstrated interface, or engineered SOC).
+$^{m}$The field-orientation maps (Fig.~\ref{fig:orient}) are \emph{not}
+metallization-renormalized; renormalized values are quoted only at the
+optimizer center points. ``opt.''\,=\,optimized over internally, value at
+the optimum not recorded in the numerical ledger.
+$\Delta_p(B^*)$ values from \texttt{qp\_poisoning.py} at the quoted
+operating points; renormalization $Z = 1 - \Delta_{ind}/\Delta_p$
+(Supplement S6). Row 5 film-design targets: $d = 10$--20\,nm films support
+21--27$\ueV$ if Pauli-limited (\texttt{fig8.film\_design}).}
+\end{table}
