@@ -264,3 +264,40 @@ committed code. To be disclosed in the acknowledgments or supplement.
 - Maier–Klinovaja–Loss PRB 90, 195421 (2014) — Ge-hole MZMs (closest precedent).
 - Reeg–Loss–Klinovaja PRB 97, 165425 — metallization. Nijholt–Akhmerov PRB 93, 235434 —
   orbital effects (unmodeled).
+
+## 7. Convergence and sensitivity (reviewer round 4, convergence.py)
+
+All headline numbers were re-derived under systematic refinement
+(output/data/convergence.json; fig13 pending matplotlib availability):
+
+- **dx**: clean wedge gap 22.165 / 22.221 / 22.234 µeV at dx = 10/5/2.5 nm;
+  single-step (0.85π) 4.037/4.034/4.033. Production dx = 5 nm is converged to
+  <0.3% / <0.1%.
+- **L**: clean and single-step values are L-independent above 2.5 µm. The
+  50-nm step-ensemble median is L-dependent BY PHYSICS (Anderson
+  localization): 2.54 / 0.65 / 0.08 µeV at L = 1.25/2.5/5 µm — consistent
+  with the transport-section warning; ensemble medians are quoted as
+  L-tagged upper bounds, never as bulk gaps.
+- **seeds**: 56-seed median 0.64 µeV, bootstrap 95% CI [0.52, 0.81];
+  the published 14-seed value 0.65 sits inside the CI.
+- **µ**: clean gap and step state vary smoothly (9.7→27.6 and 1.9→6.2 µeV
+  over µ = 15–60); the wedge point µ=35 is not fine-tuned.
+- **E_v**: the wedge point sits in a finite topological window. E_v = 100/150
+  µeV behave as expected; E_v ≳ 225 µeV at fixed µ=35, B=1.5 T exits the
+  topological phase (the "clean 33.8" at E_v=300 is a TRIVIAL gap) — single-
+  valley topology requires re-centering µ as E_v grows, as stated in F6.
+- **nk**: bulk-gap k-grid fully converged at production nk (≤0.02% drift).
+- **optimizer grid**: SiB_pauli 30.6 µeV exact across grids; renormalized
+  19.7→20.2 (+2.7%) at the finest grid. SiB_meas center point is the one
+  number that moves: 9.9 → 11.0 µeV bare (10.1 renormalized) on finer
+  optimizer grids — the published 9.9/9.1 were ~10% conservative. Quoted
+  ranges "10–19 µeV" are unaffected (the lower edge rises slightly).
+- **parent model**: ±20% on Si:B Δ0 and Bc2 ∈ {0.3, 0.4} T move the
+  measured-field center point over 8.0–10.6 µeV (Bc2 dominates; Δ0 is
+  second order). The platform verdict is insensitive to the GL caricature.
+
+Engine note: in sandboxes without scipy, compat/ provides a validated
+pure-numpy block-tridiagonal shift-invert Lanczos (compat/test_shim.py:
+matches dense eigh to ~1e-12 relative; H-space residual validation guards
+against spurious Ritz values; shift offset 1e-7·scale bounds the solve
+condition number). Production runs with scipy are unaffected.
