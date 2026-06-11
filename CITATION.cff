@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this code or its results, please cite the accompanying manuscript."
+title: "Feasibility of Majorana zero modes in silicon nanowires: code and data"
+authors:
+  - family-names: Trevena
+    given-names: W. T.
+    email: trevenaw7@gmail.com
+version: "draft-v2"
+date-released: "2026-06-10"
+abstract: >
+  Bogoliubov-de Gennes, Luttinger-Kohn, and recursive-Green's-function code
+  for a quantitative feasibility study of Majorana zero modes in silicon
+  nanowires (conduction-band failure mechanisms including interface-step
+  valley pi-junctions; conditional hole-platform designs with Si:B and Al
+  parents). All manuscript figures and numbers regenerate from this repository.
+keywords: [Majorana, silicon, valleytronics, superconductivity, BdG, Luttinger-Kohn]
+license: NOASSERTION

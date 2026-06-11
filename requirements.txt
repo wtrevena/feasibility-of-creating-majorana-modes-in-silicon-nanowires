@@ -1,6 +1,4 @@
-# Minimal runtime dependencies for majorana_sim.py / run_analysis.py
-numpy>=1.24
-scipy>=1.10
-matplotlib>=3.7
-# Optional, only for opening the legacy notebook:
-# jupyter
+# pinned working set (tested); >= versions in README also work
+numpy==2.2.6
+scipy>=1.11
+matplotlib>=3.8
