@@ -1,0 +1,298 @@
+## Bottom-line recommendation
+
+**Recommendation: Major revision.** I would not reject this outright. The paper has a real, publishable core: it converts the usually qualitative “silicon is bad for Majoranas” argument into a quantitative design-space study, and the conduction-valley step mechanism is potentially the most novel part. But I would require a substantial revision before publication because the current version overpacks the manuscript, mixes current and superseded results, and still rests several headline conclusions on highly idealized modeling assumptions.
+
+The right framing is **not** “silicon holes are a viable Majorana platform.” The defensible framing is: **conduction-band Si is strongly disfavored within a transparent BdG + valley model; Si holes remain a conditional, hypothesis-generating route whose viability is controlled by a small number of measurable materials parameters.**
+
+I did not execute the full repository in this session, so I am not independently certifying the numerical results. I reviewed the uploaded manuscript, supplement, and repository documentation/code snippets.
+
+---
+
+## What the paper claims
+
+The manuscript argues that conduction-band silicon has three independent obstructions: weak intrinsic SOC, a small (g \approx 2) Zeeman ceiling, and a valley-interface-step mechanism in which atomic steps become near-(\pi) Josephson junctions in the band-projected pairing. The abstract states the strongest numbers: intrinsic electron gaps of order (0.16) to (1.5,\mu\mathrm{eV}), engineered SOC requirement (\alpha \gtrsim 0.02,\mathrm{eV\AA}), a (116,\mu\mathrm{eV}) Zeeman ceiling at (2,\mathrm T), and a single-step bound state reducing a (22,\mu\mathrm{eV}) clean gap to about (4,\mu\mathrm{eV}). 
+
+For holes, the paper claims the conduction-valley problem disappears, but the (g)-tensor, SOC, field orientation, parent-superconductor gap, and quasiparticle poisoning become decisive. The main text says measured thick Si:B gives roughly (10) to (19,\mu\mathrm{eV}) static gaps, hypothetical Pauli-limited thin Si:B gives (21) to (27,\mu\mathrm{eV}), and hypothetical hard-gap Al/Si-hole coupling gives (34) to (55,\mu\mathrm{eV}) depending on renormalization and orientation. 
+
+The supplement then sharpens this: the six-band [110] re-evaluation gives in-plane (g_{x'} \approx 1.43) to (1.66), (m^* \approx 0.20), and (\alpha) up to (0.075,\mathrm{eV\AA}), but the dynamic self-energy estimates reduce the central operating gaps to about (3.8,\mu\mathrm{eV}) for measured-field Si:B, (12.5) to (13.0,\mu\mathrm{eV}) for Pauli-limited Si:B, and (16.9) to (18.4,\mu\mathrm{eV}) for Al.  
+
+That last point is critical: **the most careful version of the paper appears materially less optimistic than the abstract’s headline hole-platform numbers.**
+
+---
+
+## Major strengths
+
+### 1. The paper attacks the right question
+
+This is a useful paper because it does not merely ask whether a silicon Majorana device can be written down in an ideal model. It asks whether the gap, field scale, disorder tolerance, valley physics, parent superconductivity, and poisoning constraints can all be satisfied simultaneously. That is the correct standard for this field, especially after the history of trivial zero-bias-peak interpretations and retractions in Majorana nanowires. The broader field has become much more demanding about disorder, protocol-level validation, and trivial explanations. ([APS Link][1]) ([Nature][2])
+
+### 2. The valley-step mechanism is the most publishable contribution
+
+The clean-interface theorem is useful, but the atomic-step result is the more interesting claim. The supplement derives that inter-valley pairing is invariant under a uniform valley rotation, making smooth valley-orbit phase benign, but a spatial phase step becomes a Josephson-like phase defect after projection into local valley bands. 
+
+The single-step number is striking: at (\Delta\phi \approx 0.85\pi), the lattice bound state sits near (4.03,\mu\mathrm{eV}) versus a (22.22,\mu\mathrm{eV}) clean gap.  If this survives independent scrutiny, it is a genuinely valuable design rule: **conduction-band Si electron wires should be fabricated along step edges or on step-bunched templates, otherwise valley steps kill local protection even when the interface looks smooth by ordinary electronic metrics.**
+
+### 3. The paper is unusually honest about assumptions
+
+The paper explicitly labels measured, derived, and hypothetical inputs. It says Pauli-limited thin Si:B and hard-gap Al/Si-hole interfaces are not demonstrated.  It also discloses AI-assisted adversarial review and correction history.  That transparency is a strength, though the disclosure should be tightened and moved out of the rhetorical foreground.
+
+### 4. Reproducibility posture is better than average
+
+The repo documents figure regeneration commands, seeded randomness, tests, a numerical ledger, and per-figure scripts. ([GitHub][3]) The README says all quoted numbers live in `output/data/key_numbers.json`, and gives explicit commands for tests, figure generation, transport, quasiparticle poisoning, convergence, and valley transport. ([GitHub][3]) The raw `tests.py` includes checks for particle-hole symmetry, Hermiticity, the valley equivalence theorem, gauge covariance, analytic dispersion agreement, and the clean topological criterion. ([GitHub][4])
+
+That said, “available code” is not the same as “independently reproducible publication artifact.” More on that below.
+
+---
+
+## Major concerns that should block acceptance until addressed
+
+### 1. The manuscript currently has a serious version-control problem
+
+The uploaded main paper is marked **draft v3**, while the supplement says it accompanies **draft v2**.   The repository README also describes `paper.pdf` as manuscript draft v2. ([GitHub][3]) For a computational paper whose credibility depends on exact numerical provenance, this is not cosmetic. The journal version needs:
+
+One synchronized main manuscript, one synchronized supplement, one tagged commit, one frozen numerical ledger, one Zenodo DOI, and no ambiguity over whether Table 1, the abstract, and Supplement S10 are from the same analysis state.
+
+### 2. The abstract overclaims relative to the most realistic numbers
+
+The abstract says measured thick Si:B supports (10) to (19,\mu\mathrm{eV}), Pauli-limited films support (21) to (27,\mu\mathrm{eV}), and Al could reach (34) to (55,\mu\mathrm{eV}).  But the later dynamic self-energy and [110] re-evaluation demote several of these to lower dynamic central estimates: measured-field Si:B can fall below Tier S, Pauli-limited Si:B sits around (13,\mu\mathrm{eV}) dynamically, and Al sits around (17) to (18,\mu\mathrm{eV}) dynamically. 
+
+A reader should not have to discover on page 10 of the supplement that the headline platform verdict is materially less favorable. The paper should lead with a tiered conclusion:
+
+**Current measured inputs plus dynamic self-energy:** probably detection-limited or below detection threshold depending on geometry.
+**Pauli-limited Si:B film:** conditional detection/nonlocality candidate, still not parity-coherent.
+**Al/Si holes:** promising only if a hard-gap interface exists, which is currently hypothetical.
+**Qubit relevance:** not established.
+
+### 3. “Conduction-band silicon is dead” is too broad
+
+The negative electron result is persuasive within the paper’s assumptions, but the language should be narrowed. The repository README says “conduction-band silicon cannot host usable Majorana modes.” ([GitHub][5]) That is too absolute for a theory paper using single-channel BdG, simplified parent models, idealized disorder, and a particular interface-step model.
+
+A defensible wording would be:
+
+> “Within single-channel proximitized conduction-band Si wires with (g \approx 2), realistic intrinsic SOC, and generic stepped (001) interfaces, usable protection is not achievable; engineered-SOC variants remain marginal and face the independent valley-step constraint unless step morphology is specifically controlled.”
+
+That phrasing preserves the result without making a universal impossibility claim.
+
+### 4. The hole-platform story is internally unstable
+
+The hole analysis is one of the paper’s main contributions, but it reads like the paper was revised several times without fully restructuring the narrative. The 4-band [100] LK results are presented prominently, then the six-band [110] results partially supersede them. The main text even states that the six-band [110] re-evaluation changes design geometry more than magnitudes, but the supplement’s dynamic table changes the tier verdict for measured-field Si:B quite significantly.  
+
+This should be reorganized. The main text should use the six-band [110] model as the primary hole result. The 4-band [100] model should become a pedagogical/sensitivity subsection, not the main operating curve.
+
+### 5. The Si:B parent is the largest unresolved experimental assumption
+
+The paper correctly identifies thin-film Si:B parallel critical field as decisive. But as a reviewer, I would ask for a more microscopic treatment or at least a sharper limitation statement. The present paper treats Si:B through effective (\Delta_p(B)), (B_{c2}), and Pauli/orbital-limited caricatures. That is useful, but it does not resolve:
+
+whether heavily boron-doped superconducting Si can provide a hard induced gap in a neighboring low-density Si hole channel;
+whether disorder from dopants, granularity, strain, and band bending will destroy the channel;
+whether inverse proximity and interface transparency can be tuned into the required weak-coupling regime;
+whether thin-film (T_c(d)), (B_{c\parallel}), and gap hardness can all be favorable simultaneously.
+
+The paper acknowledges some of this, but the central feasibility claim depends on it.
+
+### 6. The transport validation is good but not sufficient for Majorana-platform claims
+
+The RGF transport work is a strength. The manuscript says transport validates the clean wire, uses (\mathrm{sign}\det r), finds spectral thresholds conservative at moderate disorder, and identifies abrupt class-D breakdown.  But a Majorana-platform paper should ideally include simulations closer to experimental observables:
+
+three-terminal tunneling conductance maps,
+end-to-end correlation/nonlocality metrics,
+Coulomb-blockade/parity signatures if claiming qubit relevance,
+finite-temperature and finite-broadening conductance,
+barrier-dot-induced trivial ABS controls,
+spatially inhomogeneous pairing and (g(x)), (\alpha(x)), (\mu(x)), not just onsite disorder.
+
+This is especially important because the broader field has learned that zero-bias peaks and even some “gap protocol” signatures can be ambiguous. A 2023 Microsoft paper proposed a topological gap protocol, but the protocol and its interpretation have been publicly debated in later commentary. ([APS Link][6]) ([arXiv][7]) The paper does not need to solve that debate, but it should not underplay the need for protocol-level observables.
+
+### 7. Disorder modeling is still too idealized
+
+The paper deserves credit for adding correlated disorder and finding it much harsher than iid disorder. In fact, that result may be important: correlated (\mu(x)) disorder at (50,\mu\mathrm{eV}) RMS reportedly collapses hole-platform median gaps to (3.5) to (6.8,\mu\mathrm{eV}), whereas iid disorder retained much larger gaps. 
+
+But this also means the paper’s earlier disorder margins are not very meaningful unless the disorder model is tied to a real device stack. I would ask the author to replace abstract iid (W) thresholds with physically calibrated disorder sources: remote charge traps, interface roughness, random boron dopants, work-function patches, oxide charges, gate granularity, screening by the superconductor, and correlated fluctuations in (\Delta), (\Gamma), (g), and (\alpha).
+
+### 8. The paper needs a stronger novelty comparison against hole platforms outside Si
+
+The closest conceptual precedent is not only III-V nanowires; it is hole-based Majorana proposals, especially Ge hole channels using LK-type modeling. A 2024 PRB paper studied gate-defined Ge hole nanowires as Majorana platforms, including LK modeling, phase diagrams, strain, gap estimates, and geometry dependence. ([APS Link][8]) The manuscript should explicitly distinguish its novelty:
+
+Si holes rather than Ge holes,
+Si:B all-silicon parent possibility,
+CMOS-compatible same-crystal materials stack,
+absence of conduction-valley step mechanism,
+specific (g)-tensor orientation constraints in Si FinFET-like channels.
+
+Without this comparison, the hole section looks less novel than the conduction-valley section.
+
+---
+
+## Section-by-section critique
+
+### Abstract
+
+The abstract is too long and too numerically dense. It tries to report every control, every scenario, every caveat, and every design number. For a journal submission, it should be cut by at least 40%.
+
+The most important fix: **put dynamic self-energy and [110] central estimates in the abstract, not only the optimistic static values.** Right now the abstract gives the impression that measured Si:B gives (10) to (19,\mu\mathrm{eV}), but the more conservative combined analysis is substantially weaker.  
+
+### Introduction
+
+The introduction is conceptually strong. It correctly frames the field around materials quality and trivial explanations. But it should more explicitly say what kind of paper this is: **a computational feasibility and falsification study**, not a platform demonstration. The paper should also avoid “none of them applies to silicon holes” as too glib. Holes avoid conduction-band valley degeneracy, but they introduce their own multiband, anisotropic (g), strain, orbital, and electrostatic complications.
+
+### Model and methods
+
+The BdG model is appropriate as a baseline. The manuscript clearly states the topological criterion and key discretization choices.  The weakness is that the most important device-level conclusions depend on deviations from this simple model: multiband holes, electrostatics, parent self-energy, orbital effects, disorder, and interface morphology.
+
+The paper should separate claims into three epistemic levels:
+
+**Exact within model:** valley equivalence theorem, single-channel (g=2) ceiling, topological criterion checks.
+**Numerical within model:** gap optimizations, step ensembles, disorder thresholds, RGF transport.
+**Device extrapolation:** Si:B parent feasibility, hard-gap Al/Si-hole interface, correlated disorder, fabrication design rules.
+
+This would make the manuscript much easier to review.
+
+### Conduction-band SOC and (g=2)
+
+The SOC shortfall and (g=2) catch-22 are persuasive but not surprising. Their value is quantitative. The paper should acknowledge more explicitly that these are **engineering exclusion bounds**, not fundamental no-go theorems. Engineered SOC, micromagnets, strain, superlattices, or hybridization could alter the effective parameters, though likely at the cost of disorder and fabrication complexity.
+
+The (g=2) argument is also conditional on the chosen maximum field and parent constraints. It is correct and useful, but the conclusion should be worded as “within attainable fields and parent constraints” rather than absolute.
+
+### Valley equivalence theorem
+
+This is mathematically elegant and likely publishable if the proof is correct. The supplement’s treatment of inter-valley pairing as the physical zero-momentum channel is sensible: the two valleys are time-reversed partners, while intra-valley pairing would require finite momentum. 
+
+The reviewer should check the algebra carefully, especially the use of (U D U^T) rather than (U D U^\dagger), the treatment of Dresselhaus-like SOC, and the sign-removal argument for (\Delta) and (\alpha). I would request that the main text include a compact version of the proof because this is central to the paper’s novelty.
+
+### Atomic steps
+
+This is the strongest section. The claim that a single atomic step gives (\Delta\phi = 2k_0 a/4 \approx 0.85\pi) and behaves like a near-(\pi) junction is both intuitive and testable. 
+
+The paper should add a more realistic morphology subsection:
+
+What step heights are actually expected for the specific Si/SiO(_2), Si/SiGe, or Si:B device geometry?
+Do common fabrication surfaces give (a/4), (a/2), or reconstructed effective steps?
+How sharp is the valley-orbit phase transition over realistic interface widths?
+How does finite valley splitting, finite step width, and band mixing modify the projected Josephson picture?
+Can intentionally aligning wires along step edges be experimentally verified with AFM/TEM and transport?
+
+The proposed miscut spectroscopy test is excellent and should be elevated.
+
+### Hole LK / six-band modeling
+
+The four-band LK model is useful, but the six-band [110] + Poisson correction is where the paper becomes credible. The supplement states that orientation explains much of the discrepancy with measured FinFET (g)-tensors, while realistic electrostatics provides a geometry-signed (\pm 25%) correction. 
+
+This should be in the main paper, not buried. The paper should stop presenting [100] as a central physical result if all benchmark devices are [110]. It can still use [100] as a cautionary example for (\alpha)-(g) covariation, but the primary design table should be [110].
+
+### Parent superconductors
+
+The parent-superconductor discussion is currently the most fragile part. The paper’s honest table helps: it marks Pauli-limited Si:B and Al/Si-hole hard-gap interfaces as hypothetical.  But the text sometimes still lets these scenarios drive the optimism.
+
+I would require a revised table with columns:
+
+Scenario
+Experimentally demonstrated?
+Required unproven materials property
+Static bare gap
+Static renormalized gap
+Dynamic self-energy gap
+Tier S/N/Q verdict
+Main failure mode
+Decisive measurement
+
+This would prevent readers from mixing (55,\mu\mathrm{eV}) bare Al orientation maxima with realistic dynamic estimates.
+
+### Operational criteria
+
+The Tier S/N/Q framework is a good idea. Tier S requires (\Delta_{\mathrm{top}}\ge 8.6,\mu\mathrm{eV}) and small Majorana splitting; Tier N additionally requires (\Delta_{\mathrm{top}}\ge 20,\mu\mathrm{eV}) and disorder margin; Tier Q requires (x_{qp}\le 10^{-6}) at (T_{\mathrm{eff}}\ge 50,\mathrm{mK}). 
+
+But these tiers should be introduced before the platform comparison, not after. They are the paper’s adjudication standard. The conclusion should be written in terms of these tiers.
+
+### Reproducibility and code
+
+The repository is a real strength: it has a clear README, figure regeneration commands, seeded randomness, test suite, scripts for transport and convergence, and a numerical ledger. ([GitHub][3])
+
+But before submission, the repo needs:
+
+a license, because the README currently says no license is specified; ([GitHub][3])
+a frozen tagged commit and Zenodo DOI;
+a CI workflow that runs `tests.py`;
+a `make reproduce` or equivalent top-level command;
+a machine-readable manifest tying each paper number to a key in the ledger;
+checksums for generated figures and JSON outputs;
+clear separation between legacy notebook outputs and validated outputs, since the repo says the original notebook was invalid and should not be used. ([GitHub][3])
+
+---
+
+## Additional computational experiments I would request
+
+1. **Full dynamic self-energy for all headline field orientations**, especially the tilted (g_z)-riding measured Si:B case. The supplement gives dynamic values for key in-plane [110] scenarios, but the main “measured inputs” headline still needs the same conservative treatment.
+
+2. **Al-specific disorder simulations.** The paper notes that some Al disorder thresholds are not separately computed and are inferred from comparable Si:B-class hole-wire checks.  That is too weak for a platform comparison.
+
+3. **Transport simulations for hole scenarios**, not just electron and valley cases. Include finite-temperature conductance and local/nonlocal spectroscopy.
+
+4. **Realistic correlated disorder ensembles.** Use disorder generated from electrostatic simulations with gates, oxide charges, remote traps, and screening. The current result that correlated disorder is 4 to 8 times harsher than iid disorder makes this mandatory. 
+
+5. **Step morphology model tied to wafer miscut.** Convert step spacing/orientation distributions into expected device yields for actual wafer orientations and channel layouts.
+
+6. **Finite step-width and finite valley-splitting sweeps.** The atomically abrupt Josephson junction picture is compelling, but reviewers will ask whether it survives realistic smoothing.
+
+7. **Multi-subband and occupancy robustness for holes.** The conduction electron multi-subband check is helpful, but the hole system is the actual proposed route and is multiband by nature.
+
+8. **Self-consistent proximity model.** Instead of scalar (\Gamma), model spatially dependent coupling and inverse proximity near Si:B or Al.
+
+9. **Gate-tuning protocol simulation.** Show how one would tune (\mu), (\Gamma), (B), and field angle experimentally without requiring impossible precision.
+
+10. **Failure-mode library.** Simulate trivial ABSs, dots, smooth confinement, and disorder-induced near-zero modes under the same diagnostic pipeline.
+
+---
+
+## Future research directions worth highlighting
+
+The paper could be strengthened by explicitly presenting the following as research directions:
+
+**Experimental miscut series for electron Si.** Fabricate proximitized electron wires on wafers with controlled miscut and step orientation. The prediction is sharp: induced-gap hardness and local protection should degrade from the first atomic step, not only after large accumulated valley winding. 
+
+**Thin-film Si:B characterization.** Measure (B_{c\parallel}), (T_c(d)), gap hardness, disorder, and sheet resistance for (10) to (20,\mathrm{nm}) Si:B films. This directly decides whether the all-silicon parent can enter the relevant regime. 
+
+**Device-geometry Si-hole (g)-tensor and SOC-axis measurement.** The paper correctly identifies this as decisive because [110] orientation changes the design logic. 
+
+**Hard-gap Al/Si-hole interface development.** The Al scenario has the best dynamic numbers among the proposed routes, but the interface is not demonstrated in the paper’s own evidentiary classification. 
+
+**Step-engineered electron-Si rescue attempt.** If wires can be aligned along step edges or fabricated on step-bunched surfaces, the electron route might become a controlled negative/positive testbed even if it remains unattractive as a qubit platform.
+
+**Comparison to Ge-hole platforms.** The paper should position Si holes against Ge holes, where LK-based Majorana design studies already exist. ([APS Link][8])
+
+---
+
+## Presentation and writing fixes
+
+The paper should be shortened and made less self-referential. “Review round 5 added…” is useful provenance for the supplement or repository log, but it is awkward in the main scientific narrative. The paper should read like a final argument, not like a history of its own debugging.
+
+Specific fixes:
+
+* Replace the long abstract with a tighter, tier-based abstract.
+* Move the six-band [110] results into the main text as the primary hole analysis.
+* Replace Table 1 with a current, dynamic, tier-based scenario table.
+* Move superseded [100] and static-only values into the supplement.
+* Stop using “dead” or “cannot” language unless explicitly bounded by the model.
+* Make all hypothetical scenarios visually marked in every figure and table.
+* Add a version-synchronization statement: manuscript version, supplement version, commit hash, ledger hash.
+* Add a concise “What would falsify this paper?” paragraph.
+
+---
+
+## How I would phrase the review decision
+
+**Decision: Major revision.**
+
+The manuscript contains a potentially important computational feasibility study of Majorana zero modes in silicon nanowires. Its strongest contribution is the treatment of conduction-band valley physics: smooth valley-orbit phase is shown to be benign under inter-valley pairing, while atomic interface steps become near-(\pi) Josephson junctions that bind deep subgap states. This is a clear, falsifiable, and potentially publishable mechanism. The paper is also unusually transparent about reproducibility, assumptions, and negative results.
+
+However, the manuscript is not yet ready for publication. The central hole-platform conclusions are unstable across static, renormalized, dynamic, four-band, six-band, [100], and [110] analyses. The most conservative numbers should be promoted to the main result, and the optimistic static values should be clearly labeled as upper bounds. The paper also needs stronger experimental grounding of the Si:B parent assumptions, more realistic disorder modeling, and a cleaner distinction between exact model results and device-level extrapolations. Finally, the main manuscript and supplement appear version-mismatched, which must be fixed before review can proceed.
+
+With these revisions, I would view the paper as publishable as a **theoretical/computational design and falsification study**, not as evidence that silicon is already a viable Majorana platform.
+
+[1]: https://link.aps.org/doi/10.1103/PhysRevB.103.195158?utm_source=chatgpt.com "Disorder-induced zero-bias peaks in Majorana nanowires"
+[2]: https://www.nature.com/articles/s41586-021-03373-x?utm_source=chatgpt.com "Retraction Note: Quantized Majorana conductance"
+[3]: https://github.com/wtrevena/feasibility-of-creating-majorana-modes-in-silicon-nanowires "GitHub - wtrevena/feasibility-of-creating-majorana-modes-in-silicon-nanowires · GitHub"
+[4]: https://raw.githubusercontent.com/wtrevena/feasibility-of-creating-majorana-modes-in-silicon-nanowires/main/tests.py "raw.githubusercontent.com"
+[5]: https://raw.githubusercontent.com/wtrevena/feasibility-of-creating-majorana-modes-in-silicon-nanowires/main/README.md "raw.githubusercontent.com"
+[6]: https://link.aps.org/doi/10.1103/PhysRevB.107.245423?utm_source=chatgpt.com "InAs-Al hybrid devices passing the topological gap protocol"
+[7]: https://arxiv.org/abs/2502.19560?utm_source=chatgpt.com "Comment on \"InAs-Al hybrid devices passing the topological gap protocol\", Microsoft Quantum, Phys. Rev. B 107, 245423 (2023)"
+[8]: https://link.aps.org/doi/10.1103/PhysRevB.109.035433?utm_source=chatgpt.com "Majorana zero modes in gate-defined germanium hole ..."

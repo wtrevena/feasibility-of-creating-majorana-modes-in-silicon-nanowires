@@ -1,0 +1,567 @@
+{
+  "meta": {
+    "module": "r6_transport.py (review round 6, item A2)",
+    "method": "RGF (Caroli) + Ando wave-matched normal leads + gauge-fixed sign-det-r invariant, all imported from the validated transport.py; closed-wire metrics via majorana_sim (profile builder verified against the transport cell chain)",
+    "geometry": "NSN, L=2 um, dx=2.5 nm, N=800, mu_lead=2000 ueV, threshold T>0.01",
+    "caveat": "two-terminal local NS(N) transport only; nonlocal (left->right) conductance and G(V,B) maps NOT implemented -- scope paper claims accordingly"
+  },
+  "H": {
+    "verification": {
+      "gL_modes_vs_sancho": 6.455e-09,
+      "gR_modes_vs_sancho": 6.455e-09,
+      "ballistic_T_minus_4": 2.564e-10,
+      "profile_vs_cell_chain_maxdH_ueV": 7.276e-12
+    },
+    "a_110_SiB_pauli": {
+      "params": {
+        "m": 0.204,
+        "alpha_eVA": 0.073,
+        "g": 1.657,
+        "B_T": 1.0,
+        "Dind_ueV": 24.7,
+        "mu_ueV": 0.0,
+        "src": "platform110 Ez30_SiB_pauli, static gap 23.25 ueV"
+      },
+      "kso_dx": 0.0489,
+      "B_star_T": 0.515,
+      "transport_gap_ueV": 23.48,
+      "transport_gap_censored": false,
+      "bulk_gap_ueV": 23.26,
+      "closed_wire": {
+        "E0_ueV": 0.0407,
+        "E2_ueV": 25.72,
+        "end_weight": 0.674
+      },
+      "T_at_E0": 0.00014248,
+      "invariant": {
+        "0.6Bstar": {
+          "B_T": 0.309,
+          "Q": 1,
+          "det_r": 0.9988
+        },
+        "0.9Bstar": {
+          "B_T": 0.4635,
+          "Q": 1,
+          "det_r": 0.934
+        },
+        "1.1Bstar": {
+          "B_T": 0.5666,
+          "Q": 0,
+          "det_r": 0.3257
+        },
+        "B_op": {
+          "B_T": 1.0,
+          "Q": -1,
+          "det_r": -0.9999
+        }
+      },
+      "runtime_s": 0.2
+    },
+    "b_110_Al": {
+      "params": {
+        "m": 0.194,
+        "alpha_eVA": 0.052,
+        "g": 1.549,
+        "B_T": 1.753,
+        "Dind_ueV": 42.0,
+        "mu_ueV": 0.0,
+        "src": "platform110 Ez10_Al, static gap 36.57 ueV"
+      },
+      "kso_dx": 0.0331,
+      "B_star_T": 0.9369,
+      "transport_gap_ueV": 37.09,
+      "transport_gap_censored": false,
+      "bulk_gap_ueV": 36.59,
+      "closed_wire": {
+        "E0_ueV": 0.0002,
+        "E2_ueV": 37.47,
+        "end_weight": 0.914
+      },
+      "T_at_E0": 1.8807e-08,
+      "invariant": {
+        "0.6Bstar": {
+          "B_T": 0.5621,
+          "Q": 1,
+          "det_r": 1.0
+        },
+        "0.9Bstar": {
+          "B_T": 0.8432,
+          "Q": 1,
+          "det_r": 0.9925
+        },
+        "1.1Bstar": {
+          "B_T": 1.0305,
+          "Q": 0,
+          "det_r": -0.3971
+        },
+        "B_op": {
+          "B_T": 1.753,
+          "Q": -1,
+          "det_r": -1.0
+        }
+      },
+      "runtime_s": 0.2
+    },
+    "c_old_empirical": {
+      "params": {
+        "m": 0.25,
+        "alpha_eVA": 0.06,
+        "g": 2.2,
+        "B_T": 1.0,
+        "Dind_ueV": 33.0,
+        "mu_ueV": 0.0,
+        "src": "fig8 center_a006_g22, static gap 30.6 ueV"
+      },
+      "kso_dx": 0.0492,
+      "B_star_T": 0.5183,
+      "transport_gap_ueV": 31.33,
+      "transport_gap_censored": false,
+      "bulk_gap_ueV": 30.67,
+      "closed_wire": {
+        "E0_ueV": 0.0001,
+        "E2_ueV": 32.1,
+        "end_weight": 0.828
+      },
+      "T_at_E0": 5.276e-07,
+      "invariant": {
+        "0.6Bstar": {
+          "B_T": 0.311,
+          "Q": 1,
+          "det_r": 1.0
+        },
+        "0.9Bstar": {
+          "B_T": 0.4665,
+          "Q": 1,
+          "det_r": 0.9742
+        },
+        "1.1Bstar": {
+          "B_T": 0.5701,
+          "Q": 0,
+          "det_r": -0.0292
+        },
+        "B_op": {
+          "B_T": 1.0,
+          "Q": -1,
+          "det_r": -1.0
+        }
+      },
+      "runtime_s": 0.2
+    },
+    "runtime_s": 0.7
+  },
+  "F": {
+    "note": "G(V) = T(E) (*) [-df/dE](T) (*) Lorentzian(gamma); T(E) mirrored to E<0 by PHS; plateau = mean G on 40-60 ueV; apparent gaps = first V with G > 0.1 / 0.5 of the plateau (transport_gap interpolation)",
+    "dE_ueV": 0.25,
+    "curves": {
+      "clean": {
+        "true_transport_gap_ueV": 23.49,
+        "censored": false,
+        "T_at_E0": 0.0001425,
+        "plateau_raw": 1.2494,
+        "smeared": {
+          "20mK_g0.5": {
+            "kT_ueV": 1.723,
+            "G0": 0.0080999,
+            "G0_over_plateau": 0.0065356,
+            "plateau": 1.2394,
+            "app_gap_10pct_ueV": 21.48,
+            "app_gap_half_ueV": 27.28
+          },
+          "20mK_g2.0": {
+            "kT_ueV": 1.723,
+            "G0": 0.032421,
+            "G0_over_plateau": 0.026724,
+            "plateau": 1.2132,
+            "app_gap_10pct_ueV": 18.91,
+            "app_gap_half_ueV": 27.29
+          },
+          "50mK_g0.5": {
+            "kT_ueV": 4.309,
+            "G0": 0.014482,
+            "G0_over_plateau": 0.011931,
+            "plateau": 1.2138,
+            "app_gap_10pct_ueV": 16.47,
+            "app_gap_half_ueV": 27.5
+          },
+          "50mK_g2.0": {
+            "kT_ueV": 4.309,
+            "G0": 0.042161,
+            "G0_over_plateau": 0.035529,
+            "plateau": 1.1867,
+            "app_gap_10pct_ueV": 13.96,
+            "app_gap_half_ueV": 27.23
+          },
+          "100mK_g0.5": {
+            "kT_ueV": 8.617,
+            "G0": 0.10903,
+            "G0_over_plateau": 0.098135,
+            "plateau": 1.111,
+            "app_gap_10pct_ueV": 1.91,
+            "app_gap_half_ueV": 25.88
+          },
+          "100mK_g2.0": {
+            "kT_ueV": 8.617,
+            "G0": 0.13697,
+            "G0_over_plateau": 0.12556,
+            "plateau": 1.0908,
+            "app_gap_10pct_ueV": 0.0,
+            "app_gap_half_ueV": 25.38
+          }
+        }
+      },
+      "W200_seed0": {
+        "true_transport_gap_ueV": 14.76,
+        "censored": false,
+        "T_at_E0": 0.0001611,
+        "plateau_raw": 0.6769,
+        "smeared": {
+          "20mK_g0.5": {
+            "kT_ueV": 1.723,
+            "G0": 0.0051956,
+            "G0_over_plateau": 0.0077715,
+            "plateau": 0.6685,
+            "app_gap_10pct_ueV": 15.03,
+            "app_gap_half_ueV": 28.04
+          },
+          "20mK_g2.0": {
+            "kT_ueV": 1.723,
+            "G0": 0.020307,
+            "G0_over_plateau": 0.030779,
+            "plateau": 0.6598,
+            "app_gap_10pct_ueV": 13.63,
+            "app_gap_half_ueV": 27.83
+          },
+          "50mK_g0.5": {
+            "kT_ueV": 4.309,
+            "G0": 0.014018,
+            "G0_over_plateau": 0.021234,
+            "plateau": 0.6602,
+            "app_gap_10pct_ueV": 13.42,
+            "app_gap_half_ueV": 27.6
+          },
+          "50mK_g2.0": {
+            "kT_ueV": 4.309,
+            "G0": 0.03072,
+            "G0_over_plateau": 0.047239,
+            "plateau": 0.6503,
+            "app_gap_10pct_ueV": 10.93,
+            "app_gap_half_ueV": 27.31
+          },
+          "100mK_g0.5": {
+            "kT_ueV": 8.617,
+            "G0": 0.072789,
+            "G0_over_plateau": 0.11749,
+            "plateau": 0.6196,
+            "app_gap_10pct_ueV": 0.0,
+            "app_gap_half_ueV": 26.04
+          },
+          "100mK_g2.0": {
+            "kT_ueV": 8.617,
+            "G0": 0.087661,
+            "G0_over_plateau": 0.14305,
+            "plateau": 0.6128,
+            "app_gap_10pct_ueV": 0.0,
+            "app_gap_half_ueV": 25.64
+          }
+        }
+      },
+      "W200_seed1": {
+        "true_transport_gap_ueV": 0.0,
+        "censored": false,
+        "T_at_E0": 0.0211,
+        "plateau_raw": 0.4322,
+        "smeared": {
+          "20mK_g0.5": {
+            "kT_ueV": 1.723,
+            "G0": 0.023395,
+            "G0_over_plateau": 0.051209,
+            "plateau": 0.4568,
+            "app_gap_10pct_ueV": 11.87,
+            "app_gap_half_ueV": 16.71
+          },
+          "20mK_g2.0": {
+            "kT_ueV": 1.723,
+            "G0": 0.044936,
+            "G0_over_plateau": 0.096819,
+            "plateau": 0.4641,
+            "app_gap_10pct_ueV": 4.33,
+            "app_gap_half_ueV": 16.22
+          },
+          "50mK_g0.5": {
+            "kT_ueV": 4.309,
+            "G0": 0.040182,
+            "G0_over_plateau": 0.083327,
+            "plateau": 0.4822,
+            "app_gap_10pct_ueV": 4.0,
+            "app_gap_half_ueV": 15.7
+          },
+          "50mK_g2.0": {
+            "kT_ueV": 4.309,
+            "G0": 0.066836,
+            "G0_over_plateau": 0.13895,
+            "plateau": 0.481,
+            "app_gap_10pct_ueV": 0.0,
+            "app_gap_half_ueV": 15.19
+          },
+          "100mK_g0.5": {
+            "kT_ueV": 8.617,
+            "G0": 0.15042,
+            "G0_over_plateau": 0.31497,
+            "plateau": 0.4776,
+            "app_gap_10pct_ueV": 0.0,
+            "app_gap_half_ueV": 12.43
+          },
+          "100mK_g2.0": {
+            "kT_ueV": 8.617,
+            "G0": 0.16925,
+            "G0_over_plateau": 0.35807,
+            "plateau": 0.4727,
+            "app_gap_10pct_ueV": 0.0,
+            "app_gap_half_ueV": 11.25
+          }
+        }
+      },
+      "W200_seed2": {
+        "true_transport_gap_ueV": 0.0,
+        "censored": false,
+        "T_at_E0": 0.01865,
+        "plateau_raw": 0.5185,
+        "smeared": {
+          "20mK_g0.5": {
+            "kT_ueV": 1.723,
+            "G0": 0.021469,
+            "G0_over_plateau": 0.041735,
+            "plateau": 0.5144,
+            "app_gap_10pct_ueV": 12.93,
+            "app_gap_half_ueV": 23.3
+          },
+          "20mK_g2.0": {
+            "kT_ueV": 1.723,
+            "G0": 0.036993,
+            "G0_over_plateau": 0.070745,
+            "plateau": 0.5229,
+            "app_gap_10pct_ueV": 9.76,
+            "app_gap_half_ueV": 22.83
+          },
+          "50mK_g0.5": {
+            "kT_ueV": 4.309,
+            "G0": 0.030051,
+            "G0_over_plateau": 0.054971,
+            "plateau": 0.5467,
+            "app_gap_10pct_ueV": 9.04,
+            "app_gap_half_ueV": 22.23
+          },
+          "50mK_g2.0": {
+            "kT_ueV": 4.309,
+            "G0": 0.048476,
+            "G0_over_plateau": 0.08856,
+            "plateau": 0.5474,
+            "app_gap_10pct_ueV": 4.56,
+            "app_gap_half_ueV": 21.88
+          },
+          "100mK_g0.5": {
+            "kT_ueV": 8.617,
+            "G0": 0.10089,
+            "G0_over_plateau": 0.18344,
+            "plateau": 0.55,
+            "app_gap_10pct_ueV": 0.0,
+            "app_gap_half_ueV": 20.69
+          },
+          "100mK_g2.0": {
+            "kT_ueV": 8.617,
+            "G0": 0.11655,
+            "G0_over_plateau": 0.21407,
+            "plateau": 0.5445,
+            "app_gap_10pct_ueV": 0.0,
+            "app_gap_half_ueV": 20.17
+          }
+        }
+      }
+    },
+    "runtime_s": 1.6
+  },
+  "X": {
+    "B_star_T": 0.515,
+    "note": "point-(a) wire; trivial side B=0.6*B_star (prescribed) plus a near-threshold 0.9*B_star supplement (classic ABS-mimic regime), topological side B=1.0 T (operating point); disorder seed = lowest closed-wire E0 of 10 (default_rng([96,6,1,r]), W=600); E2 in the trivial phase is the second excitation, not a Majorana splitting",
+    "phases": {
+      "trivial_0.6Bstar": {
+        "B_T": 0.309,
+        "bulk_gap_clean_ueV": 9.88,
+        "disorder_E0_all_seeds_ueV": [
+          18.108,
+          17.278,
+          20.539,
+          19.125,
+          19.816,
+          17.878,
+          20.506,
+          16.083,
+          23.439,
+          19.952
+        ],
+        "disorder_worst_seed": 7,
+        "cases": {
+          "clean": {
+            "E0_ueV": 12.448,
+            "E2_ueV": 18.56,
+            "end_weight": 0.143,
+            "T_at_E0": 0.002395,
+            "Q": 1,
+            "det_r": 0.9988
+          },
+          "dot_V-150": {
+            "E0_ueV": 12.416,
+            "E2_ueV": 18.48,
+            "end_weight": 0.147,
+            "T_at_E0": 0.004265,
+            "Q": 1,
+            "det_r": 0.9979
+          },
+          "dot_V-250": {
+            "E0_ueV": 12.393,
+            "E2_ueV": 18.44,
+            "end_weight": 0.152,
+            "T_at_E0": 0.005637,
+            "Q": 1,
+            "det_r": 0.9972
+          },
+          "ramp_300ueV_150nm": {
+            "E0_ueV": 13.047,
+            "E2_ueV": 20.31,
+            "end_weight": 0.046,
+            "T_at_E0": 1.549e-11,
+            "Q": 1,
+            "det_r": 1.0
+          },
+          "disorder_W600": {
+            "E0_ueV": 16.083,
+            "E2_ueV": 19.62,
+            "end_weight": 0.663,
+            "T_at_E0": 5.909e-08,
+            "Q": 1,
+            "det_r": 1.0
+          }
+        }
+      },
+      "trivial_0.9Bstar": {
+        "B_T": 0.4635,
+        "bulk_gap_clean_ueV": 2.47,
+        "disorder_E0_all_seeds_ueV": [
+          13.941,
+          13.049,
+          17.842,
+          15.155,
+          15.862,
+          14.011,
+          16.186,
+          11.597,
+          20.516,
+          16.253
+        ],
+        "disorder_worst_seed": 7,
+        "cases": {
+          "clean": {
+            "E0_ueV": 6.627,
+            "E2_ueV": 15.36,
+            "end_weight": 0.208,
+            "T_at_E0": 0.1281,
+            "Q": 1,
+            "det_r": 0.9338
+          },
+          "dot_V-150": {
+            "E0_ueV": 6.586,
+            "E2_ueV": 15.26,
+            "end_weight": 0.214,
+            "T_at_E0": 0.2174,
+            "Q": 1,
+            "det_r": 0.8847
+          },
+          "dot_V-250": {
+            "E0_ueV": 6.556,
+            "E2_ueV": 15.19,
+            "end_weight": 0.22,
+            "T_at_E0": 0.2753,
+            "Q": 1,
+            "det_r": 0.8513
+          },
+          "ramp_300ueV_150nm": {
+            "E0_ueV": 7.39,
+            "E2_ueV": 17.57,
+            "end_weight": 0.069,
+            "T_at_E0": 4.619e-10,
+            "Q": 1,
+            "det_r": 1.0
+          },
+          "disorder_W600": {
+            "E0_ueV": 11.597,
+            "E2_ueV": 15.57,
+            "end_weight": 0.642,
+            "T_at_E0": 1.311e-06,
+            "Q": 1,
+            "det_r": 1.0
+          }
+        }
+      },
+      "topological_B1.0T": {
+        "B_T": 1.0,
+        "bulk_gap_clean_ueV": 23.26,
+        "disorder_E0_all_seeds_ueV": [
+          1.419,
+          1.264,
+          6.878,
+          2.111,
+          3.929,
+          1.683,
+          2.79,
+          0.922,
+          7.13,
+          2.954
+        ],
+        "disorder_worst_seed": 7,
+        "cases": {
+          "clean": {
+            "E0_ueV": 0.041,
+            "E2_ueV": 25.72,
+            "end_weight": 0.674,
+            "T_at_E0": 0.0001425,
+            "Q": -1,
+            "det_r": -0.9999
+          },
+          "dot_V-150": {
+            "E0_ueV": 0.018,
+            "E2_ueV": 25.71,
+            "end_weight": 0.685,
+            "T_at_E0": 7.158e-05,
+            "Q": -1,
+            "det_r": -1.0
+          },
+          "dot_V-250": {
+            "E0_ueV": 0.001,
+            "E2_ueV": 25.71,
+            "end_weight": 0.693,
+            "T_at_E0": 6.485e-05,
+            "Q": -1,
+            "det_r": -1.0
+          },
+          "ramp_300ueV_150nm": {
+            "E0_ueV": 0.047,
+            "E2_ueV": 26.5,
+            "end_weight": 0.275,
+            "T_at_E0": 0.0003707,
+            "Q": 1,
+            "det_r": 0.9998
+          },
+          "disorder_W600": {
+            "E0_ueV": 0.922,
+            "E2_ueV": 4.58,
+            "end_weight": 0.5,
+            "T_at_E0": 0.1903,
+            "Q": 1,
+            "det_r": 0.8998
+          }
+        }
+      }
+    },
+    "runtime_s": 2.2
+  }
+}

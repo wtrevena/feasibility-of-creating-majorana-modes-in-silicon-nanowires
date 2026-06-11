@@ -1,0 +1,17 @@
+# Extends CI (tests.yml): after the test suites, verify that every headline
+# number quoted in the paper still matches the committed numerical ledger
+# (output/data/key_numbers.json, transport_numbers.json) via the hand-curated
+# map in tools/manifest.py.  --check verifies without rewriting MANIFEST.json.
+name: manifest
+on: [push, pull_request]
+jobs:
+  manifest-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: pip install -r requirements.txt
+      - run: python tests.py
+      - run: python compat/test_shim.py
+      - run: python tools/manifest.py --check

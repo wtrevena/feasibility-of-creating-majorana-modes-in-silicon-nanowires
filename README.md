@@ -3,8 +3,11 @@
 A quantitative feasibility study of Majorana zero modes (MZMs) in proximitized silicon
 nanowires, built on a validated spinful Bogoliubov-de Gennes (Lutchyn-Oreg) model.
 
-**Headline result (post-adversarial-review):** conduction-band silicon cannot host
-usable Majorana modes — quantified across SOC, disorder, and valley channels, including
+**Headline result (post-adversarial-review):** within single-channel proximitized
+conduction-band Si wires with g~2, realistic intrinsic SOC, and generic stepped (001)
+interfaces, usable protection is not achievable; engineered-SOC variants remain
+marginal and face the valley-step constraint unless step morphology is specifically
+controlled — quantified across SOC, disorder, and valley channels, including
 a new mechanism: each single-atomic interface step is a near-π Josephson junction that
 caps the topological gap from the very first step. The silicon *valence* band supports a
 conditional design: with Luttinger–Kohn-constrained hole parameters and only *measured*
@@ -61,6 +64,39 @@ python run_analysis.py --fig all
 
 Figures land in `output/`. Long scans checkpoint to `output/data/` (with parameter
 signatures) and resume if interrupted.
+
+## Reproducing the paper
+
+One command re-runs the full pipeline (test suites, then every analysis script in
+dependency order, then the integrity manifest):
+
+```bash
+./reproduce.sh          # Linux/macOS
+```
+```powershell
+.\reproduce.ps1         # Windows (uses .\venv if present)
+```
+
+All heavy scripts checkpoint per-section to `output/data/*.json` (with parameter
+signatures) and resume, so a full pass over the committed checkpoints is mostly
+cache reads; delete a script's checkpoint JSON to force genuine recomputation.
+
+`tools/manifest.py` (run last) writes **`MANIFEST.json`** at the repo root:
+SHA-256 + size of every ledger file (`output/data/*.json`), SHA-256 of every
+figure (`output/fig*.png`, `output/fig13_convergence.pdf`) and manuscript file
+(`paper.tex`/`.pdf`, `supplement.tex`/`.pdf`), the git commit + dirty flag, and a
+hand-curated map from the headline numbers quoted in the paper to the ledger
+entries that generate them. The script **fails (nonzero exit, listing every
+mismatch)** if any curated number no longer matches the ledger, so manuscript /
+code drift is caught mechanically; `python tools/manifest.py --check` performs
+the same verification without rewriting `MANIFEST.json` and runs in CI
+(`.github/workflows/manifest.yml`, alongside the test workflow).
+
+**Legacy-notebook quarantine.** `Majorana_Si_Code.ipynb` is kept for the
+historical record only: its model is not a valid Majorana Hamiltonian
+(RESULTS.md §1), it is executed by no test, script, or CI workflow, and its
+outputs appear in **no current figure or quoted number** — its only surviving
+images sit in `output/legacy/`, which `MANIFEST.json` deliberately excludes.
 
 ## Exact regeneration commands (per figure / claim)
 
