@@ -35,11 +35,37 @@ class BT:
     def __neg__(self):
         return self._like(-self.diag, -self.up, -self.lo)
 
+    def reblock(self, N2, c2):
+        """Re-express with supercells of k = c2//c consecutive sites."""
+        k = c2 // self.c
+        if N2 * c2 != self.N * self.c or k * self.c != c2 or self.N % N2:
+            raise ValueError("reblock: incompatible shapes")
+        c = self.c
+        out = BT(N2, c2, perm=self.perm)
+        for I in range(N2):
+            for a in range(k):
+                i = I * k + a
+                out.diag[I, a*c:(a+1)*c, a*c:(a+1)*c] = self.diag[i]
+                if a < k - 1:
+                    out.diag[I, a*c:(a+1)*c, (a+1)*c:(a+2)*c] = self.up[i]
+                    out.diag[I, (a+1)*c:(a+2)*c, a*c:(a+1)*c] = self.lo[i]
+                elif I < N2 - 1:
+                    out.up[I, (k-1)*c:, :c] = self.up[i]
+                    out.lo[I, :c, (k-1)*c:] = self.lo[i]
+        return out
+
     def __add__(self, o):
         if isinstance(o, LilBT):
             o = o.tocsr()
-        if not isinstance(o, BT) or o.N != self.N or o.c != self.c:
+        if not isinstance(o, BT):
             raise TypeError("BT + incompatible")
+        if (o.N, o.c) != (self.N, self.c):
+            if o.N * o.c != self.N * self.c:
+                raise TypeError("BT + incompatible shape")
+            if o.N > self.N:          # o is finer: reblock o
+                o = o.reblock(self.N, self.c)
+            else:
+                return o + self
         return self._like(self.diag + o.diag, self.up + o.up,
                           self.lo + o.lo)
 
@@ -157,7 +183,35 @@ def eye(n, format=None):
     return _Eye(n)
 
 
+class _XHop:
+    """kron(offdiag(Nx, +-1), eye(M)): couples x-column i to i+-1."""
+    def __init__(self, Nx, M, vals, off):
+        self.Nx, self.M, self.vals, self.off = Nx, M, vals, off
+        n = Nx * M
+        self.shape = (n, n)
+
+    @property
+    def T(self):
+        return _XHop(self.Nx, self.M, self.vals, -self.off)
+
+
+class _YHop:
+    """kron(eye(Nx), offdiag(M, +-1)): couples y-rows within a column."""
+    def __init__(self, Nx, M, vals, off):
+        self.Nx, self.M, self.vals, self.off = Nx, M, vals, off
+        n = Nx * M
+        self.shape = (n, n)
+
+    @property
+    def T(self):
+        return _YHop(self.Nx, self.M, self.vals, -self.off)
+
+
 def kron(a, b, format=None):
+    if isinstance(a, _OffDiag) and isinstance(b, _Eye):
+        return _XHop(a.shape[0], b.shape[0], a.vals, a.off)
+    if isinstance(a, _Eye) and isinstance(b, _OffDiag):
+        return _YHop(a.shape[0], b.shape[0] , b.vals, b.off)
     b = np.asarray(b, complex) if not isinstance(b, (BT,)) else b
     if isinstance(a, _OffDiag):
         N = a.shape[0]
@@ -166,6 +220,25 @@ def kron(a, b, format=None):
         if a.off == 1:
             return BT(N, c, up=tiles)
         return BT(N, c, lo=tiles)
+    if isinstance(a, _XHop):              # BT over x-columns, c = M*cb
+        cb = b.shape[0]
+        c = a.M * cb
+        blk = np.kron(np.eye(a.M), b)
+        tiles = a.vals[:, None, None] * blk[None, :, :]
+        if a.off == 1:
+            return BT(a.Nx, c, up=tiles)
+        return BT(a.Nx, c, lo=tiles)
+    if isinstance(a, _YHop):              # block-diagonal over x-columns
+        cb = b.shape[0]
+        c = (a.M + 1) * cb if False else None
+        M = a.M + 1 if len(a.vals) == a.M else None
+        # offdiag(M) has M-1 values for an M-dim block
+        M = len(a.vals) + 1
+        K = np.diag(a.vals.astype(complex), 1 if a.off == 1 else -1)
+        blk = np.kron(K, b)
+        c = M * cb
+        diag = np.broadcast_to(blk, (a.Nx, c, c)).copy()
+        return BT(a.Nx, c, diag=diag)
     if isinstance(a, _DiagVec):           # includes _Eye
         N = a.shape[0]
         c = b.shape[0]
@@ -176,10 +249,13 @@ def kron(a, b, format=None):
 def bmat(rows, format=None):
     (A, Bm), (C, D) = rows
     parts = [M.tocsr() if isinstance(M, LilBT) else M for M in (A, Bm, C, D)]
+    if not all(isinstance(M, BT) for M in parts):
+        raise NotImplementedError("bmat: 2x2 of BT only")
+    Nc = min(M.N for M in parts)
+    cc = max(M.c for M in parts)
+    parts = [M if (M.N, M.c) == (Nc, cc) else M.reblock(Nc, cc)
+             for M in parts]
     A, Bm, C, D = parts
-    if not all(isinstance(M, BT) and M.N == A.N and M.c == A.c
-               for M in parts):
-        raise NotImplementedError("bmat: 2x2 of equal-structure BT only")
     N, c = A.N, A.c
     c2 = 2 * c
 
