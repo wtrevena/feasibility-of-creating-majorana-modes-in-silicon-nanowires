@@ -1,0 +1,455 @@
+{
+  "A": {
+    "a_bulk_k0": {
+      "gamma8_max_abs_meV": 0.0,
+      "gamma7_meV": [
+        44.00000000000001,
+        44.00000000000001
+      ],
+      "passed": true
+    },
+    "b_bulk_rotation": {
+      "max_rel_dev_rotated_vs_mapped": 1.068230928585677e-15,
+      "m_hh_110": 0.569,
+      "m_lh_110": 0.1468,
+      "gamma8_110_closed_form_rel_dev": 1.7099460691420735e-16,
+      "note": "x', y', z' and 5 random directions; closed form 1/(g1 -/+ sqrt(g2^2+3 g3^2))",
+      "passed": true
+    },
+    "c_isotropic_limit": {
+      "rotated": {
+        "mstar": 0.18213,
+        "alpha_eVA": 0.0716,
+        "gx": 1.62231,
+        "gy": 1.23826,
+        "gz": 2.73839
+      },
+      "unrotated": {
+        "mstar": 0.18213,
+        "alpha_eVA": 0.0716,
+        "gx": 1.62231,
+        "gy": 1.23826,
+        "gz": 2.73839
+      },
+      "pct_diff": {
+        "mstar": 0.0,
+        "alpha_eVA": 0.0,
+        "gx": 0.0,
+        "gy": 0.0,
+        "gz": 0.0
+      },
+      "passed": true
+    },
+    "c2_identity_vs_kp6": {
+      "rot_id": {
+        "mstar": 0.849159,
+        "alpha_eVA": 0.023955,
+        "gx": 0.621044,
+        "gy": 1.034271,
+        "gz": 4.14867
+      },
+      "kp6": {
+        "mstar": 0.849159,
+        "alpha_eVA": 0.023955,
+        "gx": 0.621044,
+        "gy": 1.034271,
+        "gz": 4.14867
+      },
+      "pct_diff": {
+        "mstar": 1e-09,
+        "alpha_eVA": 0.0,
+        "gx": 3e-09,
+        "gy": 0.0,
+        "gz": 7e-09
+      },
+      "passed": true
+    },
+    "d_kramers_herm": {
+      "max_split_over_spacing": 4.5083586482880916e-12,
+      "max_nonhermiticity_J": 1.7022976547080561e-35,
+      "passed": true
+    },
+    "e_convergence": {
+      "prod_11x13": {
+        "mstar": 0.1944,
+        "alpha_eVA": 0.0525,
+        "gx": 1.549,
+        "gy": 1.6168,
+        "gz": 2.632
+      },
+      "change_pct_11x13_vs_15x17_modes": {
+        "mstar": 0.088,
+        "alpha_eVA": 0.192,
+        "gx": 0.013,
+        "gy": 0.008,
+        "gz": 0.081
+      },
+      "passed": true
+    },
+    "all_passed": true,
+    "runtime_s": 36.1
+  },
+  "B": {
+    "rows": {
+      "Ez2": {
+        "mstar": 0.1861,
+        "alpha_eVA": 0.0155,
+        "gx": 1.4299,
+        "gy": 2.2061,
+        "gz": 2.1489,
+        "lso_nm": 263.8,
+        "nso": [
+          -0.0,
+          1.0,
+          -0.0
+        ]
+      },
+      "Ez5": {
+        "mstar": 0.1891,
+        "alpha_eVA": 0.0343,
+        "gx": 1.4726,
+        "gy": 2.0099,
+        "gz": 2.3089,
+        "lso_nm": 117.6,
+        "nso": [
+          -0.0,
+          1.0,
+          -0.0
+        ]
+      },
+      "Ez10": {
+        "mstar": 0.1944,
+        "alpha_eVA": 0.0525,
+        "gx": 1.549,
+        "gy": 1.6168,
+        "gz": 2.632,
+        "lso_nm": 74.7,
+        "nso": [
+          -0.0,
+          1.0,
+          -0.0
+        ]
+      },
+      "Ez15": {
+        "mstar": 0.1979,
+        "alpha_eVA": 0.062,
+        "gx": 1.6002,
+        "gy": 1.2983,
+        "gz": 2.9019,
+        "lso_nm": 62.1,
+        "nso": [
+          0.0,
+          1.0,
+          -0.0
+        ]
+      },
+      "Ez20": {
+        "mstar": 0.2003,
+        "alpha_eVA": 0.0677,
+        "gx": 1.6308,
+        "gy": 1.0573,
+        "gz": 3.1171,
+        "lso_nm": 56.2,
+        "nso": [
+          0.0,
+          1.0,
+          0.0
+        ]
+      },
+      "Ez30": {
+        "mstar": 0.2037,
+        "alpha_eVA": 0.0733,
+        "gx": 1.6567,
+        "gy": 0.7293,
+        "gz": 3.4406,
+        "lso_nm": 51.1,
+        "nso": [
+          0.0,
+          1.0,
+          -0.0
+        ]
+      },
+      "Ez40": {
+        "mstar": 0.2063,
+        "alpha_eVA": 0.075,
+        "gx": 1.6583,
+        "gy": 0.5261,
+        "gz": 3.6747,
+        "lso_nm": 49.2,
+        "nso": [
+          0.0,
+          1.0,
+          0.0
+        ]
+      },
+      "Ez50": {
+        "mstar": 0.2086,
+        "alpha_eVA": 0.0748,
+        "gx": 1.6488,
+        "gy": 0.3959,
+        "gz": 3.8527,
+        "lso_nm": 48.8,
+        "nso": [
+          0.0,
+          1.0,
+          -0.0
+        ]
+      }
+    },
+    "gx_range": [
+      1.43,
+      1.658
+    ],
+    "alpha_range_eVA": [
+      0.015,
+      0.075
+    ],
+    "gx_100_same_rows": {
+      "Ez2": 0.81,
+      "Ez5": 1.0832,
+      "Ez10": 0.621,
+      "Ez15": 0.1292,
+      "Ez20": 0.0933,
+      "Ez30": 0.272,
+      "Ez40": 0.3422,
+      "Ez50": 0.3772
+    },
+    "runtime_s": 51.7
+  },
+  "C": {
+    "rows": {
+      "base_10x12_Ez10": {
+        "mstar": 0.1944,
+        "alpha_eVA": 0.0525,
+        "gx": 1.549,
+        "gy": 1.6168,
+        "gz": 2.632,
+        "lso_nm": 74.7,
+        "nso": [
+          -0.0,
+          1.0,
+          -0.0
+        ]
+      },
+      "narrow_7x14_Ez10": {
+        "mstar": 0.1735,
+        "alpha_eVA": 0.0375,
+        "gx": 1.6581,
+        "gy": 1.669,
+        "gz": 2.213,
+        "lso_nm": 117.1,
+        "nso": [
+          0.0,
+          1.0,
+          -0.0
+        ]
+      },
+      "wide_16x8_Ez10": {
+        "mstar": 0.2175,
+        "alpha_eVA": 0.0298,
+        "gx": 1.3858,
+        "gy": 1.3617,
+        "gz": 4.2697,
+        "lso_nm": 117.7,
+        "nso": [
+          -0.0,
+          1.0,
+          0.0
+        ]
+      },
+      "square_9x9_Ez10": {
+        "mstar": 0.1916,
+        "alpha_eVA": 0.0416,
+        "gx": 1.6031,
+        "gy": 1.9657,
+        "gz": 2.5911,
+        "lso_nm": 95.6,
+        "nso": [
+          -0.0,
+          1.0,
+          0.0
+        ]
+      },
+      "base_10x12_Ez3": {
+        "mstar": 0.187,
+        "alpha_eVA": 0.0225,
+        "gx": 1.4418,
+        "gy": 2.1527,
+        "gz": 2.1924,
+        "lso_nm": 181.0,
+        "nso": [
+          0.0,
+          1.0,
+          0.0
+        ]
+      },
+      "base_10x12_Ez30": {
+        "mstar": 0.2037,
+        "alpha_eVA": 0.0733,
+        "gx": 1.6567,
+        "gy": 0.7293,
+        "gz": 3.4406,
+        "lso_nm": 51.1,
+        "nso": [
+          0.0,
+          1.0,
+          0.0
+        ]
+      },
+      "tall_8x16_Ez10": {
+        "mstar": 0.1819,
+        "alpha_eVA": 0.0444,
+        "gx": 1.6021,
+        "gy": 1.3174,
+        "gz": 2.3186,
+        "lso_nm": 94.4,
+        "nso": [
+          0.0,
+          1.0,
+          -0.0
+        ]
+      }
+    },
+    "gx_range": [
+      1.386,
+      1.658
+    ],
+    "gx_side_by_side": {
+      "base_10x12_Ez10": {
+        "gx_110": 1.549,
+        "gx_100": 0.621
+      },
+      "narrow_7x14_Ez10": {
+        "gx_110": 1.6581,
+        "gx_100": 0.1826
+      },
+      "wide_16x8_Ez10": {
+        "gx_110": 1.3858,
+        "gx_100": 0.0396
+      },
+      "square_9x9_Ez10": {
+        "gx_110": 1.6031,
+        "gx_100": 0.6338
+      },
+      "base_10x12_Ez3": {
+        "gx_110": 1.4418,
+        "gx_100": 0.9072
+      },
+      "base_10x12_Ez30": {
+        "gx_110": 1.6567,
+        "gx_100": 0.272
+      },
+      "tall_8x16_Ez10": {
+        "gx_110": 1.6021,
+        "gx_100": 0.9297
+      }
+    },
+    "fourband_100_gx_range": [
+      0.4,
+      1.07
+    ],
+    "sixband_100_gx_range": [
+      0.04,
+      0.93
+    ],
+    "measured_Geyer_gxx": [
+      1.86,
+      2.31
+    ],
+    "runtime_s": 58.7
+  },
+  "D": {
+    "production_Ez10_g_110": {
+      "gx_wire": 1.549,
+      "gy_inplane": 1.6168,
+      "gz_001": 2.632
+    },
+    "wire_axis": {
+      "gx110_prod": 1.549,
+      "gx110_range_B": [
+        1.43,
+        1.658
+      ],
+      "gx110_range_C": [
+        1.386,
+        1.658
+      ],
+      "gx100_prod": 0.621,
+      "gx100_range_B": [
+        0.093,
+        1.083
+      ],
+      "measured_Geyer_gxx": [
+        1.86,
+        2.31
+      ]
+    },
+    "inplane_perp": {
+      "gy110_prod": 1.6168,
+      "gy110_range_B": [
+        0.396,
+        2.206
+      ],
+      "measured_Camenzind": [
+        1.94,
+        2.35
+      ]
+    },
+    "gz_001": {
+      "gz110_prod": 2.632,
+      "gz110_range_B": [
+        2.149,
+        3.853
+      ],
+      "gz100_range_B": [
+        1.594,
+        4.792
+      ],
+      "venitucci_peak": [
+        4.66,
+        5.0
+      ],
+      "measured_Geyer_gzz": [
+        1.46,
+        1.5
+      ]
+    },
+    "closest_to_geyer": {
+      "Q1": {
+        "row": "C_narrow_7x14_Ez10",
+        "g_110": [
+          1.6581,
+          1.669,
+          2.213
+        ],
+        "geyer": [
+          2.31,
+          2.0,
+          1.5
+        ],
+        "rms": 0.59
+      },
+      "Q2": {
+        "row": "B_Ez2",
+        "g_110": [
+          1.4299,
+          2.2061,
+          2.1489
+        ],
+        "geyer": [
+          1.86,
+          2.76,
+          1.46
+        ],
+        "rms": 0.568
+      }
+    },
+    "gap_closure": {
+      "measured_mid_gxx": 2.085,
+      "closure_fraction_production": 0.634,
+      "closure_fraction_best_over_bracket": 0.574,
+      "note": "(gx110 - gx100)/(g_meas - gx100), production point and bracket maxima"
+    },
+    "runtime_s": 0.0
+  }
+}

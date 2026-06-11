@@ -1,0 +1,1328 @@
+{
+  "A": {
+    "a_pipeline": {
+      "case": {
+        "label": "A_lowdensity",
+        "V_g": -1.2,
+        "n_l": 100000.0,
+        "gate": "tri",
+        "ny": 15,
+        "nz": 17,
+        "n_iter": 7,
+        "res_final_V": 7.411508143206902e-06,
+        "converged": true,
+        "Ez_eff_MVm": 11.4117,
+        "Ey_eff_MVm": 0.0,
+        "Ez_center_MVm": 16.0025,
+        "zbar_nm": 8.562,
+        "ybar_nm": 0.0,
+        "asym_y": 0.0,
+        "asym_z": -0.9282,
+        "full": {
+          "mstar": 0.863,
+          "alpha_eVA": 0.0203,
+          "gx": 0.2541,
+          "gy": 0.386,
+          "gz": 4.4202,
+          "nso": [
+            0.0,
+            -1.0,
+            -0.0
+          ]
+        },
+        "uniform_Ezeff": {
+          "mstar": 0.8719,
+          "alpha_eVA": 0.0215,
+          "gx": 0.4308,
+          "gy": 0.6946,
+          "gz": 4.3088,
+          "nso": [
+            -0.0,
+            1.0,
+            0.0
+          ]
+        },
+        "diff_full_minus_uniform": {
+          "mstar": {
+            "full": 0.863,
+            "uniform": 0.8719,
+            "delta": -0.0089,
+            "pct": -1.0
+          },
+          "alpha_eVA": {
+            "full": 0.0203,
+            "uniform": 0.0215,
+            "delta": -0.0013,
+            "pct": -5.9
+          },
+          "gx": {
+            "full": 0.2541,
+            "uniform": 0.4308,
+            "delta": -0.1767,
+            "pct": -41.0
+          },
+          "gy": {
+            "full": 0.386,
+            "uniform": 0.6946,
+            "delta": -0.3086,
+            "pct": -44.4
+          },
+          "gz": {
+            "full": 4.4202,
+            "uniform": 4.3088,
+            "delta": 0.1114,
+            "pct": 2.6
+          }
+        },
+        "runtime_s": 15.7
+      },
+      "Ez_eff_MVm": 11.4117,
+      "Ez_eff_near_10MVm": true,
+      "bare_slope_note": "poisson2d B-calibration: ~8.3e6 (V/m)/V tri-gate (uniform weight); density-weighted Ez_eff differs since the kp hole blob sits near the top gate",
+      "projector_vs_analytic_relerr": 7.621467998601451e-15,
+      "uniform_pipeline_vs_extract6_pct": {
+        "mstar": 0.0,
+        "alpha_eVA": 0.0,
+        "gx": 0.0,
+        "gy": 0.0,
+        "gz": 0.0
+      },
+      "mirror_orientation_vs_extract6_pct": {
+        "mstar": 0.0,
+        "alpha_eVA": 0.0,
+        "gx": 0.0,
+        "gy": 0.0,
+        "gz": 0.0
+      },
+      "passed": true
+    },
+    "b_scf_production": {
+      "case": {
+        "label": "A_production",
+        "V_g": -1.2,
+        "n_l": 20000000.0,
+        "gate": "tri",
+        "ny": 15,
+        "nz": 17,
+        "n_iter": 21,
+        "res_final_V": 9.622043100288025e-06,
+        "converged": true,
+        "Ez_eff_MVm": 11.4865,
+        "Ey_eff_MVm": 0.0,
+        "Ez_center_MVm": 14.7942,
+        "zbar_nm": 8.544,
+        "ybar_nm": 0.0,
+        "asym_y": 0.0,
+        "asym_z": -0.9129,
+        "full": {
+          "mstar": 0.8602,
+          "alpha_eVA": 0.0215,
+          "gx": 0.3256,
+          "gy": 0.4698,
+          "gz": 4.3753,
+          "nso": [
+            0.0,
+            -1.0,
+            -0.0
+          ]
+        },
+        "uniform_Ezeff": {
+          "mstar": 0.8726,
+          "alpha_eVA": 0.0215,
+          "gx": 0.4222,
+          "gy": 0.6799,
+          "gz": 4.3148,
+          "nso": [
+            0.0,
+            1.0,
+            -0.0
+          ]
+        },
+        "diff_full_minus_uniform": {
+          "mstar": {
+            "full": 0.8602,
+            "uniform": 0.8726,
+            "delta": -0.0124,
+            "pct": -1.4
+          },
+          "alpha_eVA": {
+            "full": 0.0215,
+            "uniform": 0.0215,
+            "delta": 0.0001,
+            "pct": 0.3
+          },
+          "gx": {
+            "full": 0.3256,
+            "uniform": 0.4222,
+            "delta": -0.0966,
+            "pct": -22.9
+          },
+          "gy": {
+            "full": 0.4698,
+            "uniform": 0.6799,
+            "delta": -0.2102,
+            "pct": -30.9
+          },
+          "gz": {
+            "full": 4.3753,
+            "uniform": 4.3148,
+            "delta": 0.0605,
+            "pct": 1.4
+          }
+        },
+        "runtime_s": 26.2
+      },
+      "density_min": 0.0,
+      "density_norm": 1.0,
+      "passed": true
+    },
+    "c_basis_convergence": {
+      "coarse_11x13": {
+        "mstar": 0.8589,
+        "alpha_eVA": 0.0221,
+        "gx": 0.3372,
+        "gy": 0.4766,
+        "gz": 4.3642,
+        "nso": [
+          0.0,
+          -1.0,
+          0.0
+        ]
+      },
+      "prod_15x17": {
+        "mstar": 0.8602,
+        "alpha_eVA": 0.0215,
+        "gx": 0.3256,
+        "gy": 0.4698,
+        "gz": 4.3753,
+        "nso": [
+          0.0,
+          -1.0,
+          -0.0
+        ]
+      },
+      "fine_19x21": {
+        "mstar": 0.8606,
+        "alpha_eVA": 0.0212,
+        "gx": 0.3205,
+        "gy": 0.467,
+        "gz": 4.3803,
+        "nso": [
+          0.0,
+          -1.0,
+          0.0
+        ]
+      },
+      "change_pct_11x13_to_15x17": {
+        "mstar": 0.151,
+        "alpha_eVA": 2.715,
+        "gx": 3.44,
+        "gy": 1.427,
+        "gz": 0.254
+      },
+      "change_pct_15x17_to_19x21": {
+        "mstar": 0.047,
+        "alpha_eVA": 1.395,
+        "gx": 1.566,
+        "gy": 0.596,
+        "gz": 0.114
+      },
+      "passed": true
+    },
+    "all_passed": true,
+    "runtime_s": 150.4
+  },
+  "B": {
+    "rows": {
+      "Vg-0.35": {
+        "label": "B_Vg-0.35",
+        "V_g": -0.35,
+        "n_l": 20000000.0,
+        "gate": "tri",
+        "ny": 15,
+        "nz": 17,
+        "n_iter": 21,
+        "res_final_V": 9.25152826752873e-06,
+        "converged": true,
+        "Ez_eff_MVm": 4.0989,
+        "Ey_eff_MVm": 0.0,
+        "Ez_center_MVm": 3.9768,
+        "zbar_nm": 7.249,
+        "ybar_nm": 0.0,
+        "asym_y": 0.0,
+        "asym_z": -0.8905,
+        "full": {
+          "mstar": 0.7056,
+          "alpha_eVA": 0.0229,
+          "gx": 1.0603,
+          "gy": 3.3216,
+          "gz": 2.4171,
+          "nso": [
+            -0.0,
+            -1.0,
+            -0.0
+          ]
+        },
+        "uniform_Ezeff": {
+          "mstar": 0.7081,
+          "alpha_eVA": 0.0223,
+          "gx": 1.0179,
+          "gy": 3.5007,
+          "gz": 2.234,
+          "nso": [
+            -0.0,
+            1.0,
+            0.0
+          ]
+        },
+        "diff_full_minus_uniform": {
+          "mstar": {
+            "full": 0.7056,
+            "uniform": 0.7081,
+            "delta": -0.0025,
+            "pct": -0.4
+          },
+          "alpha_eVA": {
+            "full": 0.0229,
+            "uniform": 0.0223,
+            "delta": 0.0007,
+            "pct": 3.0
+          },
+          "gx": {
+            "full": 1.0603,
+            "uniform": 1.0179,
+            "delta": 0.0424,
+            "pct": 4.2
+          },
+          "gy": {
+            "full": 3.3216,
+            "uniform": 3.5007,
+            "delta": -0.1791,
+            "pct": -5.1
+          },
+          "gz": {
+            "full": 2.4171,
+            "uniform": 2.234,
+            "delta": 0.1831,
+            "pct": 8.2
+          }
+        },
+        "runtime_s": 27.2
+      },
+      "Vg-0.8": {
+        "label": "B_Vg-0.8",
+        "V_g": -0.8,
+        "n_l": 20000000.0,
+        "gate": "tri",
+        "ny": 15,
+        "nz": 17,
+        "n_iter": 21,
+        "res_final_V": 9.476250446116552e-06,
+        "converged": true,
+        "Ez_eff_MVm": 8.1547,
+        "Ey_eff_MVm": 0.0,
+        "Ez_center_MVm": 9.5461,
+        "zbar_nm": 8.132,
+        "ybar_nm": 0.0,
+        "asym_y": 0.0,
+        "asym_z": -0.9075,
+        "full": {
+          "mstar": 0.8134,
+          "alpha_eVA": 0.0246,
+          "gx": 0.7546,
+          "gy": 1.3052,
+          "gz": 3.9973,
+          "nso": [
+            0.0,
+            -1.0,
+            0.0
+          ]
+        },
+        "uniform_Ezeff": {
+          "mstar": 0.8012,
+          "alpha_eVA": 0.0262,
+          "gx": 0.88,
+          "gy": 1.6546,
+          "gz": 3.8109,
+          "nso": [
+            0.0,
+            1.0,
+            0.0
+          ]
+        },
+        "diff_full_minus_uniform": {
+          "mstar": {
+            "full": 0.8134,
+            "uniform": 0.8012,
+            "delta": 0.0122,
+            "pct": 1.5
+          },
+          "alpha_eVA": {
+            "full": 0.0246,
+            "uniform": 0.0262,
+            "delta": -0.0016,
+            "pct": -6.0
+          },
+          "gx": {
+            "full": 0.7546,
+            "uniform": 0.88,
+            "delta": -0.1254,
+            "pct": -14.3
+          },
+          "gy": {
+            "full": 1.3052,
+            "uniform": 1.6546,
+            "delta": -0.3494,
+            "pct": -21.1
+          },
+          "gz": {
+            "full": 3.9973,
+            "uniform": 3.8109,
+            "delta": 0.1864,
+            "pct": 4.9
+          }
+        },
+        "runtime_s": 26.8
+      },
+      "Vg-1.2": {
+        "label": "B_Vg-1.2",
+        "V_g": -1.2,
+        "n_l": 20000000.0,
+        "gate": "tri",
+        "ny": 15,
+        "nz": 17,
+        "n_iter": 21,
+        "res_final_V": 9.622043100288025e-06,
+        "converged": true,
+        "Ez_eff_MVm": 11.4865,
+        "Ey_eff_MVm": 0.0,
+        "Ez_center_MVm": 14.7942,
+        "zbar_nm": 8.544,
+        "ybar_nm": 0.0,
+        "asym_y": 0.0,
+        "asym_z": -0.9129,
+        "full": {
+          "mstar": 0.8602,
+          "alpha_eVA": 0.0215,
+          "gx": 0.3256,
+          "gy": 0.4698,
+          "gz": 4.3753,
+          "nso": [
+            0.0,
+            -1.0,
+            -0.0
+          ]
+        },
+        "uniform_Ezeff": {
+          "mstar": 0.8726,
+          "alpha_eVA": 0.0215,
+          "gx": 0.4222,
+          "gy": 0.6799,
+          "gz": 4.3148,
+          "nso": [
+            0.0,
+            1.0,
+            -0.0
+          ]
+        },
+        "diff_full_minus_uniform": {
+          "mstar": {
+            "full": 0.8602,
+            "uniform": 0.8726,
+            "delta": -0.0124,
+            "pct": -1.4
+          },
+          "alpha_eVA": {
+            "full": 0.0215,
+            "uniform": 0.0215,
+            "delta": 0.0001,
+            "pct": 0.3
+          },
+          "gx": {
+            "full": 0.3256,
+            "uniform": 0.4222,
+            "delta": -0.0966,
+            "pct": -22.9
+          },
+          "gy": {
+            "full": 0.4698,
+            "uniform": 0.6799,
+            "delta": -0.2102,
+            "pct": -30.9
+          },
+          "gz": {
+            "full": 4.3753,
+            "uniform": 4.3148,
+            "delta": 0.0605,
+            "pct": 1.4
+          }
+        },
+        "runtime_s": 30.0
+      },
+      "Vg-2.0": {
+        "label": "B_Vg-2.0",
+        "V_g": -2.0,
+        "n_l": 20000000.0,
+        "gate": "tri",
+        "ny": 15,
+        "nz": 17,
+        "n_iter": 21,
+        "res_final_V": 9.755721529058903e-06,
+        "converged": true,
+        "Ez_eff_MVm": 17.8414,
+        "Ey_eff_MVm": 0.0,
+        "Ez_center_MVm": 25.4798,
+        "zbar_nm": 9.007,
+        "ybar_nm": 0.0,
+        "asym_y": 0.0,
+        "asym_z": -0.918,
+        "full": {
+          "mstar": 0.8539,
+          "alpha_eVA": 0.0223,
+          "gx": 0.0197,
+          "gy": 0.1332,
+          "gz": 4.5643,
+          "nso": [
+            0.0,
+            1.0,
+            0.0
+          ]
+        },
+        "uniform_Ezeff": {
+          "mstar": 0.8797,
+          "alpha_eVA": 0.0182,
+          "gx": 0.031,
+          "gy": 0.0257,
+          "gz": 4.5546,
+          "nso": [
+            -0.0,
+            -1.0,
+            0.0
+          ]
+        },
+        "diff_full_minus_uniform": {
+          "mstar": {
+            "full": 0.8539,
+            "uniform": 0.8797,
+            "delta": -0.0258,
+            "pct": -2.9
+          },
+          "alpha_eVA": {
+            "full": 0.0223,
+            "uniform": 0.0182,
+            "delta": 0.0041,
+            "pct": 22.6
+          },
+          "gx": {
+            "full": 0.0197,
+            "uniform": 0.031,
+            "delta": -0.0113,
+            "pct": -36.4
+          },
+          "gy": {
+            "full": 0.1332,
+            "uniform": 0.0257,
+            "delta": 0.1075,
+            "pct": 417.6
+          },
+          "gz": {
+            "full": 4.5643,
+            "uniform": 4.5546,
+            "delta": 0.0097,
+            "pct": 0.2
+          }
+        },
+        "runtime_s": 29.3
+      },
+      "Vg-3.0": {
+        "label": "B_Vg-3.0",
+        "V_g": -3.0,
+        "n_l": 20000000.0,
+        "gate": "tri",
+        "ny": 15,
+        "nz": 17,
+        "n_iter": 21,
+        "res_final_V": 9.801238887163777e-06,
+        "converged": true,
+        "Ez_eff_MVm": 25.4452,
+        "Ey_eff_MVm": 0.0,
+        "Ez_center_MVm": 38.8834,
+        "zbar_nm": 9.336,
+        "ybar_nm": 0.0,
+        "asym_y": 0.0,
+        "asym_z": -0.9209,
+        "full": {
+          "mstar": 0.8192,
+          "alpha_eVA": 0.0264,
+          "gx": 0.1588,
+          "gy": 0.4578,
+          "gz": 4.6527,
+          "nso": [
+            -0.0,
+            1.0,
+            -0.0
+          ]
+        },
+        "uniform_Ezeff": {
+          "mstar": 0.8516,
+          "alpha_eVA": 0.0191,
+          "gx": 0.228,
+          "gy": 0.3558,
+          "gz": 4.6519,
+          "nso": [
+            -0.0,
+            -1.0,
+            -0.0
+          ]
+        },
+        "diff_full_minus_uniform": {
+          "mstar": {
+            "full": 0.8192,
+            "uniform": 0.8516,
+            "delta": -0.0323,
+            "pct": -3.8
+          },
+          "alpha_eVA": {
+            "full": 0.0264,
+            "uniform": 0.0191,
+            "delta": 0.0072,
+            "pct": 37.8
+          },
+          "gx": {
+            "full": 0.1588,
+            "uniform": 0.228,
+            "delta": -0.0692,
+            "pct": -30.4
+          },
+          "gy": {
+            "full": 0.4578,
+            "uniform": 0.3558,
+            "delta": 0.102,
+            "pct": 28.7
+          },
+          "gz": {
+            "full": 4.6527,
+            "uniform": 4.6519,
+            "delta": 0.0008,
+            "pct": 0.0
+          }
+        },
+        "runtime_s": 28.7
+      },
+      "Vg-4.3": {
+        "label": "B_Vg-4.3",
+        "V_g": -4.3,
+        "n_l": 20000000.0,
+        "gate": "tri",
+        "ny": 15,
+        "nz": 17,
+        "n_iter": 21,
+        "res_final_V": 9.777451507986257e-06,
+        "converged": true,
+        "Ez_eff_MVm": 34.9954,
+        "Ey_eff_MVm": 0.0,
+        "Ez_center_MVm": 56.2946,
+        "zbar_nm": 9.601,
+        "ybar_nm": 0.0,
+        "asym_y": 0.0,
+        "asym_z": -0.9229,
+        "full": {
+          "mstar": 0.7741,
+          "alpha_eVA": 0.0308,
+          "gx": 0.2286,
+          "gy": 0.693,
+          "gz": 4.7176,
+          "nso": [
+            0.0,
+            1.0,
+            -0.0
+          ]
+        },
+        "uniform_Ezeff": {
+          "mstar": 0.8172,
+          "alpha_eVA": 0.0217,
+          "gx": 0.3285,
+          "gy": 0.5794,
+          "gz": 4.7269,
+          "nso": [
+            0.0,
+            -1.0,
+            -0.0
+          ]
+        },
+        "diff_full_minus_uniform": {
+          "mstar": {
+            "full": 0.7741,
+            "uniform": 0.8172,
+            "delta": -0.0432,
+            "pct": -5.3
+          },
+          "alpha_eVA": {
+            "full": 0.0308,
+            "uniform": 0.0217,
+            "delta": 0.0092,
+            "pct": 42.3
+          },
+          "gx": {
+            "full": 0.2286,
+            "uniform": 0.3285,
+            "delta": -0.0999,
+            "pct": -30.4
+          },
+          "gy": {
+            "full": 0.693,
+            "uniform": 0.5794,
+            "delta": 0.1136,
+            "pct": 19.6
+          },
+          "gz": {
+            "full": 4.7176,
+            "uniform": 4.7269,
+            "delta": -0.0093,
+            "pct": -0.2
+          }
+        },
+        "runtime_s": 31.9
+      }
+    },
+    "gx_delta_range": [
+      -0.1254,
+      0.0424
+    ],
+    "alpha_delta_range_eVA": [
+      -0.0016,
+      0.0092
+    ],
+    "runtime_s": 173.9
+  },
+  "C": {
+    "rows": {
+      "nl1e+05": {
+        "label": "C_nl1e+05",
+        "V_g": -1.2,
+        "n_l": 100000.0,
+        "gate": "tri",
+        "ny": 15,
+        "nz": 17,
+        "n_iter": 7,
+        "res_final_V": 7.411508143206902e-06,
+        "converged": true,
+        "Ez_eff_MVm": 11.4117,
+        "Ey_eff_MVm": 0.0,
+        "Ez_center_MVm": 16.0025,
+        "zbar_nm": 8.562,
+        "ybar_nm": 0.0,
+        "asym_y": 0.0,
+        "asym_z": -0.9282,
+        "full": {
+          "mstar": 0.863,
+          "alpha_eVA": 0.0203,
+          "gx": 0.2541,
+          "gy": 0.386,
+          "gz": 4.4202,
+          "nso": [
+            0.0,
+            -1.0,
+            -0.0
+          ]
+        },
+        "uniform_Ezeff": {
+          "mstar": 0.8719,
+          "alpha_eVA": 0.0215,
+          "gx": 0.4308,
+          "gy": 0.6946,
+          "gz": 4.3088,
+          "nso": [
+            -0.0,
+            1.0,
+            0.0
+          ]
+        },
+        "diff_full_minus_uniform": {
+          "mstar": {
+            "full": 0.863,
+            "uniform": 0.8719,
+            "delta": -0.0089,
+            "pct": -1.0
+          },
+          "alpha_eVA": {
+            "full": 0.0203,
+            "uniform": 0.0215,
+            "delta": -0.0013,
+            "pct": -5.9
+          },
+          "gx": {
+            "full": 0.2541,
+            "uniform": 0.4308,
+            "delta": -0.1767,
+            "pct": -41.0
+          },
+          "gy": {
+            "full": 0.386,
+            "uniform": 0.6946,
+            "delta": -0.3086,
+            "pct": -44.4
+          },
+          "gz": {
+            "full": 4.4202,
+            "uniform": 4.3088,
+            "delta": 0.1114,
+            "pct": 2.6
+          }
+        },
+        "runtime_s": 16.7
+      },
+      "nl2e+07": {
+        "label": "C_nl2e+07",
+        "V_g": -1.2,
+        "n_l": 20000000.0,
+        "gate": "tri",
+        "ny": 15,
+        "nz": 17,
+        "n_iter": 21,
+        "res_final_V": 9.622043100288025e-06,
+        "converged": true,
+        "Ez_eff_MVm": 11.4865,
+        "Ey_eff_MVm": 0.0,
+        "Ez_center_MVm": 14.7942,
+        "zbar_nm": 8.544,
+        "ybar_nm": 0.0,
+        "asym_y": 0.0,
+        "asym_z": -0.9129,
+        "full": {
+          "mstar": 0.8602,
+          "alpha_eVA": 0.0215,
+          "gx": 0.3256,
+          "gy": 0.4698,
+          "gz": 4.3753,
+          "nso": [
+            0.0,
+            -1.0,
+            -0.0
+          ]
+        },
+        "uniform_Ezeff": {
+          "mstar": 0.8726,
+          "alpha_eVA": 0.0215,
+          "gx": 0.4222,
+          "gy": 0.6799,
+          "gz": 4.3148,
+          "nso": [
+            0.0,
+            1.0,
+            -0.0
+          ]
+        },
+        "diff_full_minus_uniform": {
+          "mstar": {
+            "full": 0.8602,
+            "uniform": 0.8726,
+            "delta": -0.0124,
+            "pct": -1.4
+          },
+          "alpha_eVA": {
+            "full": 0.0215,
+            "uniform": 0.0215,
+            "delta": 0.0001,
+            "pct": 0.3
+          },
+          "gx": {
+            "full": 0.3256,
+            "uniform": 0.4222,
+            "delta": -0.0966,
+            "pct": -22.9
+          },
+          "gy": {
+            "full": 0.4698,
+            "uniform": 0.6799,
+            "delta": -0.2102,
+            "pct": -30.9
+          },
+          "gz": {
+            "full": 4.3753,
+            "uniform": 4.3148,
+            "delta": 0.0605,
+            "pct": 1.4
+          }
+        },
+        "runtime_s": 29.5
+      },
+      "nl5e+07": {
+        "label": "C_nl5e+07",
+        "V_g": -1.2,
+        "n_l": 50000000.0,
+        "gate": "tri",
+        "ny": 15,
+        "nz": 17,
+        "n_iter": 24,
+        "res_final_V": 7.698671292910575e-06,
+        "converged": true,
+        "Ez_eff_MVm": 11.604,
+        "Ey_eff_MVm": 0.0,
+        "Ez_center_MVm": 13.0329,
+        "zbar_nm": 8.516,
+        "ybar_nm": 0.0,
+        "asym_y": 0.0,
+        "asym_z": -0.8905,
+        "full": {
+          "mstar": 0.8551,
+          "alpha_eVA": 0.0234,
+          "gx": 0.4254,
+          "gy": 0.593,
+          "gz": 4.3004,
+          "nso": [
+            -0.0,
+            -1.0,
+            -0.0
+          ]
+        },
+        "uniform_Ezeff": {
+          "mstar": 0.8738,
+          "alpha_eVA": 0.0213,
+          "gx": 0.4088,
+          "gy": 0.6573,
+          "gz": 4.324,
+          "nso": [
+            -0.0,
+            1.0,
+            -0.0
+          ]
+        },
+        "diff_full_minus_uniform": {
+          "mstar": {
+            "full": 0.8551,
+            "uniform": 0.8738,
+            "delta": -0.0187,
+            "pct": -2.1
+          },
+          "alpha_eVA": {
+            "full": 0.0234,
+            "uniform": 0.0213,
+            "delta": 0.0021,
+            "pct": 9.8
+          },
+          "gx": {
+            "full": 0.4254,
+            "uniform": 0.4088,
+            "delta": 0.0166,
+            "pct": 4.1
+          },
+          "gy": {
+            "full": 0.593,
+            "uniform": 0.6573,
+            "delta": -0.0643,
+            "pct": -9.8
+          },
+          "gz": {
+            "full": 4.3004,
+            "uniform": 4.324,
+            "delta": -0.0236,
+            "pct": -0.5
+          }
+        },
+        "runtime_s": 32.3
+      }
+    },
+    "runtime_s": 78.6
+  },
+  "D": {
+    "tri": {
+      "label": "D_tri",
+      "V_g": -1.2,
+      "n_l": 20000000.0,
+      "gate": "tri",
+      "ny": 15,
+      "nz": 17,
+      "n_iter": 21,
+      "res_final_V": 9.622043100288025e-06,
+      "converged": true,
+      "Ez_eff_MVm": 11.4865,
+      "Ey_eff_MVm": 0.0,
+      "Ez_center_MVm": 14.7942,
+      "zbar_nm": 8.544,
+      "ybar_nm": 0.0,
+      "asym_y": 0.0,
+      "asym_z": -0.9129,
+      "full": {
+        "mstar": 0.8602,
+        "alpha_eVA": 0.0215,
+        "gx": 0.3256,
+        "gy": 0.4698,
+        "gz": 4.3753,
+        "nso": [
+          0.0,
+          -1.0,
+          -0.0
+        ]
+      },
+      "uniform_Ezeff": {
+        "mstar": 0.8726,
+        "alpha_eVA": 0.0215,
+        "gx": 0.4222,
+        "gy": 0.6799,
+        "gz": 4.3148,
+        "nso": [
+          0.0,
+          1.0,
+          -0.0
+        ]
+      },
+      "diff_full_minus_uniform": {
+        "mstar": {
+          "full": 0.8602,
+          "uniform": 0.8726,
+          "delta": -0.0124,
+          "pct": -1.4
+        },
+        "alpha_eVA": {
+          "full": 0.0215,
+          "uniform": 0.0215,
+          "delta": 0.0001,
+          "pct": 0.3
+        },
+        "gx": {
+          "full": 0.3256,
+          "uniform": 0.4222,
+          "delta": -0.0966,
+          "pct": -22.9
+        },
+        "gy": {
+          "full": 0.4698,
+          "uniform": 0.6799,
+          "delta": -0.2102,
+          "pct": -30.9
+        },
+        "gz": {
+          "full": 4.3753,
+          "uniform": 4.3148,
+          "delta": 0.0605,
+          "pct": 1.4
+        }
+      },
+      "runtime_s": 30.1
+    },
+    "top_calibration": {
+      "label": "D_top_cal",
+      "V_g": -1.2,
+      "n_l": 20000000.0,
+      "gate": "top",
+      "ny": 15,
+      "nz": 17,
+      "n_iter": 23,
+      "res_final_V": 8.033418801511871e-06,
+      "converged": true,
+      "Ez_eff_MVm": 27.1634,
+      "Ey_eff_MVm": 0.0,
+      "Ez_center_MVm": 26.403,
+      "zbar_nm": 9.341,
+      "ybar_nm": 0.0,
+      "asym_y": 0.0,
+      "asym_z": -0.8823,
+      "full": {
+        "mstar": 0.8449,
+        "alpha_eVA": 0.0173,
+        "gx": 0.1864,
+        "gy": 0.3022,
+        "gz": 4.658,
+        "nso": [
+          -0.0,
+          1.0,
+          0.0
+        ]
+      },
+      "uniform_Ezeff": {
+        "mstar": 0.845,
+        "alpha_eVA": 0.0196,
+        "gx": 0.2531,
+        "gy": 0.4057,
+        "gz": 4.6677,
+        "nso": [
+          0.0,
+          -1.0,
+          -0.0
+        ]
+      },
+      "diff_full_minus_uniform": {
+        "mstar": {
+          "full": 0.8449,
+          "uniform": 0.845,
+          "delta": -0.0001,
+          "pct": -0.0
+        },
+        "alpha_eVA": {
+          "full": 0.0173,
+          "uniform": 0.0196,
+          "delta": -0.0022,
+          "pct": -11.3
+        },
+        "gx": {
+          "full": 0.1864,
+          "uniform": 0.2531,
+          "delta": -0.0667,
+          "pct": -26.4
+        },
+        "gy": {
+          "full": 0.3022,
+          "uniform": 0.4057,
+          "delta": -0.1034,
+          "pct": -25.5
+        },
+        "gz": {
+          "full": 4.658,
+          "uniform": 4.6677,
+          "delta": -0.0096,
+          "pct": -0.2
+        }
+      },
+      "runtime_s": 29.0
+    },
+    "top": {
+      "label": "D_top",
+      "V_g": -0.507440422368221,
+      "n_l": 20000000.0,
+      "gate": "top",
+      "ny": 15,
+      "nz": 17,
+      "n_iter": 23,
+      "res_final_V": 8.154196568466165e-06,
+      "converged": true,
+      "Ez_eff_MVm": 11.9287,
+      "Ey_eff_MVm": 0.0,
+      "Ez_center_MVm": 10.6134,
+      "zbar_nm": 8.502,
+      "ybar_nm": 0.0,
+      "asym_y": 0.0,
+      "asym_z": -0.8773,
+      "full": {
+        "mstar": 0.8688,
+        "alpha_eVA": 0.021,
+        "gx": 0.4619,
+        "gy": 0.7371,
+        "gz": 4.2825,
+        "nso": [
+          -0.0,
+          -1.0,
+          0.0
+        ]
+      },
+      "uniform_Ezeff": {
+        "mstar": 0.8767,
+        "alpha_eVA": 0.021,
+        "gx": 0.3731,
+        "gy": 0.5979,
+        "gz": 4.3476,
+        "nso": [
+          -0.0,
+          1.0,
+          -0.0
+        ]
+      },
+      "diff_full_minus_uniform": {
+        "mstar": {
+          "full": 0.8688,
+          "uniform": 0.8767,
+          "delta": -0.0079,
+          "pct": -0.9
+        },
+        "alpha_eVA": {
+          "full": 0.021,
+          "uniform": 0.021,
+          "delta": 0.0001,
+          "pct": 0.4
+        },
+        "gx": {
+          "full": 0.4619,
+          "uniform": 0.3731,
+          "delta": 0.0887,
+          "pct": 23.8
+        },
+        "gy": {
+          "full": 0.7371,
+          "uniform": 0.5979,
+          "delta": 0.1392,
+          "pct": 23.3
+        },
+        "gz": {
+          "full": 4.2825,
+          "uniform": 4.3476,
+          "delta": -0.0651,
+          "pct": -1.5
+        }
+      },
+      "runtime_s": 28.3
+    },
+    "Ez_eff_match_pct": 3.85,
+    "runtime_s": 87.4
+  },
+  "E": {
+    "symmetric": {
+      "label": "E_symmetric",
+      "V_g": -1.2,
+      "n_l": 20000000.0,
+      "gate": "tri",
+      "ny": 15,
+      "nz": 17,
+      "n_iter": 21,
+      "res_final_V": 9.622043100288025e-06,
+      "converged": true,
+      "Ez_eff_MVm": 11.4865,
+      "Ey_eff_MVm": 0.0,
+      "Ez_center_MVm": 14.7942,
+      "zbar_nm": 8.544,
+      "ybar_nm": 0.0,
+      "asym_y": 0.0,
+      "asym_z": -0.9129,
+      "full": {
+        "mstar": 0.8602,
+        "alpha_eVA": 0.0215,
+        "gx": 0.3256,
+        "gy": 0.4698,
+        "gz": 4.3753,
+        "nso": [
+          0.0,
+          -1.0,
+          -0.0
+        ]
+      },
+      "uniform_Ezeff": {
+        "mstar": 0.8726,
+        "alpha_eVA": 0.0215,
+        "gx": 0.4222,
+        "gy": 0.6799,
+        "gz": 4.3148,
+        "nso": [
+          0.0,
+          1.0,
+          -0.0
+        ]
+      },
+      "diff_full_minus_uniform": {
+        "mstar": {
+          "full": 0.8602,
+          "uniform": 0.8726,
+          "delta": -0.0124,
+          "pct": -1.4
+        },
+        "alpha_eVA": {
+          "full": 0.0215,
+          "uniform": 0.0215,
+          "delta": 0.0001,
+          "pct": 0.3
+        },
+        "gx": {
+          "full": 0.3256,
+          "uniform": 0.4222,
+          "delta": -0.0966,
+          "pct": -22.9
+        },
+        "gy": {
+          "full": 0.4698,
+          "uniform": 0.6799,
+          "delta": -0.2102,
+          "pct": -30.9
+        },
+        "gz": {
+          "full": 4.3753,
+          "uniform": 4.3148,
+          "delta": 0.0605,
+          "pct": 1.4
+        }
+      },
+      "runtime_s": 28.1
+    },
+    "asym_dV_right_0p2V": {
+      "label": "E_asym_dV0.2",
+      "V_g": -1.2,
+      "n_l": 20000000.0,
+      "gate": "tri",
+      "ny": 15,
+      "nz": 17,
+      "n_iter": 21,
+      "res_final_V": 9.89999594547264e-06,
+      "converged": true,
+      "Ez_eff_MVm": 13.8992,
+      "Ey_eff_MVm": -7.4731,
+      "Ez_center_MVm": 16.1394,
+      "zbar_nm": 8.724,
+      "ybar_nm": -0.982,
+      "asym_y": 0.2512,
+      "asym_z": -0.7975,
+      "full": {
+        "mstar": 0.9002,
+        "alpha_eVA": 0.0336,
+        "gx": 0.4268,
+        "gy": 0.7245,
+        "gz": 4.211,
+        "nso": [
+          -0.0,
+          -0.146,
+          -0.989
+        ]
+      },
+      "uniform_Ezeff": {
+        "mstar": 0.8851,
+        "alpha_eVA": 0.0194,
+        "gx": 0.1931,
+        "gy": 0.3133,
+        "gz": 4.4501,
+        "nso": [
+          0.0,
+          1.0,
+          0.0
+        ]
+      },
+      "diff_full_minus_uniform": {
+        "mstar": {
+          "full": 0.9002,
+          "uniform": 0.8851,
+          "delta": 0.0151,
+          "pct": 1.7
+        },
+        "alpha_eVA": {
+          "full": 0.0336,
+          "uniform": 0.0194,
+          "delta": 0.0142,
+          "pct": 73.2
+        },
+        "gx": {
+          "full": 0.4268,
+          "uniform": 0.1931,
+          "delta": 0.2337,
+          "pct": 121.0
+        },
+        "gy": {
+          "full": 0.7245,
+          "uniform": 0.3133,
+          "delta": 0.4112,
+          "pct": 131.2
+        },
+        "gz": {
+          "full": 4.211,
+          "uniform": 4.4501,
+          "delta": -0.2391,
+          "pct": -5.4
+        }
+      },
+      "runtime_s": 28.1
+    },
+    "crude_Ey_probe": {
+      "note": "crude asymmetry probe: U += e*Ey*y with Ey = 1 MV/m added to the FROZEN symmetric converged potential (no SCF feedback) \u2014 labeled crude, subclass result is primary",
+      "Ey_MVm": 1.0,
+      "mstar": 0.8611,
+      "alpha_eVA": 0.0222,
+      "gx": 0.3342,
+      "gy": 0.4837,
+      "gz": 4.3652,
+      "nso": [
+        -0.0,
+        -0.421,
+        -0.907
+      ]
+    },
+    "gx_sym": 0.3256,
+    "gx_asym": 0.4268,
+    "gx_crude": 0.33423837808304147,
+    "gx_raised_by_asymmetry": true,
+    "runtime_s": 61.3
+  }
+}
