@@ -66,13 +66,15 @@ New modules (all validated, all results in output/data/<name>.json + key_numbers
 5. [ ] Strain (Bir-Pikus b,d) — flagged optional future work in benchmarks.
 6. [ ] Zenodo DOI — author action.
 
-## NEXT STEP (queued, NOT yet started — user instruction 2026-06-10 ~10:35pm PST)
+## ROUND 6 — COMPLETE (draft v4)
 
-- [ ] Process new reviewer feedback:
-      20260610_10.35pmPST_revision_comments.txt (repo root, not yet read).
-      Plan when picked up: read fully -> triage demands vs already-done work
-      (rounds 4-5 + six-band program) -> AskUserQuestion on scope ->
-      parallel agents for computational items -> integrate, vet, push.
+- [x] Reviewer feedback 20260610_10.35pmPST processed in full: 5 parallel
+      agents (r6_scenarios, r6_transport, r6_morph2, r6_multiband, A5 infra)
+      + manuscript restructure. See RESPONSE_ROUND6.md for disposition.
+      Headlines: tilted dynamic 8.4-10.5 supersedes statics; oxide-trap
+      calibration makes interface charge THE binding constraint (now in
+      abstract); tier-led v4 manuscript, [110] primary, scenario table,
+      MANIFEST (65 numbers, CI-verified), falsification paragraph.
 
 ## REMAINING OPEN ITEMS (post six-band program)
 

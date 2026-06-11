@@ -8,59 +8,43 @@
 \title{Majorana zero modes in silicon: quantified constraints on the conduction band\\
 and a conditional hole-based route}
 \author{W.~T.~Trevena}
-\date{June 2026 --- draft v3}
+\date{June 2026 --- draft v4}
 \begin{document}
 \maketitle
 
 \begin{abstract}
-We assess the feasibility of Majorana zero modes (MZMs) in silicon within a
-Bogoliubov--de Gennes framework whose validation chain, derivations, parameter
-tables, and convergence studies are given in the Supplementary Material.
-Conduction-band wires face three independent, quantified obstructions: spin--orbit coupling (best
-intrinsic topological gap $\sim$1.5$\ueV$; engineered SOC of $\alpha \gtrsim 0.02$\,eV\,\AA{}
-required), a $g\!=\!2$ ceiling that, within our single-channel model, prevents induced
-gaps above $116\ueV$ from reaching the topological phase at attainable fields (quantifying the optimal-coupling rule of Cole \emph{et al.}), and valley
-physics---where we prove an exact two-band equivalence for smooth interfaces
-(Supplement S2) and derive that each single-atomic interface step acts as a
-near-$\pi$ Josephson junction in the band-projected pairing
-($\Delta\varphi = 2k_0 a/4 \approx 0.85\pi$, Supplement S3), with a numerically
-determined bound state that caps the topological gap at $\sim$18\% from the very
-first step. For the valence band we derive the gate-field
-covariation of $(\alpha, \hat g, m^*)$ from four- and six-band $k\cdot p$ fin
-models with self-consistent tri-gate electrostatics: in the [100] models the
-field that builds direct-Rashba SOC suppresses the wire-axis $g$ below 1.1,
-but the long-standing factor-of-two gap to measured FinFET $g$-tensors is
-resolved as predominantly a \emph{channel-orientation} effect --- all
-benchmark devices are [110], where the model gives a gate-stable
-$g_{x'} = 1.4$--$1.7$, $m^* \approx 0.20$, $\alpha$ up to 0.075\,eV\,\AA,
-and the harmful $\alpha$--$g$ covariation largely lifts. Field-orientation maps then select the candidate designs. We label each input
-by its evidentiary status. \emph{Measured}: Si:B critical fields
-($B_{c2} \approx 0.1$--0.4\,T), FinFET hole $l_{so}$ and $g$-tensors.
-\emph{Derived}: the LK operating curve and all topological-gap numbers.
-\emph{Hypothetical}: Pauli-limited thin-film Si:B and a hard-gap Al/Si-hole
-interface. On measured inputs only, a thick Si:B parent with tilted field
-supports 10--19$\ueV$. If 10--20\,nm Si:B films reach their Pauli limit (a
-fabrication target consistent with measured coherence lengths, but not yet
-demonstrated), 21--27$\ueV$; if a hard-gap Al/Si-hole interface existed (none
-does), 34$\ueV$ at the metallization-renormalized center point and up to
-55$\ueV$ \emph{bare} over field orientations. The hole route is therefore a
-\emph{conditional} feasibility result --- a hypothesis-generating design study
-whose status two standard measurements would largely settle --- not an
-established platform. Four realism controls sharpen these numbers: a dynamic tunneling self-energy
-lowers the center-point gaps to 7.6 / 14.9 / 24.2$\ueV$ (measured-Si:B /
-Pauli-Si:B$^\dagger$ / Al$^\dagger$), validating the static-renormalized
-caricature directionally; orbital magnetic coupling is negligible at fin
-widths ($<0.05\%$); the step-junction mechanism survives pairing-channel
-mixing in the conservative direction; and correlated electrostatic disorder
-is $4$--$8\times$ harsher than the iid baseline at matched RMS, making gate
-smoothness the binding fabrication constraint. Transport calculations show
-our spectral disorder thresholds are conservative, identify an abrupt
-class-D breakdown mode, and warn that step-disordered wires become Anderson
-insulators whose hard-looking transport gaps mask degraded local
-protection. Quasiparticle poisoning restricts the measured-field all-silicon stack to
-detection (not parity-coherent) experiments unless the parent gap is engineered. Two measurements would do the most to settle the platform: the parallel
-critical field of thin Si:B films, and the wire-axis hole $g$-tensor in device
-geometry.
+We present a computational feasibility and falsification study of Majorana
+zero modes in silicon nanowires (Bogoliubov--de Gennes, valley-resolved,
+six-band $k\cdot p$ + Poisson; every quoted number regenerates from the
+public repository and is machine-verified against its numerical ledger).
+\emph{Conduction band}: three quantified obstructions --- a spin--orbit
+shortfall, the single-channel $g \approx 2$ Zeeman ceiling, and valley
+physics, where we prove smooth interfaces benign under inter-valley pairing
+but find each atomic step acts as a near-$\pi$ Josephson junction
+($\Delta\varphi \approx 0.85\pi$) that caps the gap at $\sim$18\% from the
+first step. With miscut-derived step ensembles, device \emph{yield} is the
+binding statistic: 2--5\% for unaligned wires even on premium wafers,
+50--68\% for wires within $10^\circ$ of step edges. Within this model
+class, conduction-band Si is strongly disfavored unless step morphology is
+specifically controlled. \emph{Valence band}: holes evade valley physics;
+our six-band [110]-channel treatment (the orientation of every benchmark
+device) resolves the long-standing model-vs-experiment $g$ discrepancy as
+predominantly an axes artifact and yields gate-stable
+$g_{x'} = 1.4$--$1.7$, $m^* \approx 0.20$, $\alpha$ up to
+0.075\,eV\,\AA. Adjudicated against explicit operational tiers with the
+dynamic tunneling self-energy as the central estimate (static values are
+upper bounds): measured thick Si:B reaches 8--10$\ueV$ at tilted field
+(marginal detection tier); hypothetical$^\dagger$ Pauli-limited thin-film
+Si:B, $\sim$13$\ueV$; hypothetical$^\dagger$ hard-gap Al/Si-hole,
+17--18$\ueV$ (the only scenario approaching the nonlocality tier and
+surviving quasiparticle poisoning at realistic temperatures). The binding
+materials constraint is correlated electrostatic disorder: calibrated
+against oxide-interface charge, standard trap densities produce potential
+disorder orders of magnitude beyond tolerance, so interface quality ---
+not step morphology or parent choice --- gates any MOS-style silicon
+implementation. Two measurements would do the most to settle the platform:
+the parallel critical field of thin Si:B films and the device-geometry
+[110] hole $g$-tensor. Qubit relevance is not established.
 \end{abstract}
 
 \section{Introduction}
@@ -73,9 +57,11 @@ Silicon, the most controllable semiconductor in existence, has been conspicuousl
 absent from this program, for reasons usually stated qualitatively: weak spin--orbit
 coupling (SOC), a small $g$-factor, and conduction-band valley degeneracy.
 
-This paper makes those reasons quantitative, finds that one of them hides a
-qualitatively new failure mechanism, and shows that none of them applies to silicon
-\emph{holes}. Our contributions: (i) a quantified electron verdict (Secs.~\ref{sec:soc},
+This paper is a computational feasibility and falsification study: it makes
+those reasons quantitative, finds that one of them hides a qualitatively new
+failure mechanism, and shows that silicon \emph{holes} evade it --- while
+facing their own multiband $g$-tensor, electrostatic, and parent-interface
+constraints, quantified below. Our contributions: (i) a quantified electron verdict (Secs.~\ref{sec:soc},
 \ref{sec:catch}); (ii) an exact unitary equivalence making smooth-interface valley
 splitting benign under the physical inter-valley pairing channel, and the identification
 of single-atomic interface steps as near-$\pi$ Josephson junctions that
@@ -118,6 +104,14 @@ by 24--30\%. All caricature choices (GL/Zeeman-linear parent gaps, iid
 onsite disorder with correlation length $dx$, hard-wall LK geometry) are stated
 where used; complete per-figure parameter tables, seed families, and
 discretization/length/seed/grid convergence studies are in Supplement S4--S5.
+Throughout, claims carry one of three epistemic levels, stated where
+ambiguity is possible: \emph{exact within model} (the valley equivalence
+theorem, the $g = 2$ ceiling, topological criteria), \emph{numerical within
+model} (gap optimizations, step ensembles, disorder thresholds, transport),
+and \emph{device extrapolation} (parent feasibility, interface assumptions,
+fabrication design rules).
+
+\input{drafts/usable_criterion}
 
 \section{Conduction band: three independent obstructions}
 \subsection{Spin--orbit shortfall}\label{sec:soc}
@@ -197,30 +191,37 @@ domain-wall point $\pi$.}
 \end{figure}
 
 \section{Valence band}\label{sec:holes}
-\subsection{Luttinger--Kohn constraints: the $\alpha$--$g$ covariation}
+\subsection{Six-band [110] $k\cdot p$ + Poisson: the primary hole model}
 Quasi-1D hole channels in Si FinFETs have measured strong, gate-tunable SOC
-\cite{camenzind,voisin,bosco} and anisotropic $g$-tensors \cite{geyer}. Our four-band
-LK fin model reproduces the measured spin--orbit-length window ($l_{so} = 32$--101\,nm)
-and yields the constraint the free parameter box hides [Fig.~\ref{fig:lk}]: the
-vertical field that builds $\alpha$ (up to 0.054\,eV\,\AA) suppresses the wire-axis
-$g_x$ from 1.1 to 0.5 while raising $g_z$ to 2.4--4.2, with $m^* \approx 0.44$ and the
-SOC axis in-plane transverse. A seven-geometry bracket ($7$--$16$\,nm cross sections,
-3--30\,MV/m) keeps $g_x \in [0.4, 1.1]$, versus measured
-$g_{xx} \approx 1.9$--2.3 \cite{geyer,camenzind}. The six-band $k\cdot p$ +
-Poisson upgrade (Supplement S10) resolves this discrepancy: the split-off
-band moves $g_x$ \emph{down} (to $[0.04, 0.93]$; its envelope weight is
-negligible, consistent with Ref.~\cite{venitucci}), realistic tri-gate
-electrostatics is a $\pm25\%$ correction whose sign depends on gate
-geometry, and the dominant effect is \emph{channel orientation}: every
-benchmark device is [110]-oriented while the model above is [100]. Rotating
-to [110] gives a tight, nearly gate-independent $g_{x'} = 1.4$--$1.7$
-across all geometries ($\sim$60\% of the gap; the remainder has the size
-and sign expected from electrostatic asymmetry and 0.1--0.2\% process
-strain \cite{venitucci}), with favorable side effects --- $m^* \approx
-0.20$, $\alpha$ up to 0.075\,eV\,\AA{} --- and the harmful $\alpha$--$g_x$
-covariation largely absent. The platform numbers below are carried under
-both the (superseded) [100] tensors and the [110] re-evaluation of
-Supplement S10.3.
+\cite{camenzind,voisin,bosco} and anisotropic $g$-tensors \cite{geyer} ---
+and every benchmark device is a [110]-oriented channel on a (001) surface.
+Our primary hole model is therefore the six-band ($\Gamma_8 \oplus \Gamma_7$)
+$k\cdot p$ fin Hamiltonian rotated to the [110] channel, with
+self-consistent tri-gate electrostatics available as a control (Supplement
+S10; validated against bulk dispersions, the four-band limit to 0.006\%,
+and Kramers/Hermiticity to machine precision). It gives a gate-stable
+wire-axis $g_{x'} = 1.43$--$1.66$ across all benchmark geometries and the
+full field range, $m^* \approx 0.20$, $\alpha$ up to 0.075\,eV\,\AA{}
+($l_{so} \approx 50$\,nm), and $g_{y'} = 2.0$--$2.2$ inside the measured
+window --- within 0.3--0.6 of the measured along-fin $g \approx 1.9$--2.3,
+a residual of the size and sign expected from electrostatic asymmetry
+(which raises $g_{x'}$ and $\alpha$ together, Supplement S10.2) and
+0.1--0.2\% process strain \cite{venitucci}.
+
+\emph{Pedagogical [100] limit and the covariation caution.} The four-band
+hard-wall [100] model that earlier drafts used as primary reproduces
+$l_{so} = 32$--101\,nm but illustrates a trap the [110] geometry largely
+avoids [Fig.~\ref{fig:lk}]: there, the vertical field that builds $\alpha$
+(to 0.054\,eV\,\AA) suppresses the wire-axis $g_x$ from 1.1 to 0.5 while
+raising $g_z$ to 2.4--4.2 ($m^* \approx 0.44$, SOC axis in-plane
+transverse) --- a harmful $\alpha$--$g$ covariation. Its seven-geometry bracket keeps $g_x \in [0.4, 1.1]$, an apparent
+factor-of-two below measurement that the six-band [110] treatment resolves
+as predominantly an axes artifact: the split-off band moves $g_x$
+\emph{down} (consistent with Ref.~\cite{venitucci}: its envelope weight is
+negligible), electrostatics is a $\pm25\%$ geometry-signed correction, and
+the [110] rotation closes $\sim$60\% of the gap. All platform numbers
+below use the [110] tensors; the frozen [100]/static values are retained
+in Supplement S10.3 for provenance.
 
 \begin{figure}[tb]\centering
 \includegraphics[width=0.95\textwidth]{output/fig10_lk_constraint.png}
@@ -255,15 +256,31 @@ $B_P = 1.11$\,T, and $d = 10$--20\,nm films support \textbf{21--27$\ueV$}
 measured-field stack: at operating fields the Si:B parent gap is 29--33$\ueV$, so
 $x_{qp} = 10^{-6}$ requires $T_{\rm eff} \le 25$--29\,mK (Al reference: 130\,mK)---a
 detection platform, not a parity-coherent qubit, absent parent-gap engineering.
-The six-band [110] re-evaluation (Supplement S10.3) changes the design
-geometry more than the magnitudes: with $g_{x'} \approx 1.6$ usable
-\emph{in-plane along the wire}, the film parents no longer need the
-orientation compromise (Al: 26--32$\ueV$ static renormalized, 17--18
-dynamic; Pauli film$^\dagger$: 17--19 static renormalized, 13 dynamic),
-while measured-field Si:B drops to 3.8$\ueV$ under the dynamic self-energy
---- below the Tier-S threshold of Table~\ref{t:tiers}, so the
-detection-class all-silicon experiment now itself requires the
-(hypothetical) Pauli-limited film.
+Table~\ref{t:scenario} adjudicates the surviving scenarios at the [110]
+parameters with the dynamic self-energy as the central estimate. The [110]
+geometry changes the design logic: with $g_{x'} \approx 1.6$ usable
+\emph{in-plane along the wire}, film parents no longer need the orientation
+compromise, while the measured-field Si:B stack is strongest at tilted
+field --- 8.4--10.5$\ueV$ dynamic (Supplement S11.1; the static
+12.5--17.1$\ueV$ values are superseded) --- and only marginal in-plane
+(3.8--5.3$\ueV$). Tuning tolerances are not the obstacle: the dynamic
+optima tolerate $\pm14$--$30\ueV$ in $\mu$, $\gtrsim$35\% in $B$, and a
+factor $\ge 3$ in $\Gamma$ (Supplement S11.1). Transport-level validation
+passes at the hole operating points exactly as for electrons, 50\,mK
+tunneling spectroscopy brackets the true gap to $\pm35\%$, and a
+failure-mode library shows the discriminating diagnostic pair is the
+scattering invariant co-read with the transport gap (Supplement S11.2).
+Multi-subband occupancy and spatially fluctuating coupling $\Gamma(x)$ are
+both benign (Supplement S11.5). The decisive negative result is the
+charge-trap calibration (Supplement S11.4): oxide-interface charge at
+standard densities ($10^{10}$--$10^{11}$\,cm$^{-2}$) produces correlated
+potential disorder orders of magnitude beyond the $\sim$25--50$\ueV$ RMS
+tolerance, so \emph{interface quality is the gating materials requirement}
+for any MOS-style implementation --- favoring remote-doping-free
+Si/SiGe-style channels, dramatically better oxides, or metallic-density
+screening.
+
+\input{drafts/scenario_table}
 
 \begin{figure}[tb]\centering
 \includegraphics[width=0.92\textwidth]{output/fig11_field_orientation.png}
@@ -301,10 +318,9 @@ proxy overlaid.}
 \label{fig:transport}
 \end{figure}
 
-\section{Realism controls, master assumption table, and operational
-criteria}\label{sec:controls}
-Review round 5 added four controls (Supplement S9; \texttt{realism.py},
-\texttt{orbital.py}, \texttt{pairing\_mix.py}, \texttt{morphology.py}).
+\section{Realism controls}\label{sec:controls}
+Four controls test the headline numbers against the caricatures they rest
+on (Supplement S9).
 (i)~\emph{Dynamic self-energy}: replacing the static $\Delta$ with the full
 $\Sigma(\omega)$ and re-optimizing over tunnel coupling $\Gamma$ gives
 center-point gaps of 7.6$\ueV$ (measured Si:B, $\Gamma^* = 10\ueV$),
@@ -329,15 +345,6 @@ disorder at 50$\ueV$ RMS collapses the hole-platform median gap to
 electrostatics is the binding fabrication requirement, and our earlier
 iid thresholds overstate robustness by $4$--$8\times$ at fixed RMS.
 
-\input{drafts/master_table}
-The six-band [110] re-evaluation (Supplement S10.3, performed after this
-table was frozen) supersedes the LK-tensor rows toward lighter mass
-($m^* \approx 0.20$), larger $\alpha$ (up to 0.075\,eV\,\AA), in-plane
-usable $g_{x'} \approx 1.6$, and the dynamic central estimates quoted in
-Sec.~\ref{sec:holes}.
-
-\input{drafts/usable_criterion}
-
 \section{Discussion}
 Two measurements would do the most to settle the silicon question. First, the \textbf{parallel critical
 field of thin ($\le$20\,nm) laser-doped Si:B films}: if it approaches the Pauli limit,
@@ -350,10 +357,29 @@ $2\times$ along the one direction that matters for film parents. Both measuremen
 standard characterization, neither requires a working topological device, and the
 electron-side miscut prediction offers a third, independent test of the framework. We
 caution that the step-junction mechanism, the orientation maps, and all platform
-numbers inherit the stated caricatures (single channel, hard-wall LK,
-parent-gap models, iid disorder, no orbital magnetic effects \cite{nijholt});
-their domains of validity and the sensitivity of every
-headline number to them are quantified in Supplement S5--S6.
+numbers inherit the stated caricatures (single channel, hard-wall cross
+sections, parent-gap models \cite{nijholt}); their domains of validity and the sensitivity of every headline number to them are
+quantified in Supplements S5--S6 and S9--S11.
+
+\emph{Relation to Ge-hole platforms.} The closest precedent is
+Luttinger--Kohn-based Majorana design for gate-defined Ge hole channels
+\cite{gehole}. The silicon case differs in the decisive inputs: a
+CMOS-native, same-crystal materials stack with a possible all-silicon
+superconducting parent (Si:B); a smaller split-off gap making six-band
+treatment mandatory; the [110] FinFET $g$-tensor phenomenology; and, on
+the electron side, the conduction-valley step mechanism, which has no Ge
+analogue and supplies this paper's sharpest falsifiable prediction.
+
+\emph{What would falsify this study.} (i) Miscut/step-density-resolved gap
+spectroscopy on proximitized Si \emph{electron} devices showing induced-gap
+hardness independent of step density would falsify the valley-step
+mechanism. (ii) A measured device-geometry [110] hole $g$-tensor outside
+1.4--2.3, or strongly gate-dependent, would falsify the six-band design
+inputs. (iii) Thin-film Si:B with $B_{c\parallel}$ far below the Pauli
+limit would eliminate the all-silicon detection scenario. (iv) An Al/Si-hole
+interface with a hard induced gap would, conversely, promote the strongest
+scenario from hypothetical to testable --- the framework is falsifiable in
+both directions.
 
 \section*{Data and code availability}
 All figures and quoted numbers regenerate from the committed code
@@ -367,14 +393,19 @@ review-round corrections log, and this manuscript's source --- is public at
 \begin{center}
 \url{https://github.com/wtrevena/feasibility-of-creating-majorana-modes-in-silicon-nanowires}
 \end{center}
-An archival snapshot (tagged commit and DOI) will additionally be deposited on
-Zenodo at submission. [Zenodo DOI: to be inserted at submission.]
+\textbf{Version synchronization:} this manuscript (draft v4), the
+Supplement (v4), the repository code, and the numerical ledger are a single
+analysis state: the tagged commit recorded in \texttt{MANIFEST.json}, whose
+curated map ties every headline number in this paper to its ledger key and
+is verified in continuous integration (\texttt{tools/manifest.py --check}).
+An archival snapshot (tagged commit and DOI) will additionally be deposited
+on Zenodo at submission. [Zenodo DOI: to be inserted at submission.]
 
 \section*{Acknowledgments and provenance}
 Analysis, numerical implementation, verification, and manuscript preparation
 were assisted by AI agents (Claude, Anthropic) under the author's direction.
-Four internal adversarial numerical-review rounds (AI red-team referee-style
-reports followed by point-by-point revisions, see \texttt{RESPONSE.md}) are
+Six internal adversarial numerical-review rounds (AI red-team referee-style
+reports followed by point-by-point revisions; see \texttt{RESPONSE*.md}) are
 documented, with their corrections, in the repository log. AI-assisted review
 supplements but does not substitute for the reproducibility materials above;
 all claims trace to committed, seeded code. This draft has not yet undergone
@@ -420,5 +451,7 @@ Phys. Rev. B \textbf{98}, 155319 (2018).
 (2014).
 \bibitem{reeg} C. Reeg, D. Loss, J. Klinovaja, Phys. Rev. B \textbf{97}, 165425 (2018).
 \bibitem{nijholt} B. Nijholt, A. R. Akhmerov, Phys. Rev. B \textbf{93}, 235434 (2016).
+\bibitem{gehole} Phys. Rev. B \textbf{109}, 035433 (2024) (gate-defined Ge
+hole nanowires as Majorana platforms).
 \end{thebibliography}
 \end{document}

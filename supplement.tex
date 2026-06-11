@@ -10,7 +10,7 @@
 \newtheorem{proposition}{Proposition}
 \title{Supplementary Material:\\ Majorana zero modes in silicon}
 \author{W.~T.~Trevena}
-\date{June 2026 --- accompanies draft v2}
+\date{June 2026 --- accompanies draft v4 (versions synchronized; see Data availability)}
 \begin{document}
 \maketitle
 \tableofcontents
@@ -642,6 +642,11 @@ $\sim$0.1--0.2 of the [100] gap --- orientation is the leading correction.
 
 \subsection{Platform re-evaluation at [110] parameters}
 \label{s:plat110}
+The frozen [100]/static master assumption table of earlier drafts is
+retained for provenance:
+
+\input{drafts/master_table}
+
 With $(m^*, \alpha, g_{x'}) = (0.19, 0.052, 1.55)$ [$E_z = 10$\,MV/m] and
 $(0.20, 0.073, 1.66)$ [30\,MV/m], the \emph{in-plane along-wire} field
 direction --- the only direction film parents tolerate --- becomes usable
@@ -679,6 +684,110 @@ Pauli-limited film, while the Al scenario sits at 17--18$\ueV$ dynamic.
 All numbers remain hypothesis-generating: hard-wall cross-section, no
 strain, and the [110] tensor still 0.3--0.6 short of measured $g_{x'}$.
 
+\section{Device-level realism: tuning, transport observables, yields, and
+charge-trap calibration}\label{s:device}
+(\texttt{r6\_scenarios.py}, \texttt{r6\_transport.py}, \texttt{r6\_morph2.py},
+\texttt{r6\_multiband.py}; ledger tags \texttt{r6\_*}.)
+
+\subsection{Tilted-field dynamic self-energy and tuning tolerances}
+\label{s:tilt}
+The tilted measured-Si:B case, previously static-only (12.5--17.1$\ueV$
+bare), re-evaluated with the full $\Sigma(\omega)$ and scalar
+$g_{\rm eff}(\theta) = [(g_{x'}\cos\theta)^2 + (g_z\sin\theta)^2]^{1/2}$
+(exact for the [110] tensors, whose SOC axis $\pm\hat y'$ is perpendicular
+to the $x'$--$z$ tilt plane): the optimum is fully out-of-plane and gives
+\textbf{8.4$\ueV$} ([110], $E_z = 10$\,MV/m; $\Gamma^* = 10\ueV$,
+$B^* = 0.27$\,T) to \textbf{10.5$\ueV$} ($E_z = 30$; $\Gamma^* = 15$,
+$B^* = 0.32$\,T), uniformly 69\% of the matched-$\Delta_{ind}$ static
+value. The static 12.5--17.1$\ueV$ numbers are superseded. (Footnote: the
+\texttt{platform110} in-plane dynamic entries were evaluated at the
+static-optimal $B$; re-optimizing $B$ raises them $\sim$25--40\%, e.g.\
+measured-Si:B in-plane 3.8 $\to$ 5.3$\ueV$ at 0.27\,T --- the ledger
+values are conservative.) Tuning tolerances at the three dynamic optima
+(window where the gap stays $\ge 50\%$): $\mu$: $\pm14$ /$\pm28$ /
+$>\!\pm30\ueV$ (measured-Si:B / Pauli / Al); $B$: $\ge 0.13$ / $\ge 0.6$ /
+$\ge 0.7$\,T; $\Gamma$: factor $\ge 3$ everywhere. The one tight margin is
+field overshoot at measured-Si:B (0.02\,T below $B_{c2}$ at the
+static-optimal bias) --- an argument for biasing at 0.27--0.34\,T.
+
+\subsection{Hole-scenario transport, finite-$T$ spectroscopy, and the
+failure-mode library}\label{s:holetrans}
+The RGF validation gauntlet passes at all three hole operating points
+([110] Si:B-Pauli, [110] Al, legacy empirical): clean transport gap =
+analytic bulk gap to $\le 2\%$ (23.5/37.1/31.3 vs 23.3/36.6/30.7$\ueV$),
+$T(E{=}0) \le 10^{-4}$ through 2\,$\mu$m, and $\mathrm{sign}\det r$ flips
+$+1 \to -1$ across $B^*$ ($k_{so}dx \le 0.05$). Thermal/Lorentzian
+convolution at the Si:B-Pauli point: at 50\,mK ($\gamma = 0.5$--2$\ueV$)
+the 10\%-onset underestimates the 23.5$\ueV$ gap by 30--40\% while the
+half-rise overshoots to $\approx$27$\ueV$ (bracketing $\pm$35\%); at
+100\,mK the gap is unresolvable; mild disorder ($W = 200\ueV$) already
+adds genuine zero-energy leakage in 2 of 3 seeds --- apparent subgap
+softness cannot by itself distinguish temperature from disorder.
+Failure-mode library (end dots $-150/-250\ueV$, smooth 300$\ueV$
+confinement, $W = 600\ueV$ worst-of-ten; each in trivial and topological
+phases): at this single-channel $\mu = 0$ point no trivial generator
+produces a near-zero mimic ($E_0 \ge 6.6\ueV$, $Q = +1$ throughout);
+the dangerous mode is the \emph{false negative} --- smooth confinement on
+the topological side hides a genuine zero mode from two-terminal
+diagnostics ($Q$ reads $+1$); and $W = 600\ueV$ destroys protection while
+closed-spectrum states linger near zero. No single scalar suffices: the
+discriminating pair is $\mathrm{sign}\det r$ co-read with $E_2$/transport
+gap. Scope: all two-terminal local NS transport; nonlocal (end-to-end)
+conductance --- the modern experimental protocol --- is not implemented
+here.
+
+\subsection{Wafer-spec yields and the step-junction's robustness}
+\label{s:yield}
+Converting step ensembles to fab-facing yields (yield $\equiv$
+$P(E_2 \ge 4\ueV)$, the single-step ceiling; 40 realizations/cell):
+premium $\pm0.05^\circ$ wafers yield 2.5\% (unaligned $\chi = 90^\circ$),
+20\% ($\chi = 30^\circ$), \textbf{68\%} ($\chi = 10^\circ$); standard
+$\pm0.1^\circ$: 5\%/5\%/50\%. Alignment, not wafer grade, dominates. The
+junction itself survives realistic smoothing and valley splitting
+combined: over $\lambda \in [40, 300]\ueV \times w \in [0, 20]$\,nm the
+single-step ratio $E_2^{\rm step}/E_2^{\rm clean}$ stays 0.18--0.28
+(the junction responds to the total phase jump, compared against the
+induced coherence length, not the ramp width); small splitting
+($\lambda = 40\ueV$) additionally caps the \emph{clean} gap at 15$\ueV$
+through the second valley band.
+
+\subsection{Charge-trap calibration of correlated disorder}\label{s:trap}
+The GRF disorder levels are calibrated against a physical source: one
+$\pm e$ trap at the Si/oxide interface, screened self-consistently
+(\texttt{poisson2d} SCF at $n_l = 2\times10^7$/m), shifts the channel
+centroid potential by $A_{\rm trap} \approx 14$\,meV (8.8--20\,meV over
+interface sites). Good-oxide densities ($10^{10}$--$10^{11}$\,cm$^{-2}$)
+then produce 3--14\,meV RMS $\mu(x)$ disorder --- \emph{two orders of
+magnitude beyond the fatal 100-$\ueV$ level}, destroying the topological
+phase outright in 10/10 seeds at every density studied. The 25--50$\ueV$
+RMS levels of Sec.~\ref{s:controls} correspond to $\lesssim 10^7$
+cm$^{-2}$: an effectively trap-free wire. Even granting the proxy's
+caveats (2D cross-section transfer, toy screening density --- metallic
+screening could reduce $A_{\rm trap}$ by an order of magnitude) the
+conclusion is robust: \textbf{oxide-interface charge, not step morphology
+or parent choice, is the binding materials constraint} for any MOS-style
+Si Majorana device; the alternatives are dramatically better interfaces,
+remote-doping-free Si/SiGe-style channels with large setback, or
+metallic-density screening.
+
+\subsection{Multi-subband occupancy and spatially resolved coupling}
+\label{s:multi}
+Multi-subband strip with [110] parameters ($W = 15$--25\,nm): the
+topological windows at the 2nd and 3rd transverse subband bottoms are
+indistinguishable from the 1st (widths 59--72$\ueV$ vs the 82$\ueV$ 1D
+prediction; gaps 22--27$\ueV$ in every window; subband spacing
+$\ge 60\times$ the Zeeman scale) --- single-subband operation is not
+required; the requirement remains $\mu$ within $\sim\pm35\ueV$ of
+\emph{some} subband edge. (Caveat: effective single-band occupancy
+control, not full LK multiband realism.) Spatially resolved coupling
+$\Gamma(x)$ in the static limit (local $\Delta_{ind}(x)$, $Z(x)$,
+$\alpha(x)$, $g(x)$): 25--50\% RMS fluctuations cost only 5--14\% median
+gap (worst of 32: 20\%) --- pairing-channel disorder creates no potential
+wells and is partially self-compensating; 50--150\,nm dead zones cost gap
+$\propto$ lost coverage and bind no in-gap states; an uncovered 100-nm
+end acts as a shortened wire (Majorana relocates to the film edge,
+$E_0 = 0.050$ vs 0.047$\ueV$ control).
+
 \section{Reproducibility}\label{s:repro}
 Every figure and quoted number regenerates from the committed code:
 \texttt{run\_analysis.py} (figures 1--11), \texttt{transport.py} /
@@ -688,7 +797,8 @@ Every figure and quoted number regenerates from the committed code:
 \texttt{orbital.py}, \texttt{pairing\_mix.py}, \texttt{morphology.py}
 (Sec.~\ref{s:controls}), \texttt{kp6\_holes.py}, \texttt{kp6\_110.py},
 \texttt{poisson2d.py}, \texttt{kp6\_sc.py}, \texttt{platform110.py}
-(Sec.~\ref{s:kp6}),
+(Sec.~\ref{s:kp6}), \texttt{r6\_scenarios.py}, \texttt{r6\_transport.py},
+\texttt{r6\_morph2.py}, \texttt{r6\_multiband.py} (Sec.~\ref{s:device}),
 \texttt{tests.py} (assertion suite covering the equivalence theorem,
 gauge covariance, analytic dispersions, RGF agreement with closed-chain
 spectra to $10^{-13}$, and regression tests for every bug found in

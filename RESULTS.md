@@ -371,3 +371,37 @@ dynamic is the strongest surviving scenario. Citation hygiene: γ-set
 provenance corrected to Hensel–Feher/Winkler/Venitucci (drafts/kp6_benchmarks.md).
 Remaining physics not yet modeled: strain (Bir–Pikus), [110] orientation maps,
 6-band dynamic-SE cross at g_z.
+
+## 10. Round-6 revision (r6_* modules + manuscript restructure to draft v4)
+
+New computations (ledger tags r6_scenarios/r6_transport/r6_morph2/r6_multiband):
+- **Tilted dynamic**: measured-Si:B tilted = 8.4–10.5 µeV dynamic (supersedes
+  static 12.5–17.1); θ*=90°; dynamic uniformly 69% of matched static. Note:
+  platform110 C-values were at static-optimal B — true dynamic optima ~25–40%
+  higher (in-plane SiB_meas 3.8→5.3 at 0.27 T).
+- **Tuning tolerances**: µ ±14–30+ µeV, B ≥35%, Γ factor ≥3 — not the obstacle.
+- **Al disorder**: iid halving at 310–390 µeV; correlated µ(x) binding at
+  ≲25–50 µeV RMS (same class as Si:B, ~2× more headroom).
+- **Hole transport**: full RGF validation passes at all 3 hole points (E_T =
+  bulk ±2%, invariant flips); 50 mK spectroscopy brackets gap ±35%, 100 mK
+  unresolvable; failure-mode library: no trivial near-zero mimics at this
+  single-channel µ=0 point, but smooth confinement creates a FALSE NEGATIVE;
+  discriminating pair = sign det r + E2. Nonlocal conductance not implemented
+  (scoped explicitly).
+- **Wafer yields**: alignment dominates (χ≤10°: 50–68%; unaligned 2–5% even
+  premium). Step junction survives λ×ramp grid (ratio 0.18–0.28 everywhere).
+- **Charge-trap calibration (decisive)**: one ±e oxide-interface trap shifts
+  the channel by ~14 meV; good-oxide densities (1e10–1e11 cm⁻²) → 3–14 meV
+  RMS — 100× beyond the fatal 100 µeV level; studied RMS levels correspond to
+  ≲1e7 cm⁻² (trap-free). OXIDE CHARGE IS THE BINDING MATERIALS CONSTRAINT.
+- **Multi-subband + Γ(x)**: 2nd/3rd subband windows identical to 1st; Γ(x)
+  fluctuations mild (5–14%); dead zones benign; uncovered end = shorter wire.
+
+Manuscript (draft v4, both PDFs synchronized): tier-led abstract (40% shorter,
+dynamic numbers headline); tiers moved before platforms; six-band [110] is the
+primary hole model ([100] demoted to pedagogical covariation caution); new
+tier-based scenario table (t:scenario) replaces the master table in main text
+(frozen master table → Supplement S10.3); supplement S11 (device-level
+realism); falsification paragraph; Ge-hole comparison (PRB 109, 035433);
+epistemic three-level statement; version-sync statement tied to MANIFEST.json
+(65 curated numbers verified in CI); de-self-referenced prose.

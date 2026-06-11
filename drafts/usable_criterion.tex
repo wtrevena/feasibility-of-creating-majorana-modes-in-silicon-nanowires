@@ -7,7 +7,7 @@
 % ============================================================================
 \subsection{Operational criteria}\label{sec:usable}
 ``Usable'' is not a single threshold; we therefore evaluate every platform
-scenario of Table~\ref{t:master} against three named, quantitative tiers.
+scenario of Table~\ref{t:scenario} against three named, quantitative tiers.
 
 \paragraph{Tier S (spectroscopy/detection).} Topological gap
 $\Delta_{\mathrm{top}} \ge 2 k_B T_{\mathrm{eff}}$ at
@@ -44,56 +44,7 @@ require $T_{\mathrm{eff}} \le 25$--29\,mK and therefore fail; the Al
 reference ($\Delta_p = 150\ueV$ at 1\,T) requires only
 $T_{\mathrm{eff}} \le 130$\,mK and passes.
 
-\begin{table}[tb]\centering\small
-\caption{Decision table: each platform scenario of Table~\ref{t:master}
-against the operational tiers. COND = passes the numerical thresholds only
-under the stated condition; $^{\dagger}$ = scenario rests on an
-undemonstrated parent/interface (Table~\ref{t:master}), so any PASS is
-contingent on its realization.}
-\label{t:tiers}
-\begin{tabular}{l c c c l}
-\toprule
-Platform (Table~\ref{t:master} row) & Tier S & Tier N & Tier Q & limiting condition\\
-\midrule
-% gap 1.55 < 8.6 (fig3.gap_at_intrinsic_Si_opt_1e3_ueV)
-(1) Si $e^-$ intrinsic & FAIL & FAIL & FAIL & gap $1.55\ueV \ll 8.6\ueV$\\
-% clean 29.8 passes S/N (fig8.comparison; fig5.case1 W_half=410.6 spectral,
-% 548 transport) BUT step ensembles retain 0.7-2.3 ueV (fig6/fig9, L-dep.)
-(2) Si $e^-$ engineered$^{\dagger}$ & COND & COND & COND &
-clean wire passes; interface steps reduce ensembles to 0.7--2.3$\ueV$\\
-% best tilt 14.6 >= 8.6 (fig11 LK SiB_meas); center renorm 9.8-10.1 but
-% parent-model variation 7.6-10.0 r (convergence.H_parent) -> S pass at tilt;
-% N fails (<20); Q fails (Teff <= 25 mK, fig8.qp_poisoning)
-(3) Si:B thick, LK tensor & PASS$^{a}$ & FAIL & FAIL &
-$T_{\mathrm{eff}} \le 25$\,mK for $x_{qp}\!=\!10^{-6}$; gap $< 20\ueV$\\
-% best tilt 13.8; center 11.0/9.8-10.1 (convergence.G_grid.SiB_meas[_renorm])
-(4) Si:B thick, empirical tensor & PASS$^{a}$ & FAIL & FAIL &
-$T_{\mathrm{eff}} \le 25$\,mK for $x_{qp}\!=\!10^{-6}$; gap $< 20\ueV$\\
-% 30.6 bare / 19.7-20.2 renorm (convergence); renorm straddles the 20 ueV
-% line; W_half ~300 ueV OK; Q fails (Teff <= 29 mK, fig8.qp_poisoning)
-(5) Si:B thin film, Pauli$^{\dagger}$ & PASS$^{\dagger}$ & COND$^{b}$ & FAIL &
-parent hypothetical; renormalized gap 19.7--20.2$\ueV$ straddles $20\ueV$\\
-% 55.0 bare (fig11 empirical Al); not renormalized; W_half for Al-parameter
-% hole wire not separately computed; Q would pass (130 mK) but inherits N
-(6) Al film, orientation max$^{\dagger}$ & PASS$^{\dagger}$ & COND$^{c}$ &
-COND$^{c}$ & interface nonexistent; orientation-map values bare\\
-% 50.4 bare / 34.4 renorm (convergence.F_nk.Al, fig8.center_Al_renormalized);
-% Q passes via Al parent 150 ueV -> Teff <= 130 mK (fig8.qp_poisoning)
-(7) Al film, renorm.\ center$^{\dagger}$ & PASS$^{\dagger}$ &
-PASS$^{\dagger,d}$ & PASS$^{\dagger}$ & interface nonexistent\\
-\bottomrule
-\end{tabular}\\[2pt]
-{\footnotesize $^{a}$At tilted field. The center-point renormalized value
-(9.8--10.1$\ueV$) clears $8.6\ueV$ with $< 2\ueV$ margin and dips to
-7.6$\ueV$ under $\pm20\%$ parent-model variation (Supplement S5): the Tier-S
-pass is orientation- and parent-model-contingent.
-$^{b}$Bare value 30.6$\ueV$ passes; the metallization-renormalized value
-19.7--20.2$\ueV$ sits at the $20\ueV$ line.
-$^{c}$Disorder threshold not separately computed at Al-parameter operating
-points; gap criterion met on bare values only.
-$^{d}$$W_{1/2}$ taken from the Si:B-class hole-wire check at comparable
-$\Delta_{ind}$; an Al-specific disorder run is future work.}
-\end{table}
+% (decision table superseded by the scenario table t:scenario in the main text)
 
 % ============================================================================
 %% R5-5 LANGUAGE-SOFTENING LIST (for the lead session to apply to paper.tex)
