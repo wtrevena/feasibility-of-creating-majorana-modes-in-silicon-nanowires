@@ -1,6 +1,7 @@
 # Working notes (maintained by the AI assistant; updated after every completed item)
 
-Last updated: 2026-06-11, after 6-band k.p phase-2 agents returned.
+Last updated: 2026-06-11, six-band program COMPLETE and pushed
+(commit 54d2459, tag v3.1-kp6; tests ALL PASS; trees clean).
 
 ## Current state (committed through this commit)
 
@@ -59,12 +60,25 @@ New modules (all validated, all results in output/data/<name>.json + key_numbers
    channel covariation caveat from kp6_sc.
 3. [x] RESULTS.md section 9 etc. — DONE. Was: README table rows for the 4 new modules;
    RESPONSE addendum (reviewer's "six-band k.p + Poisson" demand now MET).
-4. [>] Recompile both PDFs — compiled clean (paper 10pp, supplement 11pp),
-   PDFs staged in output/sync6; NEXT: DC move + commit + push + retag.
+4. [x] Recompile + commit + push + retag — DONE (54d2459, v3.1-kp6).
    Original item: (sandbox /tmp/build; PNGs there current; use
    sync-dir trick for PDF transport), commit, push, retag (v3.1-kp6).
 5. [ ] Strain (Bir-Pikus b,d) — flagged optional future work in benchmarks.
 6. [ ] Zenodo DOI — author action.
+
+## REMAINING OPEN ITEMS (post six-band program)
+
+- [ ] Zenodo DOI mint from tag (author action; placeholder in paper).
+- [ ] Strain (Bir-Pikus b,d) in kp6 — the last unmodeled candidate for the
+      residual 0.3-0.6 g_x' shortfall (params in drafts/kp6_benchmarks.md).
+- [ ] [110] orientation maps (fig11 rerun with kp6_110 tensors) + 6-band
+      dynamic-SE at tilted g_z (platform110 sec B has static only).
+- [ ] Triangular/rounded fin cross-sections (real devices are not
+      rectangles; literature points at apex localization).
+- [ ] Local/nonlocal conductance-map protocol simulation (round-5
+      weakness 9, acknowledged as future work in RESPONSE_ROUND5).
+- [ ] Master-table regeneration with [110] rows replacing the supersession
+      footnote (cosmetic until numbers settle).
 
 ## Environment quirks (for resumption in fresh sessions)
 
