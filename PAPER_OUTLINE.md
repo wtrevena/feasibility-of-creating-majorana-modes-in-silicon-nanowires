@@ -49,7 +49,7 @@ measurements that decide the platform.
 3. [DONE] QP-poisoning estimate for the T_c = 0.6 K parent — see RESULTS F8 and
    key_numbers fig8.qp_poisoning.
 4. [DONE] References hand-verified via web search (2026-06-10): arXiv:2505.06040
-   (α_synth = 0.022 eV·nm, InAs/Al + permalloy — as cited); Si:B T_c ≈ 0.6 K = PRB 81,
+   (α_synth = 0.022 eV·nm = 0.22 eV·Å, i.e. 10× the ~0.02 eV·Å Si requirement; InAs/Al + permalloy — as cited); Si:B T_c ≈ 0.6 K = PRB 81,
    020501(R) (2010); 2024 SOI line = arXiv:2404.02748; Duvauchelle = arXiv:1508.04075
    (Si SQUID; previous PRB attribution corrected); Osca–Ruiz–Serra = PRB 89, 245405
    (2014, exact). Si superconductivity review arXiv:2108.03031 added.
