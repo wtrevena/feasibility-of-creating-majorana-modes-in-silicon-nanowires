@@ -5,13 +5,13 @@
     "E0_at_2um_ueV": 0.000344,
     "end_weight_at_2um": 0.934,
     "old_model_E0_ueV": -21.06,
-    "runtime_s": 2.0
+    "runtime_s": 4.8
   },
   "fig2": {
     "max_gap_Si_alpha_ueV": 1.56,
     "max_gap_InSb_alpha_ueV": 50.08,
     "ratio": 32.1,
-    "runtime_s": 7.6
+    "runtime_s": 10.4
   },
   "fig3": {
     "gap_at_intrinsic_Si_opt_1e3_ueV": 1.5506,
@@ -25,14 +25,14 @@
     "max_Delta_allowing_topology_at_2T_ueV": 115.8,
     "optimal_Delta_at_alpha005_ueV": 98.0,
     "optimal_Delta_gap_ueV": 39.045,
-    "runtime_s": 16.8
+    "runtime_s": 14.5
   },
   "fig4": {
     "single_valley_window_ueV": 71.0,
     "Ev_threshold_at_mu_cut_ueV": 82.0,
     "median_split_both_valleys_ueV": 0.76,
     "median_split_single_valley_ueV": 0.068,
-    "runtime_s": 0.7
+    "runtime_s": 0.5
   },
   "fig5": {
     "case0": {
@@ -62,7 +62,7 @@
       "dx_nm": 2.5,
       "L_um": 6.0
     },
-    "runtime_s": 23.5
+    "runtime_s": 0.4
   },
   "fig6": {
     "median_split_bothvalleys_steps100_ueV": 0.006,
@@ -89,7 +89,7 @@
         1.65
       ]
     },
-    "runtime_s": 32.3
+    "runtime_s": 21.8
   },
   "fig7": {
     "subband1_max_E2_inwindow_ueV": 38.05,
@@ -103,7 +103,7 @@
     ],
     "window_halfwidth_ueV": 71.0,
     "gap_1D_same_params_ueV": 36.83,
-    "runtime_s": 12.8
+    "runtime_s": 11.8
   },
   "fig8": {
     "box_median_gap_ueV": 30.75,
@@ -137,7 +137,7 @@
       "Si holes + Si:B MEASURED B$_{c2}$=0.4T": 9.92
     },
     "BP_T": 1.112,
-    "runtime_s": 5.1,
+    "runtime_s": 9.1,
     "hole_wire_finite_check": {
       "clean": {
         "E0": 0.0,
@@ -301,7 +301,7 @@
       ]
     },
     "note": "winding-as-dominant-mechanism claim retired after round-3 control test; see RESULTS F9",
-    "runtime_s": 10.7,
+    "runtime_s": 2.0,
     "extensions": {
       "vicinal_single_steps_0.85pi": {
         "median": 0.79,
@@ -363,7 +363,7 @@
         5.0
       ]
     },
-    "runtime_s": 4.4,
+    "runtime_s": 0.7,
     "g_bracket": {
       "base_10x12_Ez10": {
         "mstar": 0.44,
@@ -498,7 +498,7 @@
       "inplane_wire": 39.1,
       "outofplane": 0.0
     },
-    "runtime_s": 1.7
+    "runtime_s": 1.6
   },
   "convergence": {
     "F_nk": {
