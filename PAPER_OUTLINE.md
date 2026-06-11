@@ -67,3 +67,13 @@ measurements that decide the platform.
 - "100%" language retired; box statistics quoted with the literal corner value.
 - The winding mechanism is retired; per-step junction physics is the F9 claim.
 - Every novelty statement hedged with search methodology.
+
+## Review-response round (June 10, 2026) — COMPLETE
+External referee report (REVIEWER_FEEDBACK.txt): all 10 demands addressed —
+see RESPONSE.md. Manuscript is now draft v2 (paper.pdf 8pp) + Supplementary
+Material (supplement.pdf 7pp: proofs S2–S3, parameter tables S4, convergence
+S5, parent models S6, QP S7, reproducibility S8). Independent vet round 5
+passed (two mislabels fixed: Al 34/55 renorm-vs-bare; QP Al inputs).
+Remaining for the author before submission: license choice, Zenodo deposit +
+DOI insertion, journal selection, 6-band k·p g_x item (acknowledged in text),
+regenerate fig13 with matplotlib (`python convergence.py`; data committed).
