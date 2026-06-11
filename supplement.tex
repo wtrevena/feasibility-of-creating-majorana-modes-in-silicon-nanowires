@@ -440,7 +440,9 @@ parity-coherent qubit, absent parent-gap engineering. All numbers in
 \section{Luttinger--Kohn extraction}\label{s:lk}
 The fin cross-section $(y,z)$ is solved in the 4-band LK Hamiltonian
 (hard-wall, grid $11\times13$, $\gamma_1 = 4.285$, $\gamma_2 = 0.339$,
-$\gamma_3 = 1.446$, $\kappa = -0.42$) with vertical field $E_z$; the
+$\gamma_3 = 1.446$, $\kappa = -0.42$; parameter provenance: Hensel--Feher
+cyclotron resonance via Winkler/Venitucci --- see
+\texttt{drafts/kp6\_benchmarks.md}) with vertical field $E_z$; the
 lowest Kramers doublet is followed in $k_x$ to extract $m^*$ (curvature),
 $\alpha$ (linear-in-$k$ splitting), the SOC axis (spin direction of the
 split states), and the $g$-tensor (bare $2\kappa\mu_B\mathbf{B\cdot J}$
@@ -576,6 +578,107 @@ $\alpha$ fluctuations (20\%, $\lambda_c = 50$\,nm) are negligible
 (Caveat: at RMS $= 100\ueV > E_Z = 64\ueV$ the wire fragments and $E_2$
 no longer measures a topological gap; 10 seeds per cell.)
 
+\section{Six-band $k\cdot p$ + Poisson: resolving the $g_x$ discrepancy}
+\label{s:kp6}
+The decisive theory upgrade demanded in review round 5
+(\texttt{kp6\_holes.py}, \texttt{kp6\_110.py}, \texttt{poisson2d.py},
+\texttt{kp6\_sc.py}; ledger tags \texttt{kp6/kp6\_110/poisson2d/kp6\_sc/
+platform110}; literature anchors in \texttt{drafts/kp6\_benchmarks.md}).
+
+\subsection{Model and validation}
+Six-band $\Gamma_8\oplus\Gamma_7$ LKBP Hamiltonian (same $\gamma_i$, the
+standard Chao--Chuang/Winkler coupling blocks, $\Delta_{so} = 44$\,meV;
+Zeeman $H_Z = \mu_B(g_L^h\,\mathbf{B\cdot L} + g_s^h\,\mathbf{B\cdot S})$
+with $g_s^h = -2$, $g_L^h = 3\kappa + 1$, which reproduces $+2\kappa\mu_B
+\mathbf{B\cdot J}$ in $\Gamma_8$; identical Peierls orbital treatment as the
+four-band code). Finite differences do \emph{not} converge for the 6-band
+problem at affordable grids (the $\Gamma_8$--$\Gamma_7$ mixing amplifies the
+$O(d^2)$ error to 45\% in $\alpha, g_x$ at $11\times13$); production uses a
+hard-wall sine (Galerkin) basis, with the FD mode retained as the
+conventions bridge. Validation: bulk $k = 0$ exact; [100] HH mass
+$1/(\gamma_1 - 2\gamma_2)$ to $2\times10^{-15}$; closed-form bulk branches
+along [001]/[111] to $3\times10^{-15}$; $\Delta_{so}\to\infty$ reproduces
+\texttt{lk\_holes.extract} to 0.006\%; Kramers $2.5\times10^{-12}$;
+grid drift $<3\%$. The [110]-channel rotation (kinetic-tensor rotation,
+identical pipeline) is validated against the unrotated model at rotated
+momenta to $10^{-15}$ and coincides with it in the isotropic
+$\gamma_2 = \gamma_3$ limit to $10^{-6}$.
+
+\subsection{Three findings}
+\textbf{(i) The split-off band moves $g_x$ the wrong way.} At the
+production fin ($10\times12$\,nm, $E_z = 10$\,MV/m, [100] channel) the
+6-band parameters are $m^* = 0.85$, $\alpha = 0.024$\,eV\,\AA,
+$g = (0.62, 1.03, 4.15)$ vs four-band $(0.44, 0.048, (1.04, 1.99, 3.40))$;
+the $\Delta_{so}$ sweep is monotone (\,$g_x$: 1.06 at $\Delta_{so}\to\infty$
+$\to$ 0.62 at 44\,meV), and the seven-geometry bracket drops to
+$g_x \in [0.04, 0.93]$. Consistent with Venitucci \emph{et al.}: split-off
+envelope weight is negligible in the ground doublet; level repulsion makes
+the channel heavier and transfers $g$-weight to $g_z$ (which reaches
+4.2--4.8, consistent with the published HH-like $g_z$ peak of 4.66--5).
+
+\textbf{(ii) The discrepancy was predominantly an axes mismatch: all
+benchmark devices are [110]-channel.} Rotating the channel to [110] (the
+orientation of every measured device --- Geyer, Camenzind, Voisin, Crippa)
+with everything else identical gives a tight, nearly field-independent
+$g_{x'} = 1.43$--$1.66$ across the full $E_z$ sweep and all seven
+geometries, closing $\sim$60\% of the gap to the measured along-fin
+1.9--2.3; $g_{y'} = 2.0$--$2.2$ at low field falls inside the measured
+window, and $g_z$ drops toward the measured 1.5. Favorable side effects:
+$m^* \approx 0.20$ (vs 0.85), $\alpha$ up to 0.075\,eV\,\AA, and the
+harmful $\alpha$--$g_x$ covariation of the [100] model largely lifts
+($g_{x'}$ varies by only 15\% over the whole gate range). The residual
+0.3--0.6 shortfall has the size and sign the literature attributes to
+inhomogeneous electrostatics and 0.1--0.2\% process strain.
+
+\textbf{(iii) Realistic electrostatics is a $\pm25\%$, geometry-signed
+correction.} The self-consistent tri-gate solution (validated Poisson +
+SCF, 21 iterations at production parameters; uniform-field control
+reproduces \texttt{extract6} to 0.00\%) shifts $g_x$ by $-23\%$ (symmetric
+tri-gate, lateral squeezing) to $+24\%$ (top gate only) at matched
+density-weighted field; lateral asymmetry ($\Delta V = 0.2$\,V between
+sidewalls) raises $g_x$ by $+31\%$ and $\alpha$ by $+56\%$ together while
+rotating the SOC axis toward $-\hat z$. Electrostatics alone closes at most
+$\sim$0.1--0.2 of the [100] gap --- orientation is the leading correction.
+
+\subsection{Platform re-evaluation at [110] parameters}
+\label{s:plat110}
+With $(m^*, \alpha, g_{x'}) = (0.19, 0.052, 1.55)$ [$E_z = 10$\,MV/m] and
+$(0.20, 0.073, 1.66)$ [30\,MV/m], the \emph{in-plane along-wire} field
+direction --- the only direction film parents tolerate --- becomes usable
+(\texttt{platform110}; $10\times10\times20$ optimizer grids):
+
+\begin{table}[h]\centering\small
+\caption{Hole-platform operating points with six-band [110] parameters.
+``dyn.''\ = dynamic self-energy optimum (Sec.~\ref{s:dynse} method) at the
+static operating field; static bare/renormalized as before. In-plane
+along-wire field except the $g_z$ rows (tilted, thick-Si:B parent only).}
+\label{t:plat110}
+\begin{tabular}{llccc}
+\toprule
+scenario & field dir. & static bare & static renorm. & dynamic
+($\Gamma^*$)\\
+\midrule
+Si:B measured ($B_{c2}{=}0.4$\,T) & in-plane $x'$ & 8.5--8.9 & 8.1--8.7 &
+3.8 (6)\\
+Si:B measured, tilted & $g_z$ ride & 12.5--17.1 & 10.3--12.6 & ---\\
+Si:B Pauli film$^{\dagger}$ & in-plane $x'$ & 21.0--23.3 & 16.6--18.7 &
+12.5--13.0 (20)\\
+Al film$^{\dagger}$ & in-plane $x'$ & 36.6--40.5 & 26.0--32.1 &
+16.9--18.4 (30)\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Two consequences. First, the film-parent designs no longer require the
+orientation compromise: the Al and thin-film Si:B scenarios operate
+in-plane along the wire at $g_{x'} \approx 1.6$. Second, the honest central
+estimates (dynamic column) sharpen the tier verdicts: measured-field Si:B
+falls to 3.8$\ueV$ --- \emph{below} Tier S --- so detection-class
+experiments on the all-silicon stack now require the (hypothetical)
+Pauli-limited film, while the Al scenario sits at 17--18$\ueV$ dynamic.
+All numbers remain hypothesis-generating: hard-wall cross-section, no
+strain, and the [110] tensor still 0.3--0.6 short of measured $g_{x'}$.
+
 \section{Reproducibility}\label{s:repro}
 Every figure and quoted number regenerates from the committed code:
 \texttt{run\_analysis.py} (figures 1--11), \texttt{transport.py} /
@@ -583,7 +686,9 @@ Every figure and quoted number regenerates from the committed code:
 \texttt{lk\_holes.py}, \texttt{qp\_poisoning.py},
 \texttt{convergence.py} (Sec.~\ref{s:conv}), \texttt{realism.py},
 \texttt{orbital.py}, \texttt{pairing\_mix.py}, \texttt{morphology.py}
-(Sec.~\ref{s:controls}),
+(Sec.~\ref{s:controls}), \texttt{kp6\_holes.py}, \texttt{kp6\_110.py},
+\texttt{poisson2d.py}, \texttt{kp6\_sc.py}, \texttt{platform110.py}
+(Sec.~\ref{s:kp6}),
 \texttt{tests.py} (assertion suite covering the equivalence theorem,
 gauge covariance, analytic dispersions, RGF agreement with closed-chain
 spectra to $10^{-13}$, and regression tests for every bug found in

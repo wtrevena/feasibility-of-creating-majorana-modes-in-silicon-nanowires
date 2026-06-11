@@ -38,12 +38,17 @@ New modules (all validated, all results in output/data/<name>.json + key_numbers
 
 ## NEXT ITEMS (in order)
 
-1. [ ] Platform rerun with [110] 6-band parameters: _best_gap_hole + tilted
+1. [x] Platform rerun with [110] 6-band parameters — DONE (platform110.py,
+   tag platform110): in-plane g_x'~1.6 usable; SiB_meas dynamic 3.8 ueV
+   (below Tier S); Pauli 12.5-13; Al 17-18 dynamic.: _best_gap_hole + tilted
    analysis at (m*=0.19-0.21, α=0.034-0.075, g=(1.43-1.66, 0.4-2.2, 2.1-3.9))
    — [110] numbers look FAVORABLE vs the old empirical-tensor assumptions;
    quantify new operating points for SiB_meas / SiB_pauli / Al (+ dynamic-SE
    correction factor from realism.py tag).
-2. [ ] Manuscript integration: supplement new section (6-band+Poisson:
+2. [x] Manuscript integration — DONE (supplement S10 + S10.3 table; paper
+   LK section rewritten, parents addendum, abstract updated, master-table
+   supersession note, geyer/venitucci/hensel bibitems; RESULTS sec 9; README
+   module rows; RESPONSE_ROUND5 updated). Was: supplement new section (6-band+Poisson:
    methods, validation, the three findings); paper: revise LK section + the
    g_x-discrepancy story (axes mismatch primary; electrostatics/strain
    remainder), update master table rows 3-4 sources, abstract sentence,
@@ -52,9 +57,11 @@ New modules (all validated, all results in output/data/<name>.json + key_numbers
    Decide: hole platform stays "hypothesis-generating" but the 6-band [110]
    result UPGRADES the parameter outlook — frame carefully, channel-by-
    channel covariation caveat from kp6_sc.
-3. [ ] RESULTS.md section 9; README table rows for the 4 new modules;
+3. [x] RESULTS.md section 9 etc. — DONE. Was: README table rows for the 4 new modules;
    RESPONSE addendum (reviewer's "six-band k.p + Poisson" demand now MET).
-4. [ ] Recompile both PDFs (sandbox /tmp/build; PNGs there current; use
+4. [>] Recompile both PDFs — compiled clean (paper 10pp, supplement 11pp),
+   PDFs staged in output/sync6; NEXT: DC move + commit + push + retag.
+   Original item: (sandbox /tmp/build; PNGs there current; use
    sync-dir trick for PDF transport), commit, push, retag (v3.1-kp6).
 5. [ ] Strain (Bir-Pikus b,d) — flagged optional future work in benchmarks.
 6. [ ] Zenodo DOI — author action.

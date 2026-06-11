@@ -35,6 +35,11 @@ and **[PAPER_OUTLINE.md](PAPER_OUTLINE.md)**.
 | `orbital.py` | round-5 control: Peierls orbital coupling in the 2D strip (Supplement S9) |
 | `pairing_mix.py` | round-5 control: inter/intra-valley pairing interpolation (Supplement S9) |
 | `morphology.py` | round-5 control: miscut/terrace/bunching/ramp ensembles (Supplement S9) |
+| `kp6_holes.py` | six-band Γ8⊕Γ7 LKBP fin model, sine/Galerkin basis (Supplement S10) |
+| `kp6_110.py` | [110]-channel rotation of the 6-band model (the experimentally relevant axis) |
+| `poisson2d.py` | tri-gate fin Poisson + Schrödinger–Poisson SCF harness |
+| `kp6_sc.py` | self-consistent 6-band + Poisson extraction |
+| `platform110.py` | hole-platform operating points re-evaluated with [110] 6-band parameters |
 | `paper.tex` / `paper.pdf` | manuscript draft v2 |
 | `supplement.tex` / `supplement.pdf` | Supplementary Material: proofs, parameter tables, convergence |
 | `compat/` | pure-numpy scipy/matplotlib fallback (validated; see compat/scipy docstring) |
@@ -69,6 +74,7 @@ signatures) and resume if interrupted.
 | QP-poisoning bounds | `python qp_poisoning.py` |
 | fig 13 + convergence tables | `python convergence.py` (sections checkpoint to `output/data/convergence.json`); matplotlib-free render: `python tools/fig13_pgf.py` |
 | round-5 controls | `python realism.py` / `python orbital.py` / `python pairing_mix.py` / `python morphology.py` (each checkpoints to `output/data/<name>.json`) |
+| six-band program | `python kp6_holes.py` / `python kp6_110.py` / `python poisson2d.py` / `python kp6_sc.py` / `python platform110.py` (checkpointed likewise) |
 | assertion suite | `python tests.py` |
 
 Every quoted number in the paper lives in `output/data/key_numbers.json`, written only

@@ -26,10 +26,14 @@ near-$\pi$ Josephson junction in the band-projected pairing
 ($\Delta\varphi = 2k_0 a/4 \approx 0.85\pi$, Supplement S3), with a numerically
 determined bound state that caps the topological gap at $\sim$18\% from the very
 first step. For the valence band we derive the gate-field
-covariation of $(\alpha, \hat g, m^*)$ from a four-band Luttinger--Kohn fin model: the
-field that builds direct-Rashba SOC ($\alpha$ up to 0.054\,eV\,\AA, spin--orbit lengths
-32--101\,nm, matching FinFET measurements) suppresses the wire-axis $g$ below 1.1 while
-raising $g_z$ to 2.4--4.2. Field-orientation maps then select the candidate designs. We label each input
+covariation of $(\alpha, \hat g, m^*)$ from four- and six-band $k\cdot p$ fin
+models with self-consistent tri-gate electrostatics: in the [100] models the
+field that builds direct-Rashba SOC suppresses the wire-axis $g$ below 1.1,
+but the long-standing factor-of-two gap to measured FinFET $g$-tensors is
+resolved as predominantly a \emph{channel-orientation} effect --- all
+benchmark devices are [110], where the model gives a gate-stable
+$g_{x'} = 1.4$--$1.7$, $m^* \approx 0.20$, $\alpha$ up to 0.075\,eV\,\AA,
+and the harmful $\alpha$--$g$ covariation largely lifts. Field-orientation maps then select the candidate designs. We label each input
 by its evidentiary status. \emph{Measured}: Si:B critical fields
 ($B_{c2} \approx 0.1$--0.4\,T), FinFET hole $l_{so}$ and $g$-tensors.
 \emph{Derived}: the LK operating curve and all topological-gap numbers.
@@ -201,11 +205,22 @@ and yields the constraint the free parameter box hides [Fig.~\ref{fig:lk}]: the
 vertical field that builds $\alpha$ (up to 0.054\,eV\,\AA) suppresses the wire-axis
 $g_x$ from 1.1 to 0.5 while raising $g_z$ to 2.4--4.2, with $m^* \approx 0.44$ and the
 SOC axis in-plane transverse. A seven-geometry bracket ($7$--$16$\,nm cross sections,
-3--30\,MV/m) keeps $g_x \in [0.4, 1.1]$: the measured $g_{xx} \approx 1.9$--2.3
-\cite{geyer} is \emph{not} reproducible in four-band hard-wall LK, so all platform
-numbers below are carried under both the LK and empirical tensors; resolving the
-discrepancy requires six-band $k\cdot p$ with device electrostatics (top remaining
-theory item).
+3--30\,MV/m) keeps $g_x \in [0.4, 1.1]$, versus measured
+$g_{xx} \approx 1.9$--2.3 \cite{geyer,camenzind}. The six-band $k\cdot p$ +
+Poisson upgrade (Supplement S10) resolves this discrepancy: the split-off
+band moves $g_x$ \emph{down} (to $[0.04, 0.93]$; its envelope weight is
+negligible, consistent with Ref.~\cite{venitucci}), realistic tri-gate
+electrostatics is a $\pm25\%$ correction whose sign depends on gate
+geometry, and the dominant effect is \emph{channel orientation}: every
+benchmark device is [110]-oriented while the model above is [100]. Rotating
+to [110] gives a tight, nearly gate-independent $g_{x'} = 1.4$--$1.7$
+across all geometries ($\sim$60\% of the gap; the remainder has the size
+and sign expected from electrostatic asymmetry and 0.1--0.2\% process
+strain \cite{venitucci}), with favorable side effects --- $m^* \approx
+0.20$, $\alpha$ up to 0.075\,eV\,\AA{} --- and the harmful $\alpha$--$g_x$
+covariation largely absent. The platform numbers below are carried under
+both the (superseded) [100] tensors and the [110] re-evaluation of
+Supplement S10.3.
 
 \begin{figure}[tb]\centering
 \includegraphics[width=0.95\textwidth]{output/fig10_lk_constraint.png}
@@ -240,6 +255,15 @@ $B_P = 1.11$\,T, and $d = 10$--20\,nm films support \textbf{21--27$\ueV$}
 measured-field stack: at operating fields the Si:B parent gap is 29--33$\ueV$, so
 $x_{qp} = 10^{-6}$ requires $T_{\rm eff} \le 25$--29\,mK (Al reference: 130\,mK)---a
 detection platform, not a parity-coherent qubit, absent parent-gap engineering.
+The six-band [110] re-evaluation (Supplement S10.3) changes the design
+geometry more than the magnitudes: with $g_{x'} \approx 1.6$ usable
+\emph{in-plane along the wire}, the film parents no longer need the
+orientation compromise (Al: 26--32$\ueV$ static renormalized, 17--18
+dynamic; Pauli film$^\dagger$: 17--19 static renormalized, 13 dynamic),
+while measured-field Si:B drops to 3.8$\ueV$ under the dynamic self-energy
+--- below the Tier-S threshold of Table~\ref{t:tiers}, so the
+detection-class all-silicon experiment now itself requires the
+(hypothetical) Pauli-limited film.
 
 \begin{figure}[tb]\centering
 \includegraphics[width=0.92\textwidth]{output/fig11_field_orientation.png}
@@ -306,6 +330,11 @@ electrostatics is the binding fabrication requirement, and our earlier
 iid thresholds overstate robustness by $4$--$8\times$ at fixed RMS.
 
 \input{drafts/master_table}
+The six-band [110] re-evaluation (Supplement S10.3, performed after this
+table was frozen) supersedes the LK-tensor rows toward lighter mass
+($m^* \approx 0.20$), larger $\alpha$ (up to 0.075\,eV\,\AA), in-plane
+usable $g_{x'} \approx 1.6$, and the dynamic central estimates quoted in
+Sec.~\ref{sec:holes}.
 
 \input{drafts/usable_criterion}
 
@@ -374,7 +403,12 @@ human peer review.
 \bibitem{bosco} S. Bosco, B. Het\'enyi, D. Loss, PRX Quantum \textbf{2}, 010348 (2021).
 \bibitem{camenzind} L. C. Camenzind \emph{et al.}, Nat. Electron. \textbf{5}, 178
 (2022).
-\bibitem{geyer} S. Geyer \emph{et al.}, Nat. Phys. (2024).
+\bibitem{geyer} S. Geyer \emph{et al.}, Nat. Phys. \textbf{20}, 1152 (2024);
+arXiv:2212.02308.
+\bibitem{venitucci} B. Venitucci, L. Bourdet, D. Pouzada, Y.-M. Niquet,
+Phys. Rev. B \textbf{98}, 155319 (2018).
+\bibitem{hensel} J. C. Hensel, G. Feher, Phys. Rev. \textbf{129}, 1041
+(1963).
 \bibitem{voisin} B. Voisin \emph{et al.}, Nano Lett. \textbf{16}, 88 (2016).
 \bibitem{bustarret} E. Bustarret \emph{et al.}, Nature \textbf{444}, 465 (2006).
 \bibitem{prb2010} C. Marcenat \emph{et al.}, Phys. Rev. B \textbf{81}, 020501(R)

@@ -35,9 +35,13 @@ favorable direction).
 (c) *Pairing-channel mixing* (pairing_mix.py): the requested inter/intra
 interpolation; mechanism robust, η=0 ensembles conservative, threshold
 η*≈0.24 identified (weakness #3 resolved).
-The six-band k·p + Poisson model remains future work; per the review's
-stated alternative, the hole platform is now explicitly demoted to a
-hypothesis-generating design study carried under dual tensors.
+UPDATE: the six-band k·p + Poisson model has since been completed
+(Supplement S10; kp6_holes/kp6_110/poisson2d/kp6_sc). Outcome: the split-off
+band LOWERS g_x; the 4-band-vs-measured discrepancy is resolved as
+predominantly a channel-orientation ([110] vs [100]) effect closing ~60% of
+the gap, with electrostatic asymmetry/strain sized for the remainder; the
+platform was re-evaluated at the [110] parameters (Supplement S10.3). The
+hole platform remains labeled hypothesis-generating (hard-wall, no strain).
 
 **4. Realistic disorder/step morphology — DONE.** morphology.py: gamma
 terrace ensembles from miscut angle, orientation scan, finite-width ramps,
@@ -61,8 +65,9 @@ and a per-platform decision table (paper Sec. controls, Table 2).
 under ordinary interface conditions"; micromagnet mitigation retained.
 3 (pairing channel) → control done; conservative direction.
 4 (step morphology) → done, incl. rare-event tails and the design rule.
-5 (hole model misses g_x) → platform demoted to hypothesis-generating;
-dual-tensor bracketing retained; 6-band listed as the decisive theory step.
+5 (hole model misses g_x) → RESOLVED: 6-band + Poisson + [110] rotation done
+(Supplement S10); discrepancy was predominantly an axes mismatch in the
+comparison; platform re-evaluated; remains hypothesis-generating (no strain).
 6 (orbital effects) → control done; designs survive (<0.05% at fin widths).
 7 (parent modeling) → dynamic self-energy + Γ/Dynes/Δ-disorder scans done;
 Tc(d) suppression still flagged hypothetical for thin films.

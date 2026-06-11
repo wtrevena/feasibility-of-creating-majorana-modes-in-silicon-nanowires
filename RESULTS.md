@@ -336,3 +336,38 @@ Manuscript: title softened ("quantified constraints"), master assumption table
 (Table 1) + operational tiers S/N/Q (Table 2) added; abstract carries the
 dynamic-corrected numbers. F8 clarification: the 21–27 µeV film range is over
 Pauli-limited thicknesses only (d below the per-branch Pauli thickness).
+
+## 9. Six-band k·p + Poisson (kp6_holes / kp6_110 / poisson2d / kp6_sc / platform110)
+
+The round-5 reviewer's top theory item, now done. Three findings:
+
+1. **Split-off band moves g_x DOWN, not up**: 6-band [100] bracket g_x ∈
+   [0.04, 0.93] (4-band: [0.4, 1.1]; measured: 1.9–2.3). Monotone in Δ_so.
+   Consistent with Venitucci PRB 98, 155319: split-off envelope weight is
+   negligible; level repulsion makes the channel heavier (m* 0.44→0.85) and
+   transfers g-weight to g_z (→4.2–4.8, matching the published HH-like peak).
+   Method note: FD does not converge for 6-band at Δ_so=44 meV (45% error at
+   11×13); production uses a sine/Galerkin basis (validated 6 ways).
+2. **The discrepancy was predominantly an AXES MISMATCH**: every benchmark
+   device (Geyer, Camenzind, Voisin, Crippa) is [110]-channel; our models were
+   [100]. Rotated to [110]: g_x' = 1.43–1.66 — tight, nearly gate-independent,
+   ~60% of the gap closed; g_y' = 2.0–2.2 in the measured window; g_z drops
+   toward measured 1.5. Bonus: m* ≈ 0.20, α up to 0.075 eV·Å, and the harmful
+   α–g_x covariation largely lifts. Remainder (~0.3–0.6) sized/signed like
+   electrostatic asymmetry + 0.1–0.2% process strain (literature).
+3. **Electrostatics is a ±25% geometry-signed correction**: self-consistent
+   tri-gate suppresses g_x −23%, top-gate enhances +24% at matched field;
+   lateral asymmetry (0.2 V) raises g_x +31% and α +56% together and rotates
+   the SOC axis toward −z. Does not close the [100] gap alone.
+
+**Platform re-evaluation at [110] parameters (platform110)**: in-plane
+along-wire field becomes usable (g_x'≈1.6) — film parents no longer need the
+orientation compromise. Static bare/renorm → dynamic central estimates:
+SiB_meas in-plane 8.5–8.9 / 8.1–8.7 → **3.8 µeV (below Tier S!)**; SiB_meas
+tilted g_z 12.5–17.1 / 10.3–12.6; SiB_pauli† 21–23 / 16.6–18.7 → 12.5–13.0;
+Al† 36.6–40.5 / 26–32 → 16.9–18.4. Net: the detection-class all-silicon
+experiment now itself requires the hypothetical Pauli film; Al† at ~17–18 µeV
+dynamic is the strongest surviving scenario. Citation hygiene: γ-set
+provenance corrected to Hensel–Feher/Winkler/Venitucci (drafts/kp6_benchmarks.md).
+Remaining physics not yet modeled: strain (Bir–Pikus), [110] orientation maps,
+6-band dynamic-SE cross at g_z.
