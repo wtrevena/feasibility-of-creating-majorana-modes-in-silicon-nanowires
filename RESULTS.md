@@ -7,7 +7,8 @@ recalibrated numbers: using only *measured* Si:B critical fields and the Lutting
 constrained (not free) hole parameters, the accessible topological gap is **~10–19 µeV**
 (at tilted-to-out-of-plane field with a thick Si:B parent), rising to 30+ µeV only under
 the so-far-unmeasured hypothesis of Pauli-limited thin-film Si:B. Si holes proximitized
-by an Al film would reach 34–55 µeV if such an interface can be made. The decisive
+by an Al film would reach 34 µeV (renormalized center; up to 55 µeV bare
+over orientations) if such an interface can be made. The decisive
 unknowns are now two measurements, not theory: the parallel critical field of thin-film
 Si:B, and the wire-axis hole g-factor/SOC axis in the actual device geometry.**
 
@@ -201,7 +202,9 @@ g_z.**
    role: detection platform yes; parity-coherent qubit only with parent-gap
    engineering (T_eff ≤ ~30 mK otherwise unreachable). **The two decisive measurements:** (i) B_c∥ of <20 nm laser-doped Si:B films;
    (ii) g-tensor + SOC axis of a gated Si hole wire in the actual geometry.
-3. **Si holes + Al film: 34–55 µeV** if a hard-gap Al/Si-hole interface can be made
+3. **Si holes + Al film: 34 µeV renormalized (center), up to 55 µeV bare over
+   orientations** — fig11 maps are NOT renormalized — if a hard-gap Al/Si-hole
+   interface can be made
    (no demonstration exists; metallization-renormalized numbers quoted).
 4. Before submission: 6-band LK with tri-gate electrostatics; transport invariant
    extended to all disorder figures; QP-poisoning estimate; verify flagged references.

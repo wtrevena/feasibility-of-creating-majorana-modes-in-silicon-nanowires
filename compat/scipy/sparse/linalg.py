@@ -119,6 +119,7 @@ def eigsh(H, k=6, sigma=None, which="LM", maxiter=700, tol_h=1e-10, seed=11):
         return np.real(ok_E[order]), np.column_stack([ok_V[i] for i in order])
 
     got = None
+    prev_set = None
     for j in range(m_max):
         w = F.solve(Q[:, j])
         a = np.real(np.vdot(Q[:, j], w))
@@ -137,7 +138,15 @@ def eigsh(H, k=6, sigma=None, which="LM", maxiter=700, tol_h=1e-10, seed=11):
         if (j + 1) >= max(2 * k + 4, 24) and (j + 1) % 12 == 0:
             got = harvest(j + 1)
             if got is not None:
-                break
+                # completeness guard (degenerate copies resolve late):
+                # accept only when two consecutive harvests agree.
+                cur = np.sort(np.abs(got[0] - sigma))
+                if prev_set is not None and len(prev_set) == len(cur) and \
+                        np.allclose(cur, prev_set,
+                                    rtol=1e-9, atol=1e-12 * scale):
+                    break
+                prev_set = cur
+                got = None
     if got is None:
         got = harvest(len(alphas))
     if got is None:

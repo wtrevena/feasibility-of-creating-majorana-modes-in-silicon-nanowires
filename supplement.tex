@@ -187,9 +187,9 @@ $\Delta_t|\cos\frac{\Delta\varphi}{2}|$ & 22.22 & 21.95 & 20.53 & 17.98 & 15.71 
 \end{tabular}
 \end{table}
 
-The formula tracks the numerics to $\sim$10\% for
-$\Delta\varphi \lesssim 0.5\pi$ and overestimates by $20$--$25\%$ near
-$0.85\pi$ --- the expected accuracy for an atomically abrupt junction
+The formula tracks the numerics to $\lesssim 15\%$ for
+$\Delta\varphi \lesssim 0.5\pi$ and overestimates by $25$--$30\%$ (relative
+to the lattice value) near $0.85\pi$ --- the expected accuracy for an atomically abrupt junction
 (zero length but not in the Andreev limit $\Delta \ll$ all normal scales,
 and the bound state hybridizes with the wire-end MZMs at finite $L$). We
 therefore present the junction mechanism as an \emph{analytically derived
@@ -204,8 +204,8 @@ two ensembles are statistically indistinguishable: the damage is
 per-junction. Winding \emph{does} matter in the smooth limit: a linear
 ramp $\phi(x) = qx$ is a uniform gauge field, pair-breaking only beyond
 $q \gtrsim 2|\lambda|/(\hbar v_F)$-type thresholds (in-code generator,
-\texttt{fig9} key numbers: gap intact at $q \le 4\times10^6$\,m$^{-1}$,
-destroyed by $1.6\times10^7$); at 50\,nm step spacing the equivalent
+\texttt{fig9} key numbers: gap reduced by $\lesssim 25\%$ with no subgap
+state at $q \le 4\times10^6$\,m$^{-1}$, destroyed by $1.6\times10^7$); at 50\,nm step spacing the equivalent
 $q = 0.85\pi/50\,\mathrm{nm} = 5.3\times10^7$ exceeds this, but the
 staircase damage at the same mean gradient is dominated by the discrete
 junction physics, as the control comparison proves.
@@ -226,6 +226,7 @@ every random draw in the repository is seeded.
 \caption{Electron-sector figures. $L = N\,dx$. ``IV'' = inter-valley
 pairing model [Eq.~\eqref{eq:Div}]; ``toy'' = legacy intra-valley pairing.}
 \label{t:par-e}
+\resizebox{\textwidth}{!}{%
 \begin{tabular}{lllllllll}
 \toprule
 Fig. & model & $N$ ($dx$) & $\mu$ ($\ueV$) & $B$ (T) & $\alpha$ (eV\,\AA) & valley & disorder & notes\\
@@ -240,7 +241,7 @@ Fig. & model & $N$ ($dx$) & $\mu$ ($\ueV$) & $B$ (T) & $\alpha$ (eV\,\AA) & vall
 9 & IV & 500 (5\,nm) & 35 & 1.5 & 0.05 & $|\lambda|$=75 & steps: 6 spacings, 14 seeds & seed family [71,$\cdot$]\\
 12 & RGF & $L$=2\,$\mu$m & 0 & 1.5 & 0.05 & --- & $W \in \{100,200,400,800\}$ & Ando leads, $E$-scan\\
 \bottomrule
-\end{tabular}
+\end{tabular}}
 \end{table}
 
 \begin{table}[h]\centering\scriptsize
@@ -339,7 +340,8 @@ window at fixed $\mu$$^b$}\\
 \end{tabular}\\
 \smallskip
 {\footnotesize $^b$At fixed $\mu = 35\ueV$, $B = 1.5$\,T the lower band
-leaves its topological window for $E_v \gtrsim 225\ueV$; single-valley
+leaves its topological window for $E_v > 212\ueV$ (analytic; grid points
+$\ge 225\ueV$ are outside); single-valley
 topology at larger $E_v$ requires re-centering $\mu$ (main-text Fig.~4
 wedge). The quoted values at $E_v \ge 225$ are trivial gaps and are
 excluded from any protection claim.}
@@ -360,7 +362,7 @@ Si:B measured (r) & 7.93 & 9.14 & 10.13 & 9.82\\
 Si:B Pauli & 30.62 & 30.62 & 30.62 & 30.62\\
 Si:B Pauli (r) & 19.68 & 19.68 & 19.68 & 20.21\\
 \midrule
-\multicolumn{5}{l}{$k$-grid $n_k$: $\le 0.02\%$ drift from 501 to 12001 at
+\multicolumn{5}{l}{$k$-grid $n_k$: $\le 0.022\%$ drift from 501 to 12001 at
 all three operating points.}\\
 \multicolumn{5}{l}{Parent model: $\Delta_0 \times \{0.8, 1, 1.2\}$,
 $B_{c2} \in \{0.3, 0.4\}$\,T $\Rightarrow$ measured-field center
@@ -413,8 +415,9 @@ The equilibrium quasiparticle fraction of the parent at temperature $T$ is
 $x_{qp} \simeq \sqrt{2\pi k_BT/\Delta_p}\, e^{-\Delta_p/k_BT}$. Requiring
 $x_{qp} \le 10^{-6}$ with the Si:B parent gap \emph{at the operating
 field} ($\Delta_p(B^*) = 29$--$33\ueV$ for the measured-field design)
-gives $T_{\mathrm{eff}} \le 25$--$29$\,mK; the same criterion for Al
-($\Delta_p \approx 180\ueV$ at 1.7\,T) gives 130\,mK. Since realistic
+gives $T_{\mathrm{eff}} \le 25$--$29$\,mK; the same criterion for the Al
+reference point of \texttt{qp\_poisoning.py} ($\Delta_p = 150\ueV$ at
+$B = 1.0$\,T, GL) gives 130\,mK. Since realistic
 electron temperatures in superconducting devices rarely reach 25\,mK,
 the measured-field all-silicon stack is classified as a detection
 platform (ZBP spectroscopy, gap hardness, the miscut test) rather than a
@@ -431,8 +434,8 @@ split states), and the $g$-tensor (bare $2\kappa\mu_B\mathbf{B\cdot J}$
 plus orbital terms, evaluated as the field-derivative of the doublet
 splitting along the three axes). Validation: at $E_z = 0$ the model
 reproduces the exact bulk [100] heavy/light masses, and the predicted
-spin--orbit lengths $l_{so} = \hbar/(m^*\alpha) = 32$--$101$\,nm cover the
-measured FinFET window. Limits: no strain, no cubic ($J^3$) Zeeman, no
+spin--orbit lengths $l_{so} = \hbar^2/(m^*\alpha) = 32$--$101$\,nm overlap
+the measured FinFET window ($\sim$20--60\,nm). Limits: no strain, no cubic ($J^3$) Zeeman, no
 device electrostatics --- the known shortfall is $g_x \in [0.4, 1.1]$
 across a seven-geometry bracket ($7$--$16$\,nm sections, 3--30\,MV/m)
 versus measured $g_{xx} \approx 1.9$--$2.3$; all platform numbers are

@@ -37,7 +37,8 @@ interface. On measured inputs only, a thick Si:B parent with tilted field
 supports 10--19$\ueV$. If 10--20\,nm Si:B films reach their Pauli limit (a
 fabrication target consistent with measured coherence lengths, but not yet
 demonstrated), 21--27$\ueV$; if a hard-gap Al/Si-hole interface existed (none
-does), 34--55$\ueV$ metallization-renormalized. The hole route is therefore a
+does), 34$\ueV$ at the metallization-renormalized center point and up to
+55$\ueV$ \emph{bare} over field orientations. The hole route is therefore a
 \emph{conditional} feasibility result, decided by two standard measurements,
 not an established platform. Transport calculations show our spectral disorder thresholds are
 conservative, identify an abrupt class-D breakdown mode, and warn that step-disordered
@@ -96,9 +97,9 @@ Ando wave-matched normal leads and an $E=0$ reflection invariant $\mathrm{sign}\
 pins every exact claim. $\Delta$ is a \emph{static} induced gap (the
 $\omega = 0$ limit of the standard tunneling self-energy); parent-gap field
 suppression enters via $\Delta_{ind} \le \Delta_p(B)$ and metallization via the
-quasiparticle weight $Z$ (Supplement S6) --- we do not solve the dynamical
-self-energy problem, and the renormalized numbers bound the direction of the
-omitted physics. All caricature choices (GL/Zeeman-linear parent gaps, iid
+quasiparticle weight $Z$ \cite{cole2015,maier,reeg} (Supplement S6) --- we do
+not solve the dynamical self-energy problem, and the renormalized numbers bound
+the direction of the omitted physics. All caricature choices (GL/Zeeman-linear parent gaps, iid
 onsite disorder with correlation length $dx$, hard-wall LK geometry) are stated
 where used; complete per-figure parameter tables, seed families, and
 discretization/length/seed/grid convergence studies are in Supplement S4--S5.
@@ -134,8 +135,9 @@ $g=2$, the weak-coupling optimum identified by Cole, Das Sarma and Stanescu
 phase, the wire maps unitarily onto two decoupled bands at $\mu \mp |\lambda|$ with
 pairing $\pm\Delta$ (proof in Supplement S2; the key step is the exact invariance
 of the inter-valley pairing under the valley rotation, $U_\phi D U_\phi^T = D$;
-verified numerically to $3\times10^{-10}\ueV$ for valley-scalar and
-phase-locked Dresselhaus SOC alike): smooth interfaces are benign, and valley
+test-suite tolerance $10^{-6}\ueV$ on every eigenvalue, spot checks
+$3\times10^{-10}\ueV$, for valley-scalar and phase-locked Dresselhaus SOC
+alike): smooth interfaces are benign, and valley
 splitting $\gtrsim$100$\ueV$ buys single-valley topology, as the simple wedge picture
 suggests.
 
@@ -201,15 +203,18 @@ parent/orientation scenarios.}
 \end{figure}
 
 \subsection{Parents, orientation, and the surviving designs}\label{sec:parents}
-Field-orientation maps [Fig.~\ref{fig:orient}] under both $g$-tensors and two parents
-give the design rules: (i)~an \textbf{Al film} parent is locked to in-plane fields but
-strong---34--55$\ueV$ metallization-renormalized---\emph{if} a hard-gap Al/Si-hole
+Field-orientation maps [Fig.~\ref{fig:orient}], using the tilted-field
+topological criterion of Osca, Ruiz and Serra \cite{osca}, under both
+$g$-tensors and two parents give the design rules: (i)~an \textbf{Al film} parent is locked to in-plane fields but
+strong---34$\ueV$ metallization-renormalized at the center point, up to
+55$\ueV$ bare over orientations (Fig.~\ref{fig:orient}, not
+renormalized)---\emph{if} a hard-gap Al/Si-hole
 interface can be fabricated (none exists); (ii)~a \textbf{thick Si:B} parent
 \cite{bustarret,prb2010,duvauchelle,chiodi2024} is orientation-tolerant and, using only
 measured critical fields ($B_{c2} \approx 0.1$--0.4\,T, orbital-limited), supports
 10--19$\ueV$ at fields tilted toward out-of-plane (riding $g_z$; the center
-point is 11.0$\ueV$ bare / 10.1 renormalized on the finest optimizer grids,
-Supplement S5, and moves over 8--11$\ueV$ under $\pm$20\% parent-model
+point is 11.0$\ueV$ bare / 9.8--10.1 renormalized on finer optimizer grids,
+Supplement S5, and moves over 8.0--10.6$\ueV$ under $\pm$20\% parent-model
 variations); the in-plane
 wire-axis direction is $g$-starved (3--9$\ueV$). (iii)~The \textbf{thin-film Si:B}
 route turns the ``Pauli-limited'' hypothesis into a fabrication target: with coherence
@@ -269,8 +274,9 @@ $2\times$ along the one direction that matters for film parents. Both measuremen
 standard characterization, neither requires a working topological device, and the
 electron-side miscut prediction offers a third, independent test of the framework. We
 caution that the step-junction mechanism, the orientation maps, and all platform
-numbers inherit the stated caricatures (single channel, hard-wall LK, parent-gap
-models, iid disorder); their domains of validity and the sensitivity of every
+numbers inherit the stated caricatures (single channel, hard-wall LK,
+parent-gap models, iid disorder, no orbital magnetic effects \cite{nijholt});
+their domains of validity and the sensitivity of every
 headline number to them are quantified in Supplement S5--S6.
 
 \section*{Data and code availability}

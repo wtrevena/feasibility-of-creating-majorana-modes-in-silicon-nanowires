@@ -14,7 +14,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 try:
     import scipy  # noqa: F401
-    print("real scipy present; shim test still forced via sys.path")
+    print("note: sys.path[0] is compat/, so this import found the shim")
 except ImportError:
     pass
 sys.path.insert(0, HERE)   # shim first

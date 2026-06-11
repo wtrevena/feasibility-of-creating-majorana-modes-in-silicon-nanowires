@@ -82,7 +82,7 @@ for phi in [0.0, 0.7, np.pi/2, 2.6, 5.0]:
                                      soc_mode=mode)
         E = np.linalg.eigvalsh(H.toarray())
         assert np.max(np.abs(E - Eref)) / UEV < 1e-6, (phi, mode)
-ok("equivalence theorem: uniform phase benign, BOTH SOC classes, 4 phases")
+ok("equivalence theorem: uniform phase benign, BOTH SOC classes, 5 phases")
 
 # 4. Dresselhaus mode hosts a genuine Majorana phase (regression for the old
 #    TR-odd bug, which destroyed the topological phase entirely)

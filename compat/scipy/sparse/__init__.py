@@ -59,6 +59,9 @@ class BT:
             o = o.tocsr()
         if not isinstance(o, BT):
             raise TypeError("BT + incompatible")
+        if not (self.perm is None or o.perm is None
+                or np.array_equal(self.perm, o.perm)):
+            raise ValueError("BT + BT with conflicting permutations")
         if (o.N, o.c) != (self.N, self.c):
             if o.N * o.c != self.N * self.c:
                 raise TypeError("BT + incompatible shape")

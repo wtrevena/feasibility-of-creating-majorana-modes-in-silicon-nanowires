@@ -30,7 +30,8 @@ derives, exactly, that band-projected pairing acquires the phase −φ(x) —
 so a VO phase step *is* a Josephson junction; this is the rigorous part.
 The bound-state depth is numerical; the zero-parameter transparent
 short-junction formula Δ_t|cos(Δφ/2)| is tabulated against the lattice
-(Supplement Table 1: 10–25% agreement, exact at Δφ → 0 and π). The text
+(Supplement Table 1: ≲15% for Δφ ≲ 0.5π, 25–30% near 0.85π, exact at
+Δφ → 0 and π). The text
 now distinguishes the exact mapping from the numerically determined depth,
 as requested ("different levels of claim").
 
