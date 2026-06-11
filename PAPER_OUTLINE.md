@@ -69,8 +69,8 @@ measurements that decide the platform.
 - Every novelty statement hedged with search methodology.
 
 ## Review-response round (June 10, 2026) — COMPLETE
-External referee report (REVIEWER_FEEDBACK.txt): all 10 demands addressed —
-see RESPONSE.md. Manuscript is now draft v2 (paper.pdf 8pp) + Supplementary
+Adversarial AI red-team review (round 4, referee-style): all 10 demands
+addressed — see RESPONSE.md. Human peer review still pending. Manuscript is now draft v2 (paper.pdf 8pp) + Supplementary
 Material (supplement.pdf 7pp: proofs S2–S3, parameter tables S4, convergence
 S5, parent models S6, QP S7, reproducibility S8). Independent vet round 5
 passed (two mislabels fixed: Al 34/55 renorm-vs-bare; QP Al inputs).

@@ -1,11 +1,13 @@
-# Response to External Review (REVIEWER_FEEDBACK.txt)
+# Response to Adversarial Review Round 4
 
 Manuscript: *Majorana zero modes in silicon: quantified failure of the
 conduction band and a conditional hole-based route* — draft v2.
 
-We thank the reviewer for an unusually careful report. We accepted all ten
-revision demands; the recommended posture (major revision) was warranted.
-Summary of what changed, keyed to the report.
+Round 4 was an AI red-team review conducted in the style of a journal
+referee report (recommendation: major revision). It is not a human peer
+review; it was used to close gaps before submission. All ten of its
+revision demands were accepted. Summary of what changed, keyed to the
+report's numbering.
 
 ## The ten specific demands
 

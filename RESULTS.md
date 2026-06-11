@@ -249,7 +249,7 @@ committed code. To be disclosed in the acknowledgments or supplement.
 - Cole–Das Sarma–Stanescu PRB 92, 174511 (2015) — optimal coupling (F3 prior art).
 - Kjaergaard et al. PRB 85, 020503(R); Turcotte et al. PRB 102, 125425; arXiv:2505.06040
   (verified: permalloy arrays on InAs/Al, synthetic α = 0.022 eV·nm = 0.22 eV·Å — 10× our
-  silicon requirement of ~0.02 eV·Å; unit caught by external review) — engineered SOC.
+  silicon requirement of ~0.02 eV·Å; unit conflation caught in review round 4) — engineered SOC.
 - Losert et al. PRB 108, 125405; Hosseinkhani–Burkard PRB 100, 125309 — valley
   splitting, interface steps (F6/F9 context).
 - Osca, Ruiz & Serra, PRB 89, 245405 (2014) (verified) — tilted-field criterion
