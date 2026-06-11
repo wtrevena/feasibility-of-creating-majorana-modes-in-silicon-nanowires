@@ -87,7 +87,8 @@ shift-invert Lanczos (`python compat/test_shim.py` checks it against dense
 ## Archival checklist (Zenodo deposit at submission)
 
 1. Choose a license (required by Zenodo; not yet chosen — see below).
-2. Tag the submission commit; record the hash in the paper's Data-availability section.
+2. Tag the submission commit; record the hash in the paper's Data-availability section
+   (public repo: https://github.com/wtrevena/feasibility-of-creating-majorana-modes-in-silicon-nanowires).
 3. `git archive` the tag; deposit with `CITATION.cff` metadata; mint DOI.
 4. Insert the DOI in `paper.tex` (placeholder marked `[Zenodo DOI: ...]`).
 
